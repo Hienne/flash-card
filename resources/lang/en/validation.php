@@ -134,9 +134,22 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => [
+            'required' => 'Vui lòng nhập email',
+            'max' => 'Email không được quá :max ký tự'
         ],
+        'password' => [
+            'required' => 'Vui lòng nhập mật khẩu',
+            'confirmed' => 'Mật khẩu không giống.'
+        ],
+        'name' => [
+            'required' => 'Vui lòng nhập tên người dùng.',
+            'max' => 'Tên người dùng không được quá :max ký tự'
+        ],
+        'date_of_birth' => [
+            'required' => 'Vui lòng nhập ngày tháng năm sinh.'
+        ],
+
     ],
 
     /*

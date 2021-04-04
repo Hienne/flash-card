@@ -20,8 +20,8 @@
                 <form action="{{ route('register') }}" method="POST">
                   @csrf
                   <div class="form-group first field--not-empty">
-                    <label for="name">Tài khoản</label>
-                    <input type="text" name="name" id="name" class="form-control auth" id="name" value="{{ old('name') }}">
+                    <label for="name">Tên người dùng</label>
+                    <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
 
                     @error('name')
                         <div class="text-danger small">
@@ -31,11 +31,11 @@
                   </div>
   
                   <div class="form-group field--not-empty">
-                    <label for="birth_of_date">Ngày sinh</label>
-                    <input type="date" name="date_of_birth" class="form-control">
+                    <label for="date_of_birth">Ngày sinh</label>
+                    <input type="date" name="date_of_birth" id="date_of_birth" class="form-control">
                     {{-- <input type="text" name="date_of_birth" id="date_of_birth" class="form-control auth" id="name" value="{{ auth()->user()->birth_of_date }}"> --}}
 
-                    @error('birth_of_date')
+                    @error('date_of_birth')
                       <div class="text-danger small">
                         {{ $message }}
                       </div>

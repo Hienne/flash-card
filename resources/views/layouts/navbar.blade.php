@@ -32,11 +32,22 @@
 
     <!-- Right Nav -->
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Đăng nhập</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('register') }}">Đăng ký</a>
-      </li>
+      @auth
+        <li class="nav-item">
+          <a class="nav-link" href="#">Hien</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('logout') }}">Đăng xuất</a>
+        </li>
+      @endauth
+
+      @guest
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('login') }}">Đăng nhập</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('register') }}">Đăng ký</a>
+        </li>
+      @endguest
     </ul>
   </nav>
