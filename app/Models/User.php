@@ -19,8 +19,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'date_of_birth',
         'password',
-        'date_of_birth'
     ];
 
     /**
@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public function setDateOfBirthAttribute($value) 
+    // {
+    //     $this->attributes['date_of_birth'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    // }
+
+    // public function getDateOfBirthAttribute() 
+    // {
+    //     return Carbon::createFromFormat('Y-m-d', $this->attributes['date_of_birth'])->format('m/d/Y');
+    // }
 }

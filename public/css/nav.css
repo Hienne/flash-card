@@ -1,0 +1,35 @@
+nav {
+    background-color: rgb(66, 87, 178);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+nav ul li a {
+    color: #cedaf3;
+}
+
+nav ul li a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.logo {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.logo:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown__item--size {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgb(66, 87, 178);
+}
+
+.btn--search {
+    background-color: #6879c1;
+}

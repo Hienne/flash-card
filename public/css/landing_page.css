@@ -1,0 +1,188 @@
+header {
+    color: white;
+    max-height: 100vh;
+}
+
+.header__right {
+    padding: 0;
+    background-color: rgb(59, 76, 155);
+}
+
+.header__right__title {
+    margin: 5rem;
+}
+
+.header__right__title h1 {
+    font-weight: 700;
+}
+
+.header__right__title p {
+    margin-top: 3rem;
+    font-weight: 500;
+}
+
+.header__left {
+    padding: 0;
+    background-color: rgb(66, 87, 178);
+}
+
+.header__left__title {
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+}
+
+.header__left__title p:nth-child(1) {
+    font-weight: 500;
+}
+
+/* Tablet and Smart Phone */
+@media only screen and (max-width: 900px) {
+    .header__right__title {
+        margin: 2rem;
+    }
+
+    .header__right__title h1 {
+        font-weight: 500;
+        font-size: 1.5rem;
+    }
+
+    .header__right__title p {
+        font-size: 0.9rem;
+    }
+
+    .header__left__title p:nth-child(1) {
+        font-size: 0.85rem;
+    }
+
+    .header__left__title p:nth-child(2) {
+        font-size: 0.75rem;
+    }
+}
+
+/* Showcase */
+.showcase {
+    margin-top: 6rem;
+    color: rgb(48, 53, 69);
+}
+
+.showcase__title {
+    margin-bottom: 6rem;
+}
+
+.showcase__title h2 {
+    font-size: 1.7rem;
+}
+
+.order {
+    order: 2;
+}
+
+.showcase__item__detail {
+    padding-left: 2rem;
+    padding-top: 10rem;
+}
+
+.showcase__item__detail h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.showcase__item__detail p {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+}
+
+@media only screen and (max-width: 900px) {
+    .order {
+        order: unset;
+    }
+
+    .showcase__item__detail {
+        padding-top: 0;
+    }
+
+    .showcase__item__detail h3 {
+        margin-top: 1rem;
+    }
+}
+
+/* Showcase for Teacher */
+.showcase-for-teacher__left {
+    background-color: rgb(231, 249, 249);
+    padding: 4rem 3rem 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    flex-basis: 49%;
+    margin-left: 0.5rem;
+    overflow: hidden;
+}
+
+.showcase-for-teacher__left__detail {
+    background-color: rgb(231, 249, 249);
+}
+
+.showcase-for-teacher__left__detail h3 {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.showcase-for-teacher__left__detail h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.showcase-for-teacher__right {
+    padding-left: 0;
+}
+
+.showcase-for-teacher__right img {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.footer {
+    margin-top: 3rem;
+    background-color: rgb(66, 87, 178);
+    padding: 3rem 4rem;
+    color: white;
+}
+
+.footer__section h3 {
+    font-size: 1.3rem;
+}
+
+.footer__section__list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer__section__list li a {
+    color: white;
+    font-size: 0.7rem;
+}
+
+.footer__section__list li a:hover {
+    text-decoration: none;
+}
+
+.footer hr {
+    background-color: white;
+}
+
+.social-contact {
+    list-style-type: none;
+    display: flex;
+}
+
+.social-contact li {
+    margin-right: 1rem;
+}
+
+.social-contact li a {
+    color: white;
+}
+
+.copyright {
+    font-size: 0.7rem;
+}
+
