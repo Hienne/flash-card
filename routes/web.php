@@ -29,5 +29,5 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register');
 
 Route::get('/', function () {
-    return view('layouts.guest');
+    return view('pages.home');
 });
