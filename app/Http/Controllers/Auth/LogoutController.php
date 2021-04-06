@@ -11,6 +11,6 @@ class LogoutController extends Controller
     {
         auth()->logout();
 
-        return view('layouts.guest');
+        return view('pages.guest');
     }
 }

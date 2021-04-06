@@ -25,6 +25,6 @@ class LoginController extends Controller
             return back()->with('status', 'Đăng nhập không thành không. Tên tài khoản hoặc mật khẩu không chính xác.');
         }
 
-        return redirect()->route('dashboard'); 
+        return redirect()->route('home'); 
     }
 }

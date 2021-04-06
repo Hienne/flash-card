@@ -45,8 +45,8 @@
           Tạo
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item dropdown__item--size" href="#"><i class="fa fa-folder"> </i>Thư mục</a>
-          <a class="dropdown-item dropdown__item--size" href="#"><i class="fa fa-copy"></i> Học phần</a>
+          <a class="dropdown-item dropdown__item--size" href="#"><i style="padding-right: 0.5rem" class="fa fa-folder"> </i>Thư mục</a>
+          <a class="dropdown-item dropdown__item--size" href="#"><i style="padding-right: 0.5rem" class="fa fa-copy"></i> Học phần</a>
         </div>
       </li>
     </ul>
