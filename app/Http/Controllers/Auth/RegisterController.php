@@ -6,9 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Repositories\Eloquents\FolderRepository;
 
 class RegisterController extends Controller
 {
+    protected $folderRepository;
+
+    public function __construct(
+        FolderRepository $folderRepository) 
+    {
+        $this->folderRepository = $folderRepository;
+    }
+
     public function index() 
     {
         return view('auth.register');
@@ -31,6 +40,8 @@ class RegisterController extends Controller
         ]);
 
         auth()->attempt($request->only('email', 'password'));
+
+        $this->folderRepository->createDefaultFolder(auth()->user());
 
         return redirect()->route('home');
     }

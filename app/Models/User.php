@@ -23,6 +23,17 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function folders()
+    {
+        // return $this->hasMany('App\Models\Folder');
+        return $this->hasMany(Folder::class);
+    }
+
+    public function subjects()
+    {
+        return $this->hasMany('App\Models\Subject');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

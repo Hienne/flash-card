@@ -13,4 +13,20 @@ class Subject extends Model
         'name',
         'description'
     ];
+
+    // Relation
+    public function user() 
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function folder()
+    {
+        return $this->belongsTo('App\Models\Folder');
+    }
+
+    public function cards()
+    {
+        return $this->hasMany('App\Models\Card');
+    }
 }

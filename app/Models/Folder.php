@@ -13,4 +13,15 @@ class Folder extends Model
         'name',
         'description'
     ];
+
+    // Relation
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function subjects()
+    {
+        return $this->hasMany('App\Models\Subject');
+    }
 }

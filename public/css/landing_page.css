@@ -107,6 +107,10 @@ header {
 }
 
 /* Showcase for Teacher */
+.showcase-for-teacher {
+    padding-bottom: 2rem;
+}
+
 .showcase-for-teacher__left {
     background-color: rgb(231, 249, 249);
     padding: 4rem 3rem 0;
@@ -141,9 +145,8 @@ header {
 }
 
 .footer {
-    margin-top: 3rem;
     background-color: rgb(66, 87, 178);
-    padding: 3rem 4rem;
+    padding: 3rem 3rem 1rem 3rem;
     color: white;
 }
 

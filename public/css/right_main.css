@@ -1,0 +1,33 @@
+/* Right Main */
+.right-main {
+    background-color: white;
+    padding-top: 2rem;
+    padding-right: 0;
+    list-style-type: none;
+}
+
+.right-main li {
+    padding-bottom: 1rem;
+}
+
+.right-main li a {
+    color: rgb(48, 53, 69);
+    font-weight: 500;
+}
+
+.right-main__item--bg {
+    padding: 0.5rem;
+    padding-left: 1.5rem;
+}
+
+.right-main__item--bg:hover {
+    background-color: rgb(255, 205, 31);
+}
+
+.right-main li a:hover {
+    text-decoration: none;
+}
+
+.right-main__sub .right-main__item--bg {
+    padding-left: 2.5rem;
+}

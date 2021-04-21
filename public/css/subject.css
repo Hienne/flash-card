@@ -1,0 +1,157 @@
+.subject-detail {
+    background-color: rgb(254, 254, 254);
+    font-size: 0.875rem;
+    color: rgb(48, 53, 69);
+}
+
+.subject-detail p {
+    color:rgb(48, 53, 69);
+}
+
+.subject-detail a {
+    color: rgb(48, 53, 69);
+}
+
+.show-card {
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+}
+
+.show-card h3 {
+    font-size: 1.2rem;
+    padding-bottom: 1rem;
+}
+
+/* Show card Right */
+.show-card__right li {
+    padding: 0.7rem 0;
+    margin-left: 1rem;
+}
+
+.show-card__right li a {
+    padding: 0.5rem;
+    font-weight: 500;
+}
+
+.show-card__right li a:hover {
+    text-decoration: none;
+}
+
+.show-card__right li:hover {
+    background-color: rgb(255, 205, 31);
+    border-radius: 5px;
+}
+
+/* Show card Left */
+.show-card__left {
+    margin-left: 5rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px rgb(214, 206, 206), -1px -1px 5px 1px rgb(214, 206, 206);
+}
+
+.show-card__left a:hover {
+    color: black;
+}
+
+.show-card__left a:active {
+    color: black;
+}
+
+.show-card__card {
+    height: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+.show-card__inner {
+    position: relative;
+    width: 75%;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+}
+
+.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card--font {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.card--back {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    /* overflow: scroll; */
+    background: rgb(254, 254, 254);
+    color: #333;
+    text-align: center;
+    transform: rotateY(180deg);
+}
+
+/* Subject utility */
+.subject_utility {
+    padding: 2rem 0;
+    border-top: 1px solid rgb(214, 206, 206);
+}
+
+.subject__detail p {
+    margin-bottom: 0.5rem;
+}
+.subject__detail p:first-child {
+    font-size: 0.7rem;
+}
+
+.subject_utitlity__item {
+    list-style-type: none;
+    display: flex;
+}
+
+.subject_utitlity__item li {
+    padding-left: 1rem;
+}
+
+/* Show card list */
+.show-card__list {
+    background-color: rgb(246, 247, 251);
+    padding: 2rem 0;
+}
+
+.show-card__list__title p {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.show-card__list__item {
+    background-color: white;
+    margin-bottom: 1rem;
+    padding: 0.7rem 0;
+    border-radius: 5px;
+}
+
+.show-card__list__item p {
+    margin: 0;
+}

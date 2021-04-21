@@ -1,0 +1,150 @@
+
+
+/* Library Title */
+.library__title {
+    padding: 1rem 0;
+    display: flex;
+
+}
+
+.library__title h3 {
+    padding-left: 1rem;
+    font-weight: 600;
+    margin: auto 0;
+}
+
+.user_logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 50%;
+    background-color: rgb(0, 151, 167);
+}
+
+.logo_size {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+}
+
+/* Library List Item */
+.library__list__item {
+    list-style-type: none;
+    display: flex;
+    padding-left: 0;
+    margin: 0;
+}
+
+.library__list__item button {
+    border: none;
+    border-bottom: 2px solid white;
+    color: rgb(151, 157, 176);
+    font-weight: bold;
+    background-color: white;
+}
+
+.library__list__item button:nth-child(1) {
+    margin-left: 0;
+}
+
+.library__list__item button {
+    margin-left: 2rem;
+}
+
+.library__list__item button:hover {
+    color: rgb(255, 223, 98);
+}
+
+/* Library Detail */
+
+.library__detail {
+    padding: 2rem 0;
+    background-color: rgb(246, 247, 251);
+}
+
+.has-search .form-control {
+    margin-bottom: 1.5rem;
+    padding-left: 2.375rem;
+    background-color: rgb(246, 247, 251);
+    width: 50%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgb(231, 234, 241);
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.library__item__detail {
+    display: block;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid white;
+    box-shadow: 0px 2px 2px 1px rgb(196, 190, 190);
+}
+
+.library__item__detail:hover {
+    border-bottom: rgb(255, 223, 98) solid 2px;
+    border-radius: 5px;
+}
+
+.item__detail__title {
+    display: flex;
+}
+
+.item__detail__title p {
+    color: rgb(48, 53, 69);
+    font-size: 0.85rem;
+    margin-right: 2rem;
+}
+
+.item__detail__title .logo_size {
+    height: 20px;
+    width: 20px;
+    font-size: 0.5rem;
+}
+
+.item__detail__title h3 {
+    padding-left: 0.25rem;
+    font-size: 1rem;
+    color: rgb(60, 207, 207);
+}
+
+.item__detail__title h3:hover {
+    color:rgb(255, 223, 98);
+}
+
+.item__detail__name h2 {
+    font-weight: bold;
+    color: rgb(48, 53, 69);
+    display: inline-block;
+}
+
+.item__detail__name h2:hover{
+    color: rgb(255, 223, 98);
+}
+
+.tablinks.active {
+    color: rgb(60, 207, 207);
+    border-bottom: rgb(60, 207, 207) solid 2px;
+}
+
+.tabcontent {
+    display: none;
+}
+
+.tabcontent.active {
+    display: block;
+}

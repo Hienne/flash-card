@@ -1,7 +1,11 @@
 .home__main {
-    padding-top: 2rem;
     font-size: 0.875rem;
     background-color: rgb(246, 247, 251);
+}
+
+.left-main {
+    padding: 2rem;
+    padding-bottom: 5rem;
 }
 
 .home__main__title p {
@@ -25,6 +29,7 @@
     margin-top: 1rem;
     border-radius: 5px;
     box-shadow: 2px 2px 2px 1px rgb(158, 153, 153);
+    border-bottom: 2px solid white;
 }
 
 .home__main__item a {
@@ -33,7 +38,7 @@
 }
 
 .home__main__item:hover {
-    border-bottom: 3px solid rgb(255, 205, 31);
+    border-bottom: 2px solid rgb(255, 205, 31);
 }
 
 .home__main__item h4 {

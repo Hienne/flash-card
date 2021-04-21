@@ -3,7 +3,8 @@
 @section('title', 'Login')
     
 @section('content')
-<section class="signup">
+<div class="home__main container-fluid">
+  <section class="signup" style="background-color: white">
     <div class="content">
         <div class="container">
           <div class="row">
@@ -68,4 +69,5 @@
           </div>
         </div>
       </div>
+</div>
 @endsection

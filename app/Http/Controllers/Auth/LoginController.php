@@ -21,10 +21,12 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if (!auth()->attempt($request->only('email', 'password'))) {
+        if (Auth::attempt($request->only('email', 'password'))) {
+            return redirect()->route('home'); 
+        }
+        else {
             return back()->with('status', 'Đăng nhập không thành không. Tên tài khoản hoặc mật khẩu không chính xác.');
         }
-
-        return redirect()->route('home'); 
+        
     }
 }

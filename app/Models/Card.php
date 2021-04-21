@@ -14,4 +14,10 @@ class Card extends Model
         'back',
         'expiry_date'
     ];
+
+    // Relation
+    public function subject()
+    {
+        return $this->belongsTo('App\Models\Subject');
+    }
 }
