@@ -49,5 +49,5 @@ Route::get('/library/search_folder', [LibraryController::class, 'folderSearcher'
 
 /*************Test************/
 Route::get('/', function () {
-    return view('pages.guest');
+    return view('pages.subject.subject_creater');
 });

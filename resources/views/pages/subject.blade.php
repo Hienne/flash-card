@@ -32,10 +32,22 @@
                 card.classList.toggle('is-flipped');
             });
         }
+        
+        var synth = window.speechSynthesis;
+        var showCardListItems = document.querySelectorAll('.show-card__list__item');
+        for (let item of showCardListItems) {
+            let btnSpeak = item.lastElementChild;
+            let txtBack = item.firstElementChild.nextElementSibling;
 
-        $('.carousel').carousel({
-            interval: 0
-        })
+            btnSpeak.addEventListener('click', () => {
+                var toSpeak = new SpeechSynthesisUtterance(txtBack.innerHTML);
+                var voice = synth.getVoices()[4];
+                toSpeak.voice = voice;
+                synth.speak(toSpeak);
+            })
+            
+            
+        }
     </script>
 @endsection
 

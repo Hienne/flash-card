@@ -14,6 +14,7 @@
     <link href="{{ asset('css/right_main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/subject.css') }}" rel="stylesheet">
     <link href="{{ asset('css/library.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/subject_creater.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     

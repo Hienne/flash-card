@@ -9,7 +9,7 @@
                 <div class="show-card__list__item row justify-content-between">
                     <p class="font col-4">{{ $card->front }}</p>
                     <p class="back col-6">{{ $card->back }}</p>
-                    <p class="col-1"><i class="fa fa-volume-up"></i></p>
+                    <button class="btnSpeak"><i class="fa fa-volume-up"></i></button>
                 </div>
             @endforeach
         </div>

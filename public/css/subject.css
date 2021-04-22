@@ -155,3 +155,12 @@
 .show-card__list__item p {
     margin: 0;
 }
+
+.btnSpeak {
+    background-color: white;
+    border: none;
+}
+
+.btnSpeak:hover {
+    color: rgb(255, 205, 31);
+}
