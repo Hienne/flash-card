@@ -37,62 +37,105 @@
       
         <div class="card_creater container">
             <div>
-                {{-- <form action="" class="row form_creater card_creater__item">
-                    <div class="form-group col">
-                        <input type="text" class="form-control" id="card_front" name="card_front">
-                        <label for="card_front">Thuật ngữ</label>
-                    </div>
-
-                    <div class="form-group col">
-                        <input type="text" class="form-control" id="card_back" name="card_back">
-                        <label for="card_back">Định nghĩa</label>
-                    </div>
-                </form> --}}
 
                 <form action="" class="row form_creater card_creater__item">
                     <div class="form-group col">
-                        {{-- <input type="text" class="form-control" id="card_front" name="card_front"> --}}
-                        <textarea class="form-control" id="card_front" name="card_front"></textarea>
+                        <textarea class="form-control resize-ta" 
+                                id="card_front" name="card_front" rows="1">
+                        </textarea>
+
                         <label for="card_front">Thuật ngữ</label>
                     </div>
 
                     <div class="form-group col">
-                        {{-- <input type="text" class="form-control" id="card_back" name="card_back"> --}}
-                        <textarea class="form-control" id="card_front" name="card_front"></textarea>
-                        <label for="card_back">Định nghĩa</label>
-                    </div>
-                </form>
+                        <textarea class="form-control resize-ta"
+                                id="card_front" name="card_front" rows="1">
+                        </textarea>
 
-                {{-- <form action="" class="row form_creater card_creater__item">
-                    <div class="form-group col">
-                        <input type="text" class="form-control" id="card_front" name="card_front">
-                        <label for="card_front">Thuật ngữ</label>
-                    </div>
-
-                    <div class="form-group col">
-                        <input type="text" class="form-control" id="card_back" name="card_back">
                         <label for="card_back">Định nghĩa</label>
                     </div>
                 </form>
 
                 <form action="" class="row form_creater card_creater__item">
                     <div class="form-group col">
-                        <input type="text" class="form-control" id="card_front" name="card_front">
+                        <textarea class="form-control resize-ta" 
+                                id="card_front" name="card_front" rows="1">
+                        </textarea>
+
                         <label for="card_front">Thuật ngữ</label>
                     </div>
 
                     <div class="form-group col">
-                        <input type="text" class="form-control" id="card_back" name="card_back">
+                        <textarea class="form-control resize-ta"
+                                id="card_front" name="card_front" rows="1">
+                        </textarea>
+
+                        <label for="card_back">Định nghĩa</label>
+                    </div>
+                </form>
+                
+                <form action="" class="row form_creater card_creater__item">
+                    <div class="form-group col">
+                        <textarea class="form-control resize-ta" 
+                                id="card_front" name="card_front" rows="1">
+                        </textarea>
+
+                        <label for="card_front">Thuật ngữ</label>
+                    </div>
+
+                    <div class="form-group col">
+                        <textarea class="form-control resize-ta"
+                                id="card_front" name="card_front" rows="1">
+                        </textarea>
+
+                        <label for="card_back">Định nghĩa</label>
+                    </div>
+                </form>
+
+                <form action="" class="row form_creater card_creater__item">
+                    <div class="form-group col">
+                        <textarea class="form-control resize-ta" 
+                                id="card_front" name="card_front" rows="1">
+                        </textarea>
+
+                        <label for="card_front">Thuật ngữ</label>
+                    </div>
+
+                    <div class="form-group col">
+                        <textarea class="form-control resize-ta"
+                                id="card_front" name="card_front" rows="1">
+                        </textarea>
+
                         <label for="card_back">Định nghĩa</label>
                     </div>
                 </form>
 
                 <div class="btn-add">
                     <button type="button">+ thêm thẻ</button>
-                </div> --}}
+                </div>
                 
             </div>
 
+            <div class="btn--create--wrapper">
+                <button class="btn btn--create">Tạo</button>
+            </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        function calcHeight(value) {
+            let numberOfLineBreaks = (value.match(/\n/g) || []).length;
+            let newHeight = 30 + numberOfLineBreaks * 20 + 12 +2;
+            return newHeight;
+        }
+
+        let textareas = document.querySelectorAll(".resize-ta");
+        for (let ta of textareas) {
+            ta.addEventListener("keyup", () => {
+                ta.style.height = calcHeight(ta.value) + "px";
+            });
+        }
+    </script>
 @endsection

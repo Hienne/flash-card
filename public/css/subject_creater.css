@@ -59,8 +59,10 @@
 .card_creater__item {
     background-color: white;
     border-radius: 10px;
-    padding: 1.5rem 1rem;
+    padding-top: 1.5rem;
     margin-bottom: 1rem;
+    width: 100%;
+    margin-left: 0;
 }
 
 .card_creater__item input{
@@ -77,18 +79,17 @@
     width: 100%;
     padding: 1.5rem 1rem;
     text-align: center;
-    
+    border-radius: 10px;
 }
 
 .btn-add button {
     background-color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 0;
     text-transform: uppercase;
     font-size: .8rem;
     font-weight: bold;
     border-bottom: 3px solid rgb(60, 207, 207);
-    border-radius: 0;
 }
 
 .btn-add button:hover {
@@ -96,3 +97,28 @@
     border-color: rgb(255, 205, 31);
 }
 
+/* text area */
+.resize-ta {
+    resize: none;
+    padding: .5rem;
+    overflow: hidden;
+    height: 100%;
+}
+
+.resize-ta:focus {
+    box-shadow: none;
+    border-color: rgb(255, 205, 31);
+}
+
+.btn--create--wrapper {
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: flex-end;
+}
+
+.btn--create {
+    background-color: rgb(60, 207, 207);
+    padding: 1rem 3rem;
+    color: white;
+    font-weight: bold;
+}
