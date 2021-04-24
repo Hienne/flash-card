@@ -36,4 +36,29 @@ class SubjectController extends Controller
 
         return view('pages.subject', compact('user', 'subjects', 'cards'));
     }
+
+    public function createIndex() {
+        return view('pages.subject.subject_creater');
+    }
+
+    public function create(Request $request) {
+        // dd($request->subject_title);
+        // dd($request->subject_des);
+        // dd($request->subject_folder);
+        // dd(count($request->card_fronts));
+
+        $this->validate($request, 
+            [
+                'subject_title' => 'required',
+                'card_fronts.*' => 'min:2',
+                'card_backs.*' => 'min:2'
+            ],
+            [
+                'subject_title.required' => "Vui lòng nhập tiêu đề để tạo học phần",
+                'card_fronts.min' => "BẠN CẦN HAI THẺ ĐỂ TẠO MỘT HỌC PHẦN",
+                'card_backs.min' => "BẠN CẦN HAI THẺ ĐỂ TẠO MỘT HỌC PHẦN",
+            ]
+
+        );
+    }
 }

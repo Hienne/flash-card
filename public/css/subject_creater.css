@@ -44,6 +44,10 @@
     box-shadow: none;
 }
 
+.border--danger {
+    color: red;
+}
+
 .form_creater label {
     padding: 0;
     font-weight: bold;
@@ -59,7 +63,7 @@
 .card_creater__item {
     background-color: white;
     border-radius: 10px;
-    padding-top: 1.5rem;
+    padding: 1.5rem .5rem 0 .5rem;
     margin-bottom: 1rem;
     width: 100%;
     margin-left: 0;
@@ -121,4 +125,46 @@
     padding: 1rem 3rem;
     color: white;
     font-weight: bold;
+}
+
+.card_creater_feature {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card_creater_feature button {
+    background-color: white;
+    border: none;
+    padding-bottom: .5rem;
+    color: rgb(48, 53, 69);
+    position: relative;
+}
+
+.card_creater_feature button:hover {
+    color: rgb(255, 205, 31);
+}
+    
+
+.card_creater_feature button:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 80px;
+    background-color: rgb(59, 76, 155);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    font-size: .55rem;
+
+    position: absolute;
+    z-index: 1;
+    top: 90%;
+    left: -90%;
+}
+
+.disabled i {
+    opacity: 0.5;
 }

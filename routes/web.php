@@ -41,6 +41,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /*************Subject************/
 Route::get('/subject/{id}', [SubjectController::class, 'index'])->name('subject');
+Route::get('/subject', [SubjectController::class, 'createIndex'])->name('subject.createIndex');
+Route::post('/subject', [SubjectController::class, 'create'])->name('subject.create');
 
 /*************Library************/
 Route::get('/library', [LibraryController::class, 'index'])->name('library');
