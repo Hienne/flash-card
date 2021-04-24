@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" 
                             id="subject_des" name="subject_des" placeholder="Thêm mô tả">
-                    <label for="subject_title">mô tả</label>
+                    <label for="subject_des">mô tả</label>
                 </div>
 
                 <div class="form-group">
@@ -58,26 +58,25 @@
                     <div class="row form_creater">
                         <div class="form-group col">
                             <textarea class="form-control resize-ta" 
-                                    id="card_fronts" name="card_fronts[]" rows="1">
+                                    id="card_backs" name="card_backs[]" rows="1">
                             </textarea>
     
-                            @if ($errors->has('card_fronts'))
-                                <label for="card_fronts" class="text-danger">{{ $errors->first('card_fronts') }}</label>
+                            @if ($errors->has('card_backs.*'))
+                                <label for="card_fronts" class="text-danger">{{ $errors->first('card_backs.*') }}</label>
                             @else
-                                <label for="card_fronts">thuật ngữ</label>
+                                <label for="card_backs">thuật ngữ</label>
                             @endif
-                            {{-- <label for="card_fronts">Thuật ngữ</label> --}}
                         </div>
     
                         <div class="form-group col">
                             <textarea class="form-control resize-ta"
-                                    id="card_backs" name="card_backs[]" rows="1">
+                                    id="card_fronts" name="card_fronts[]" rows="1">
                             </textarea>
     
-                            @if ($errors->has('card_backs'))
-                                <label for="card_backs" class="text-danger">{{ $errors->first('card_backs') }}</label>
+                            @if ($errors->has('card_backs.*'))
+                                <label for="card_fronts" class="text-danger">{{ $errors->first('card_fronts.*') }}</label>
                             @else
-                                <label for="card_backs">định nghĩa</label>
+                                <label for="card_fronts">định nghĩa</label>
                             @endif
                         </div>
                     </div>
@@ -94,25 +93,25 @@
                     <div class="row form_creater">
                         <div class="form-group col">
                             <textarea class="form-control resize-ta" 
-                                    id="card_fronts" name="card_fronts[]" rows="1">
+                                    id="card_backs" name="card_backs[]" rows="1">
                             </textarea>
     
-                            @if ($errors->has('card_fronts'))
-                                <label for="card_fronts" class="text-danger">{{ $errors->first('card_fronts') }}</label>
+                            @if ($errors->has('card_fronts.*'))
+                                <label for="card_backs" class="text-danger">{{ $errors->first('card_backs.*') }}</label>
                             @else
-                                <label for="card_fronts">thuật ngữ</label>
+                                <label for="card_backs">thuật ngữ</label>
                             @endif
                         </div>
     
                         <div class="form-group col">
                             <textarea class="form-control resize-ta"
-                                    id="card_backs" name="card_backs[]" rows="1">
+                                    id="card_fronts" name="card_fronts[]" rows="1">
                             </textarea>
     
-                            @if ($errors->has('card_backs'))
-                                <label for="card_backs" class="text-danger">{{ $errors->first('card_backs') }}</label>
+                            @if ($errors->has('card_backs.*'))
+                                <label for="card_fronts" class="text-danger">{{ $errors->first('card_fronts.*') }}</label>
                             @else
-                                <label for="card_backs">định nghĩa</label>
+                                <label for="card_fronts">định nghĩa</label>
                             @endif
                         </div>
                     </div>
@@ -204,18 +203,26 @@
                     <div class="row form_creater">
                         <div class="form-group col">
                             <textarea class="form-control resize-ta" 
-                                    id="card_fronts" name="card_fronts[]" rows="1">
+                                    id="card_backs" name="card_backs[]" rows="1">
                             </textarea>
     
-                            <label for="card_fronts">Thuật ngữ</label>
+                            @if ($errors->has('card_backs.*'))
+                                <label for="card_backs" class="text-danger">{{ $errors->first('card_backs.*') }}</label>
+                            @else
+                                <label for="card_backs">thuật ngữ</label>
+                            @endif
                         </div>
     
                         <div class="form-group col">
                             <textarea class="form-control resize-ta"
-                                    id="card_backs" name="card_backs[]" rows="1">
+                                    id="card_fronts" name="card_fronts[]" rows="1">
                             </textarea>
     
-                            <label for="card_backs">Định nghĩa</label>
+                            @if ($errors->has('card_fronts.*'))
+                                <label for="card_fronts" class="text-danger">{{ $errors->first('card_fronts.*') }}</label>
+                            @else
+                                <label for="card_fronts">định nghĩa</label>
+                            @endif
                         </div>
                     </div>`
 

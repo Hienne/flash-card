@@ -32,6 +32,7 @@ class User extends Authenticatable
     public function subjects()
     {
         return $this->hasMany('App\Models\Subject');
+        // return $this->hasMany(Subject::class);
     }
 
     /**

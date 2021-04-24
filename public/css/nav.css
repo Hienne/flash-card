@@ -33,3 +33,9 @@ nav ul li a:hover {
 .btn--search {
     background-color: #6879c1;
 }
+
+.dropdown--create {
+    background-color: rgb(60, 207, 207);
+    color: rgb(66, 87, 178);
+    border-radius: 5px;
+}

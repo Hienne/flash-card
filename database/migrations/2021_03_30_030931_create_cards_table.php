@@ -14,6 +14,7 @@ class CreateCardsTable extends Migration
     public function up()
     {
         Schema::create('cards', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('subject_id')->constrained('subjects');
             $table->string('front');
             $table->string('back');

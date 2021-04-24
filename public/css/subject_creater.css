@@ -86,7 +86,7 @@
     border-radius: 10px;
 }
 
-.btn-add button {
+.btn-add a {
     background-color: white;
     border: none;
     border-radius: 0;
@@ -96,7 +96,7 @@
     border-bottom: 3px solid rgb(60, 207, 207);
 }
 
-.btn-add button:hover {
+.btn-add a:hover {
     color: rgb(255, 205, 31);
     border-color: rgb(255, 205, 31);
 }

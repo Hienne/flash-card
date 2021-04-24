@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Repositories\Eloquents\SubjectRepository;
 use App\Repositories\Eloquents\CardRepository;
 use App\Repositories\Eloquents\FolderRepository;
+use App\Models\Subject;
+use App\Models\Card;
 
 
 class SubjectController extends Controller
@@ -45,7 +47,7 @@ class SubjectController extends Controller
         // dd($request->subject_title);
         // dd($request->subject_des);
         // dd($request->subject_folder);
-        // dd(count($request->card_fronts));
+        // dd($request->card_backs[2]);
 
         $this->validate($request, 
             [
@@ -55,10 +57,35 @@ class SubjectController extends Controller
             ],
             [
                 'subject_title.required' => "Vui lòng nhập tiêu đề để tạo học phần",
-                'card_fronts.min' => "BẠN CẦN HAI THẺ ĐỂ TẠO MỘT HỌC PHẦN",
-                'card_backs.min' => "BẠN CẦN HAI THẺ ĐỂ TẠO MỘT HỌC PHẦN",
+                'card_fronts.*.min' => "BẠN CẦN HAI THẺ ĐỂ TẠO MỘT HỌC PHẦN",
+                'card_backs.*.min' => "BẠN CẦN HAI THẺ ĐỂ TẠO MỘT HỌC PHẦN",
             ]
-
         );
+
+        $subjectFol = $request->subject_folder;
+
+        if ($subjectFol == null) 
+        {
+            $subjectFol = 1;
+        }
+
+        $newSubject = Subject::create([
+            'user_id' => Auth::user()->id,
+            'folder_id' => $subjectFol,
+            'name' => $request->subject_title,
+            'description' => $request->subject_des
+        ]);
+
+        for($i = 0; $i < count($request->card_fronts); $i++)
+        {
+            Card::create([
+                'subject_id' => $newSubject->id,
+                'front' => $request->card_fronts[$i],
+                'back' => $request->card_backs[$i],
+                'expiry_date' => '2020-4-24'
+            ]);
+        }
+
+        return redirect()->route('subject', ['id' => $newSubject->id]); 
     }
 }

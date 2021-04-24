@@ -10,6 +10,7 @@ class Card extends Model
     use HasFactory;
 
     protected $fillable = [
+        'subject_id',
         'front',
         'back',
         'expiry_date'
@@ -18,6 +19,7 @@ class Card extends Model
     // Relation
     public function subject()
     {
-        return $this->belongsTo('App\Models\Subject');
+        // return $this->belongsTo('App\Models\Subject');
+        return $this->belongsTo(Subject::class);
     }
 }

@@ -17,11 +17,13 @@ class Folder extends Model
     // Relation
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        // return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function subjects()
     {
-        return $this->hasMany('App\Models\Subject');
+        // return $this->hasMany('App\Models\Subject');
+        return $this->hasMany(Subject::class);
     }
 }
