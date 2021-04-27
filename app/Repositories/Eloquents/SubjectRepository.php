@@ -14,7 +14,7 @@ class SubjectRepository extends EloquentRepository implements SubjectInterface {
 
     public function getSubjectById($id) 
     {
-        return $this->_model->all()->where('id', $id);
+        return $this->_model->where('id', $id)->first();
     }
 
     public function getSubjectByUser($userId)

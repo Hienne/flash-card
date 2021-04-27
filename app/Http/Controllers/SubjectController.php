@@ -32,11 +32,10 @@ class SubjectController extends Controller
     public function index($id) {
         $user = Auth::user();
 
-        $subjects = $this->subjectRepository->getSubjectById($id);
+        $subject = $this->subjectRepository->getSubjectById($id);
         $cards = $this->cardRepository->getCardBySubject($id);
 
-
-        return view('pages.subject', compact('user', 'subjects', 'cards'));
+        return view('pages.subject', compact('user', 'subject', 'cards'));
     }
 
     public function createIndex() {
@@ -44,10 +43,6 @@ class SubjectController extends Controller
     }
 
     public function create(Request $request) {
-        // dd($request->subject_title);
-        // dd($request->subject_des);
-        // dd($request->subject_folder);
-        // dd($request->card_backs[2]);
 
         $this->validate($request, 
             [
@@ -87,5 +82,17 @@ class SubjectController extends Controller
         }
 
         return redirect()->route('subject', ['id' => $newSubject->id]); 
+    }
+
+    public function studyingIndex($id) {
+
+        $subject = $this->subjectRepository->getSubjectById($id);
+        $cards = $this->cardRepository->getCardBySubject($id);
+
+        return view('pages.card_study', compact('subject', 'cards'));
+    }
+
+    public function updateStudyingCard(Request $request) {
+        dd($request);
     }
 }

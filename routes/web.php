@@ -44,6 +44,10 @@ Route::get('/subject/{id}', [SubjectController::class, 'index'])->name('subject'
 Route::get('/subject', [SubjectController::class, 'createIndex'])->name('subject.createIndex');
 Route::post('/subject', [SubjectController::class, 'create'])->name('subject.create');
 
+Route::get('/subject/studying/{id}', [SubjectController::class, 'studyingIndex'])->name('subject.studying');
+Route::post('/subject/studying', [SubjectController::class, 'updateStudyingCard'])->name('subject.updateStudyingCard');
+
+
 /*************Library************/
 Route::get('/library', [LibraryController::class, 'index'])->name('library');
 Route::get('/library/search_subject', [LibraryController::class, 'subjectSearcher'])->name('library.search_subject');
@@ -51,5 +55,5 @@ Route::get('/library/search_folder', [LibraryController::class, 'folderSearcher'
 
 /*************Test************/
 Route::get('/', function () {
-    return view('pages.subject.subject_creater');
+    return view('pages.card_study');
 });

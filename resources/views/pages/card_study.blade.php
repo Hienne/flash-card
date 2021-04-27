@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Card Study</title>
+
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/subject.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/card_study.css') }}" rel="stylesheet">
+</head>
+<body>
+    <header class="container-fluid">
+        <a href="{{ route('home') }}">Trang chủ</a>
+        <a href=""{{ route('library') }}><i class="fa fa-times"></i></a>
+    </header>
+
+    <main>
+        <div class="container list__card__study">
+            <form action="{{ route('subject.updateStudyingCard') }}" method="POST">
+                @csrf
+                @foreach ($cards as $card)
+
+                    @if ($loop->first)
+                        <div class="card-wrapper active">
+                    @else
+                        <div class="card-wrapper">
+                    @endif
+                            <div class="card__study">
+                                <div class="show-card__card carousel-item active">
+                                    <div class="show-card__inner">
+                                        <div class="card--front">
+                                            <p>{{ $card->front }}</p>
+                                        </div>
+                                        <div class="card--back">
+                                            <p>{{ $card->back }}</p>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn--speak hidden" type="button"><i class="fa fa-volume-up"></i></button>
+                                </div>
+                            </div>
+        
+                            <button class="btn btn--answer active" type="button">Đáp án</button>
+    
+                            <div class="card__study__date" id="level-card-{{$card->id}}">
+                                <div class="choosen-level-card">
+                                    <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="1">
+                                    <label class="for-checkbox-level-card" for="level-1">
+                                        <span>Lại</span>
+                                        <br>
+                                        1 ngày
+                                    </label>
+                                </div>
+                        
+                                <div class="choosen-level-card">
+                                    <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="2">
+                                    <label class="for-checkbox-level-card" for="level-2">
+                                        <span>Khó</span>
+                                        <br>
+                                        10 ngày
+                                    </label>
+                                </div>
+                        
+                                <div class="choosen-level-card">
+                                    <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="3">
+                                    <label class="for-checkbox-level-card" for="level-3">
+                                        <span>Được</span> 
+                                        <br>
+                                        27 ngày
+                                    </label>
+                                </div>
+                        
+                                <div class="choosen-level-card">
+                                    <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="4">
+                                    <label class="for-checkbox-level-card" for="level-4">
+                                        <span>Dễ</span> 
+                                        <br> 
+                                        40 ngày
+                                    </label>
+                                </div>             
+                            </div>
+
+                            {{-- <input type="hidden" name="cardId[]" value="{{ $card->id }}"> --}}
+                        </div>
+
+                        
+                @endforeach
+                
+
+                <div class="card-wrapper btn-submit-result">
+                    <button class="btn" type="submit">Kết thúc</button>
+                </div>
+
+            </form>
+            
+        </div>
+    </main>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <script>
+        
+        const btnAnswers = document.querySelectorAll(".btn--answer");
+        var cardWrapper;
+        var card;
+        var cardStudyDate;
+        var listCheckBox;
+        var btnSpeak;
+        
+        for (let btn of btnAnswers) {
+            btn.addEventListener('click', function (e) {
+                //class show-card__inner
+                card = btn.previousElementSibling.firstElementChild.firstElementChild;
+
+                // class card__study__date
+                cardStudyDate = btn.nextElementSibling;
+
+                // class card-wrapper
+                cardWrapper = btn.parentElement;
+
+                // list choosen__level__card
+                listCheckBox = btn.nextElementSibling.childNodes;
+
+                btnSpeak = btn.previousElementSibling.firstElementChild.lastElementChild;
+
+                card.classList.toggle('is-flipped');
+                card.addEventListener('click', function (e) {
+                    card.classList.toggle('is-flipped');
+                    btnSpeak.classList.toggle('hidden');
+                });
+
+                cardStudyDate.classList.add('active2');
+                btnSpeak.classList.remove('hidden');
+                btn.classList.add('hidden');
+
+                for(let i = 0; i < listCheckBox.length; i++) {
+                    if (i % 2 !== 0) {
+                        listCheckBox[i].addEventListener('click', function() {
+                            cardWrapper.classList.add('hidden');
+                            cardWrapper.nextElementSibling.classList.add('active')
+                        });
+                    }
+                }
+            })
+        }
+
+        var synth = window.speechSynthesis;
+        var showCards = document.querySelectorAll('.show-card__card');
+        for (let item of showCards) {
+            let btnSpeak = item.lastElementChild;
+            let txtBack = item.firstElementChild.lastElementChild.firstElementChild;
+
+            btnSpeak.addEventListener('click', () => {
+                var toSpeak = new SpeechSynthesisUtterance(txtBack.innerHTML);
+                var voice = synth.getVoices()[4];
+                toSpeak.voice = voice;
+                synth.speak(toSpeak);
+            })
+        }
+        
+    </script>
+</body>
+</html>
