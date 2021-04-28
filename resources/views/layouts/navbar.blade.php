@@ -44,7 +44,14 @@
           Tạo
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item dropdown__item--size" href="#"><i style="padding-right: 0.5rem" class="fa fa-folder"> </i>Thư mục</a>
+          <!-- Button to Open the Modal -->
+          <div class="dropdown-item dropdown__item--size">
+            <button type="button" class="btn btn--dropdown" data-toggle="modal" data-target="#folderForm">
+              <i style="padding-right: 0.5rem" class="fa fa-folder"> </i>Thư mục
+            </button>
+          </div>
+          
+
           <a class="dropdown-item dropdown__item--size" href="{{ route('subject.createIndex') }}"><i style="padding-right: 0.5rem" class="fa fa-copy"></i> Học phần</a>
         </div>
       </li>
@@ -80,4 +87,44 @@
         </li>
       @endguest
     </ul>
+
+    {{-- Pop Up Create Folder --}}
+    <!-- The Modal -->
+    <div class="modal" id="folderForm">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Tạo thư mục mới</h4>
+            <button type="button" data-dismiss="modal"><i class="fa fa-times fa-2x"></i></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form action="{{ route('folder.create') }}" method="POST">
+              @csrf
+              <div class="form_creater">
+                <div class="form-group">
+                    <input type="text" class="form-control" 
+                      id="folder_title" name="folder_title" placeholder="Nhập tiêu đề">
+                      <label for="folder_title">tiêu đề</label>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" 
+                  id="folder_des" name="folder_des" placeholder="Mô tả">
+
+                  <label for="folder_des">mô tả</label>
+                </div>
+              </div>
+
+              <button id="btn_create_folder" type="submit" class="btn btn--disable" disabled>Tạo thư mục</button>
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
   </nav>

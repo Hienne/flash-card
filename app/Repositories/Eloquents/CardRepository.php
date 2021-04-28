@@ -24,7 +24,7 @@ class CardRepository extends EloquentRepository implements CardInterface {
 
     public function create($card)
     {
-
+        return $this->_model->create($card);
     }
 
     public function update($cardId)

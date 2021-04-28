@@ -35,7 +35,7 @@ class SubjectRepository extends EloquentRepository implements SubjectInterface {
 
     public function create($subject)
     {
-
+        return $this->_model->create($subject);
     }
 
     public function update($subjectId)

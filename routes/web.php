@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\LibraryController;
+use App\Http\Controllers\FolderController;
 
 
 
@@ -47,6 +48,9 @@ Route::post('/subject', [SubjectController::class, 'create'])->name('subject.cre
 Route::get('/subject/studying/{id}', [SubjectController::class, 'studyingIndex'])->name('subject.studying');
 Route::post('/subject/studying', [SubjectController::class, 'updateStudyingCard'])->name('subject.updateStudyingCard');
 
+
+/*************Folder************/
+Route::post('/folder', [FolderController::class, 'create'])->name('folder.create');
 
 /*************Library************/
 Route::get('/library', [LibraryController::class, 'index'])->name('library');

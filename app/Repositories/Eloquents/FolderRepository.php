@@ -24,8 +24,8 @@ class FolderRepository extends EloquentRepository implements FolderInterface {
     }
 
     public function create($folder) 
-    {
-        
+    {   
+        return $this->_model->create($folder);
     }
 
     public function createDefaultFolder($user)

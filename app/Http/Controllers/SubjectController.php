@@ -64,21 +64,21 @@ class SubjectController extends Controller
             $subjectFol = 1;
         }
 
-        $newSubject = Subject::create([
-            'user_id' => Auth::user()->id,
-            'folder_id' => $subjectFol,
-            'name' => $request->subject_title,
-            'description' => $request->subject_des
-        ]);
+        $subject['user_id'] = Auth::user()->id;
+        $subject['folder_id'] = $subjectFol;
+        $subject['name'] = $request->subject_title;
+        $subject['description'] = $request->subject_des;
+
+        $newSubject = $this->subjectRepository->create($subject);
 
         for($i = 0; $i < count($request->card_fronts); $i++)
         {
-            Card::create([
-                'subject_id' => $newSubject->id,
-                'front' => $request->card_fronts[$i],
-                'back' => $request->card_backs[$i],
-                'expiry_date' => '2020-4-24'
-            ]);
+            $card['subject_id'] = $newSubject->id;
+            $card['front'] = $request->card_fronts[$i];
+            $card['back'] = $request->card_backs[$i];
+            $card['expiry_date'] = '2020-4-24';
+
+            $this->cardRepository->create($card);
         }
 
         return redirect()->route('subject', ['id' => $newSubject->id]); 
@@ -93,6 +93,20 @@ class SubjectController extends Controller
     }
 
     public function updateStudyingCard(Request $request) {
-        dd($request);
+        $listRadio = $request->all();
+        $arr = array();
+
+        foreach( $listRadio as $key=>$item) {
+            if ($key !== array_key_first($listRadio))
+            {
+                $arr[substr($key,-1)] = $item;
+                // array_push($arr, $item);
+            }
+        
+            // array_push($arr, substr($key,-1));
+            
+        }
+
+        dd($arr);
     }
 }

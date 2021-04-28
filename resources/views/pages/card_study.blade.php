@@ -44,7 +44,7 @@
         
                             <button class="btn btn--answer active" type="button">Đáp án</button>
     
-                            <div class="card__study__date" id="level-card-{{$card->id}}">
+                            <div class="card__study__date" id="level-card-{{ $card->id }}">
                                 <div class="choosen-level-card">
                                     <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="1">
                                     <label class="for-checkbox-level-card" for="level-1">
@@ -126,7 +126,7 @@
                 cardWrapper = btn.parentElement;
 
                 // list choosen__level__card
-                listCheckBox = btn.nextElementSibling.childNodes;
+                listCheckBox = btn.nextElementSibling.children;
 
                 btnSpeak = btn.previousElementSibling.firstElementChild.lastElementChild;
 
@@ -140,13 +140,12 @@
                 btnSpeak.classList.remove('hidden');
                 btn.classList.add('hidden');
 
-                for(let i = 0; i < listCheckBox.length; i++) {
-                    if (i % 2 !== 0) {
-                        listCheckBox[i].addEventListener('click', function() {
-                            cardWrapper.classList.add('hidden');
-                            cardWrapper.nextElementSibling.classList.add('active')
-                        });
-                    }
+                for(let radio of listCheckBox) {
+                    radio.addEventListener('click', function() {
+                        cardWrapper.classList.add('hidden');
+                        cardWrapper.nextElementSibling.classList.add('active')
+                        radio.firstElementChild.checked = true;
+                    })
                 }
             })
         }

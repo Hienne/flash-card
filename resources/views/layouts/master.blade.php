@@ -25,7 +25,7 @@
     <main>
         
             @auth
-                    @yield('content')
+                @yield('content')
             @endauth
                 
             @guest
@@ -43,5 +43,22 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     @yield('script')
+    
+    <script>
+        const btnCreateFolder = document.querySelector('#btn_create_folder');
+        const inputFolderTitle = document.querySelector('#folder_title');
+
+        inputFolderTitle.addEventListener('keydown', function() {
+            if (inputFolderTitle.value === '') {
+                btnCreateFolder.disabled = true;
+                console.log(inputFolderTitle.value);
+            }
+            else {
+                btnCreateFolder.disabled = false;
+                console.log(inputFolderTitle.value);
+            }
+            
+        });
+    </script>
 </body>
 </html>
