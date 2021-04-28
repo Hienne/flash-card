@@ -89,7 +89,7 @@ class SubjectController extends Controller
         $subject = $this->subjectRepository->getSubjectById($id);
         $cards = $this->cardRepository->getCardBySubject($id);
 
-        return view('pages.card_study', compact('subject', 'cards'));
+        return view('pages.studying.card_study', compact('subject', 'cards'));
     }
 
     public function updateStudyingCard(Request $request) {

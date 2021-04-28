@@ -57,7 +57,10 @@ Route::get('/library', [LibraryController::class, 'index'])->name('library');
 Route::get('/library/search_subject', [LibraryController::class, 'subjectSearcher'])->name('library.search_subject');
 Route::get('/library/search_folder', [LibraryController::class, 'folderSearcher'])->name('library.search_folder');
 
+/*************Studying************/
+
+
 /*************Test************/
 Route::get('/', function () {
-    return view('pages.card_study');
+    return view('pages.studying.exam');
 });

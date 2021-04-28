@@ -1,0 +1,161 @@
+
+.exam__container {
+    background-color: rgb(246, 247, 251);
+}
+
+.exam__content {
+    background-color: white;
+    padding: 2rem;
+}
+
+.exam__content p {
+    color: black;
+}
+
+.exam__content h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.exam__translate__detail {
+    padding: 2rem 0;
+    width: 50%;
+}
+
+/* Translate section */
+.exam__translate__question p{
+    color: black;
+    margin: 0;
+}
+
+.exam__translate__question input {
+    margin-left: 1rem;
+    padding: 0;
+    border: none;
+    border-bottom: 2px solid rgb(48, 53, 69);
+    border-radius: 0;
+}
+
+.exam__translate__question input:hover {
+    border-color: rgb(255, 205, 31);
+}
+
+.exam__translate__question input:focus {
+    box-shadow: none;
+    border-color: rgb(255, 205, 31);
+}
+
+.exam__translate__question label {
+    padding: 0;
+    text-transform: uppercase;
+    color: rgb(178, 185, 199);
+    margin-left: 1rem;
+    font-weight: bold;
+    font-size: .65rem;
+}
+
+/* Matching section */
+.exam__matching__detail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.exam__matching__detail {
+    padding: 1rem 0;
+}
+
+.answer__detail {
+    margin-top: 1rem;
+}
+
+.answer__detail input {
+    width: 10%;
+    border:none;
+    border-bottom: 2px solid rgb(48, 53, 69);
+}
+
+.answer__detail input:hover {
+    border-color: rgb(255, 205, 31);
+}
+
+.answer__detail input:focus {
+    outline: none;
+    border-color: rgb(255, 205, 31);
+}
+
+.exam__matching__question {
+    margin-top: 1rem;
+    margin-right: 10rem;
+}
+
+/* Selection */
+.exam__selection {
+    margin-top: 2rem;
+}
+
+.exam__selection__detail {
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+}
+
+.exam__selection__question {
+    margin-top: 1rem;
+}
+
+.exam__selection__question p {
+    margin-bottom: 0;
+}
+
+.exam__selection__answer {
+    margin-left: 1rem;
+}
+
+.exam__selection__answer input {
+    margin-top: 1rem;
+    margin-right: .5rem;
+}
+
+/* Choose / False */
+.exam__choofal {
+    margin-top: 2rem;
+}
+
+.exam__choofal__detail {
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+}
+
+.exam__choofal__question {
+    margin-top: 1rem;
+}
+
+.exam__choofal__question p {
+    margin-bottom: 0;
+}
+
+.exam__choofal__answer {
+    margin-left: 1rem;
+}
+
+.exam__choofal__answer input {
+    margin-top: 1rem;
+    margin-right: .5rem;
+}
+
+.btn--show-answer {
+    margin-left: 25%;
+    text-align: center;
+    width: 50%;
+    background-color: rgb(60, 207, 207);
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.btn--show-answer:hover {
+    color: white;
+}
+
+.btn--show-answer:focus {
+    box-shadow: none;
+}
