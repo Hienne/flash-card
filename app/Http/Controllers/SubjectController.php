@@ -9,6 +9,7 @@ use App\Repositories\Eloquents\CardRepository;
 use App\Repositories\Eloquents\FolderRepository;
 use App\Models\Subject;
 use App\Models\Card;
+use Carbon\Carbon;
 
 
 class SubjectController extends Controller
@@ -16,7 +17,7 @@ class SubjectController extends Controller
 
     protected $folderRepository;
     protected $subjectRepository;
-    protected $CardRepository;
+    protected $cardRepository;
 
     public function __construct(
             FolderRepository $folderRepository,
@@ -76,7 +77,9 @@ class SubjectController extends Controller
             $card['subject_id'] = $newSubject->id;
             $card['front'] = $request->card_fronts[$i];
             $card['back'] = $request->card_backs[$i];
-            $card['expiry_date'] = '2020-4-24';
+            $card['num_of_study'] = 0;
+            $card['level_of_card'] = 1;
+            $card['expiry_date'] = Carbon::now()->addDays();
 
             $this->cardRepository->create($card);
         }
@@ -84,29 +87,5 @@ class SubjectController extends Controller
         return redirect()->route('subject', ['id' => $newSubject->id]); 
     }
 
-    public function studyingIndex($id) {
-
-        $subject = $this->subjectRepository->getSubjectById($id);
-        $cards = $this->cardRepository->getCardBySubject($id);
-
-        return view('pages.studying.card_study', compact('subject', 'cards'));
-    }
-
-    public function updateStudyingCard(Request $request) {
-        $listRadio = $request->all();
-        $arr = array();
-
-        foreach( $listRadio as $key=>$item) {
-            if ($key !== array_key_first($listRadio))
-            {
-                $arr[substr($key,-1)] = $item;
-                // array_push($arr, $item);
-            }
-        
-            // array_push($arr, substr($key,-1));
-            
-        }
-
-        dd($arr);
-    }
+    
 }

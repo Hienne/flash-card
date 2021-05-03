@@ -18,7 +18,7 @@
 
     <main>
         <div class="container list__card__study">
-            <form action="{{ route('subject.updateStudyingCard') }}" method="POST">
+            <form action="{{ route('studying.updateStudyingCard') }}" method="POST">
                 @csrf
                 @foreach ($cards as $card)
 
@@ -59,7 +59,7 @@
                                     <label class="for-checkbox-level-card" for="level-2">
                                         <span>Khó</span>
                                         <br>
-                                        10 ngày
+                                        {{ ($card->num_of_study + 1) * 2 }} ngày
                                     </label>
                                 </div>
                         
@@ -68,7 +68,7 @@
                                     <label class="for-checkbox-level-card" for="level-3">
                                         <span>Được</span> 
                                         <br>
-                                        27 ngày
+                                        {{ ($card->num_of_study + 1) * 4 }} ngày
                                     </label>
                                 </div>
                         
@@ -77,19 +77,20 @@
                                     <label class="for-checkbox-level-card" for="level-4">
                                         <span>Dễ</span> 
                                         <br> 
-                                        40 ngày
+                                        {{ ($card->num_of_study + 1) * 7 }} ngày
                                     </label>
                                 </div>             
                             </div>
 
-                            {{-- <input type="hidden" name="cardId[]" value="{{ $card->id }}"> --}}
                         </div>
 
-                        
+                
                 @endforeach
+                
                 
 
                 <div class="card-wrapper btn-submit-result">
+                    <input type="hidden" name="subjectId" value="{{ $subject->id }}">
                     <button class="btn" type="submit">Kết thúc</button>
                 </div>
 

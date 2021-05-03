@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\FolderController;
+use App\Http\Controllers\StudyingController;
 
 
 
@@ -45,8 +46,6 @@ Route::get('/subject/{id}', [SubjectController::class, 'index'])->name('subject'
 Route::get('/subject', [SubjectController::class, 'createIndex'])->name('subject.createIndex');
 Route::post('/subject', [SubjectController::class, 'create'])->name('subject.create');
 
-Route::get('/subject/studying/{id}', [SubjectController::class, 'studyingIndex'])->name('subject.studying');
-Route::post('/subject/studying', [SubjectController::class, 'updateStudyingCard'])->name('subject.updateStudyingCard');
 
 
 /*************Folder************/
@@ -58,7 +57,10 @@ Route::get('/library/search_subject', [LibraryController::class, 'subjectSearche
 Route::get('/library/search_folder', [LibraryController::class, 'folderSearcher'])->name('library.search_folder');
 
 /*************Studying************/
+Route::get('/subject/studying/{id}', [StudyingController::class, 'studyingIndex'])->name('studying');
+Route::post('/subject/studying', [StudyingController::class, 'updateStudyingCard'])->name('studying.updateStudyingCard');
 
+Route::get('/exam/{id}', [StudyingController::class, 'exam'])->name('studying.exam');
 
 /*************Test************/
 Route::get('/', function () {

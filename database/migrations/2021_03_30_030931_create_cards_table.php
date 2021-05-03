@@ -18,6 +18,8 @@ class CreateCardsTable extends Migration
             $table->foreignId('subject_id')->constrained('subjects');
             $table->string('front');
             $table->string('back');
+            $table->integer('num_of_study');
+            $table->integer('level_of_card');
             $table->date('expiry_date');
             $table->timestamps();
         });

@@ -13,13 +13,14 @@ class Card extends Model
         'subject_id',
         'front',
         'back',
+        'num_of_study',
+        'level_of_card',
         'expiry_date'
     ];
 
     // Relation
     public function subject()
     {
-        // return $this->belongsTo('App\Models\Subject');
         return $this->belongsTo(Subject::class);
     }
 }

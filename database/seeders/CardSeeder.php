@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class CardSeeder extends Seeder
 {
@@ -21,7 +22,9 @@ class CardSeeder extends Seeder
                 'subject_id' => rand(1, 5),
                 'front' => 'front of card '. $i,
                 'back' => 'back of card '. $i,
-                'expiry_date' => '2021-04-10',
+                'num_of_study' => 0,
+                'level_of_card' => 1,
+                'expiry_date' => Carbon::now(),
             ]);
         }
     }

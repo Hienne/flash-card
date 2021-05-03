@@ -8,7 +8,9 @@ interface CardInterface
 
     public function getCardBySubject($subjectId);
 
+    public function getRandomCard($subjectId);
+
     public function create($card);
 
-    public function update($cardId);
+    public function update($cardId, $request);
 }
