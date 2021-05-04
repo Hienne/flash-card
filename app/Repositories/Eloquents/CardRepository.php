@@ -24,6 +24,19 @@ class CardRepository extends EloquentRepository implements CardInterface {
         return $this->_model->all()->where('subject_id', $subjectId);
     }
 
+    public function getExpiryCardBySubject($subjectId) {
+        $cards = $this->_model->where('subject_id', $subjectId)->get();
+        $expiryCards = array();
+
+        foreach($cards as $card) {
+            if(Carbon::create($card->expiry_date)->isToday()) {
+                array_push($expiryCards, $card);
+            }
+        }
+
+        return $expiryCards;
+    }
+
     public function getRandomCard($subjectId) {
         return $this->_model->inRandomOrder()->take(20)->get();
     }

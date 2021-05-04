@@ -26,7 +26,7 @@ class StudyingController extends Controller
     public function studyingIndex($id) {
 
         $subject = $this->subjectRepository->getSubjectById($id);
-        $cards = $this->cardRepository->getCardBySubject($id);
+        $cards = $this->cardRepository->getExpiryCardBySubject($id);
 
         return view('pages.studying.card_study', compact('subject', 'cards'));
     }
@@ -39,7 +39,6 @@ class StudyingController extends Controller
             {
                 $this->cardRepository->update(substr($key, 11), $item);
             }
-            
         }
         
         return redirect()->route('subject', ['id' => $request->subjectId]);

@@ -64,5 +64,6 @@ Route::get('/exam/{id}', [StudyingController::class, 'exam'])->name('studying.ex
 
 /*************Test************/
 Route::get('/', function () {
-    return view('pages.studying.exam');
+    // return view('pages.studying.exam');
+    return view('pages.guest');
 });

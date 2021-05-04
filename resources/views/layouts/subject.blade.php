@@ -21,7 +21,7 @@
     <main>
         <div class="subject-detail">
             <div class="show-card container">
-                <h3 class="show-card__title">Subject Name</h3>
+                <h3 class="show-card__title">{{ $subject->name }} ({{ count($expiryCards) }} thẻ tới hạn)</h3>
                 <div class="row">
                     <!-- Show card right -->
                     @include('layouts.subject.right_subject')
@@ -33,14 +33,14 @@
 
             <!-- Subject utility -->
             @include('layouts.subject.utility')
-          
+
             <!-- Show card list -->
             @include('layouts.subject.list_card')
 
         </div>
     </main>
 
-  @include('layouts.footer')
+    @include('layouts.footer')
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

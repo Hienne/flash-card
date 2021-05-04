@@ -16,7 +16,7 @@
       </div>
       <div class="right-main__sub">
         @foreach ($folders = Auth::user()->folders()->get()->except(1) as $folder)
-          <div class="right-main__item--bg"><a href="#">{{ $folder->name }}</a></div>
+          <div class="right-main__item--bg"><a href="{{ route('library') }}">{{ $folder->name }} ({{ $expiryCardsByFolder[$folder->id] }} thẻ tới hạn)</a></div>
         @endforeach
       </div>
     </li>

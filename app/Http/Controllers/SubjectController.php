@@ -35,8 +35,9 @@ class SubjectController extends Controller
 
         $subject = $this->subjectRepository->getSubjectById($id);
         $cards = $this->cardRepository->getCardBySubject($id);
+        $expiryCards = $this->cardRepository->getExpiryCardBySubject($id);
 
-        return view('pages.subject', compact('user', 'subject', 'cards'));
+        return view('pages.subject', compact('user', 'subject', 'cards', 'expiryCards'));
     }
 
     public function createIndex() {

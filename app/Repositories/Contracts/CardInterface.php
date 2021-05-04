@@ -8,6 +8,8 @@ interface CardInterface
 
     public function getCardBySubject($subjectId);
 
+    public function getExpiryCardBySubject($subjectId);
+
     public function getRandomCard($subjectId);
 
     public function create($card);

@@ -12,7 +12,7 @@
 </head>
 <body>
     <header class="container-fluid">
-        <a href="{{ route('home') }}">Trang chủ</a>
+        <a href="{{ route('home') }}" class="back">Trang chủ</a>
         <a href=""{{ route('library') }}><i class="fa fa-times"></i></a>
     </header>
 
@@ -64,7 +64,7 @@
                                 </div>
                         
                                 <div class="choosen-level-card">
-                                    <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="3">
+                                    <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="4">
                                     <label class="for-checkbox-level-card" for="level-3">
                                         <span>Được</span> 
                                         <br>
@@ -73,7 +73,7 @@
                                 </div>
                         
                                 <div class="choosen-level-card">
-                                    <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="4">
+                                    <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="7">
                                     <label class="for-checkbox-level-card" for="level-4">
                                         <span>Dễ</span> 
                                         <br> 
@@ -107,6 +107,11 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
     <script>
+
+        var back = document.querySelector('.back');
+        back.addEventListener('click', function() {
+            alert(hehe);
+        })
         
         const btnAnswers = document.querySelectorAll(".btn--answer");
         var cardWrapper;

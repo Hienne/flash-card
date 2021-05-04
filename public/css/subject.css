@@ -24,12 +24,13 @@
 
 /* Show card Right */
 .show-card__right li {
-    padding: 0.7rem 0;
     margin-left: 1rem;
 }
 
 .show-card__right li a {
     padding: 0.5rem;
+    display: inline-block;
+    width: 100%;
     font-weight: 500;
 }
 
