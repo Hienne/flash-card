@@ -159,3 +159,38 @@
 .btn--show-answer:focus {
     box-shadow: none;
 }
+
+.result {
+    font-size: .75rem;
+    font-weight: bold;
+}
+
+.result .result--false {
+    color: rgb(255, 127, 106);
+    display: none;
+}
+
+.result .result--warning {
+    color: rgb(255, 127, 106);
+    display: none;
+}
+
+.result .result--true {
+    color: rgb(132, 212, 173);
+    display: none;
+}
+
+.answer {
+    display: none;
+}
+
+.answer h4 {
+    font-size: .8rem;
+    color: rgb(177, 183, 201);
+    text-transform: uppercase;
+}
+
+.answer p {
+    font-size: .8rem;
+    color: rgb(121, 124, 135);
+}

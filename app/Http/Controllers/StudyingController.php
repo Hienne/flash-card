@@ -44,14 +44,13 @@ class StudyingController extends Controller
         return redirect()->route('subject', ['id' => $request->subjectId]);
     }
 
-
-
-
-
-
     public function exam($id) {
-        $cards = $this->cardRepository->getRandomCard($id);
-        // dd($cards[0]);
-        return view('pages.studying.exam', compact('cards')); 
+        $cardsForTranslate = $this->cardRepository->getRandomCard($id);
+        $cardsForMatching = $this->cardRepository->getRandomCard($id);
+        $cardsForSelection = $this->cardRepository->getRandomCard($id);
+        $cardsForChoofal = $this->cardRepository->getRandomCard($id);
+
+        // dd($cardsForChofal);
+        return view('pages.studying.exam', compact('cardsForTranslate', 'cardsForMatching', 'cardsForSelection', 'cardsForChoofal')); 
     }
 }

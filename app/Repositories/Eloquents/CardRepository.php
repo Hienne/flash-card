@@ -38,7 +38,13 @@ class CardRepository extends EloquentRepository implements CardInterface {
     }
 
     public function getRandomCard($subjectId) {
-        return $this->_model->inRandomOrder()->take(20)->get();
+        $cards = $this->_model->where('subject_id', $subjectId)->get();
+
+        if (count($cards) < 5) {
+            return $this->_model->where('subject_id', $subjectId)->inRandomOrder()->get();
+        }
+
+        return $this->_model->where('subject_id', $subjectId)->inRandomOrder()->take(5)->get();
     }
 
     public function create($card)

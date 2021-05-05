@@ -16,19 +16,14 @@ header a:hover {
     text-decoration: none;
 }
 
-header a:nth-child(1) {
+header .btn:focus {
+    box-shadow: none;
+}
+
+.btn--back {
     color: rgb(43, 47, 62);
-}
-
-header a:nth-child(2) {
-    padding: 0 1rem;
-    color: rgb(100, 111, 144);
-    border: 1px solid rgb(204, 204, 204);
-    border-radius: 5px;
-}
-
-header a:nth-child(2):hover {
-    border-color: rgb(147, 155, 180);
+    font-weight: bold;
+    font-size: 1rem;
 }
 
 /* main */

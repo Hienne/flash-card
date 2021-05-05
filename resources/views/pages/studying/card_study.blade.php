@@ -11,9 +11,49 @@
     <link href="{{ asset('css/card_study.css') }}" rel="stylesheet">
 </head>
 <body>
-    <header class="container-fluid">
-        <a href="{{ route('home') }}" class="back">Trang chủ</a>
-        <a href=""{{ route('library') }}><i class="fa fa-times"></i></a>
+    <header class="container-fluid">        
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn--back" data-toggle="modal" data-target="#back_home">
+            Trang chủ
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="back_home" tabindex="-1" role="dialog" aria-labelledby="back_home" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+        
+                    <div class="modal-body">
+                        Quá trình học sẽ không được lưu. Bạn có chắc chắn muốn quay về trang chủ?
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <a href="{{ route('home') }}"><button type="button" class="btn btn-primary">Trang chủ</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn--back" data-toggle="modal" data-target="#back_subject">
+            <i style="color: rgb(66, 87, 178);" class="fa fa-times"></i>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="back_subject" tabindex="-1" role="dialog" aria-labelledby="back_subject" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+        
+                    <div class="modal-body">
+                        Quá trình học sẽ không được lưu. Bạn có chắc chắn muốn quay lại học phần?
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <a href="{{ route('subject', ['id'=>$subject->id]) }}"><button type="button" class="btn btn-primary">Học phần</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main>
