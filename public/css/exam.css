@@ -115,6 +115,16 @@
     margin-right: .5rem;
 }
 
+.exam__selection__answer .result--true {
+    color: rgb(132, 212, 173);
+    display: none;
+}
+
+.exam__selection__answer .result--false {
+    color: rgb(255, 114, 91);
+    display: none;
+}
+
 /* Choose / False */
 .exam__choofal {
     margin-top: 2rem;

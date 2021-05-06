@@ -7,6 +7,7 @@ use App\Repositories\Eloquents\CardRepository;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Card;
+use Illuminate\Support\Arr;
 
 
 class StudyingController extends Controller
@@ -45,12 +46,13 @@ class StudyingController extends Controller
     }
 
     public function exam($id) {
+        $cards = $this->cardRepository->getExpiryCardBySubject($id);
         $cardsForTranslate = $this->cardRepository->getRandomCard($id);
         $cardsForMatching = $this->cardRepository->getRandomCard($id);
         $cardsForSelection = $this->cardRepository->getRandomCard($id);
         $cardsForChoofal = $this->cardRepository->getRandomCard($id);
 
-        // dd($cardsForChofal);
-        return view('pages.studying.exam', compact('cardsForTranslate', 'cardsForMatching', 'cardsForSelection', 'cardsForChoofal')); 
+        // dd(array_rand(Arr::except($cards, array_search($cardsForSelection[0], $cards))));
+        return view('pages.studying.exam', compact('cards','cardsForTranslate', 'cardsForMatching', 'cardsForSelection', 'cardsForChoofal')); 
     }
 }

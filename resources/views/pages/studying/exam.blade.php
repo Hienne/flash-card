@@ -83,18 +83,19 @@
                             <p><span style="font-weight: bold">{{ $i + 1 }}. </span> {{ $cardsForSelection[$i]->front }}</p>
                         </div>
 
-                        <div class="exam__selection__answer">
-                            <input type="radio" name="selection_answer">
-                            <span>thuật ngữ</span>
-                            <br>
-                            <input type="radio" name="selection_answer">
-                            <span>thuật ngữ</span>
-                            <br>
-                            <input type="radio" name="selection_answer">
-                            <span>thuật ngữ</span>
-                            <br>
-                            <input type="radio" name="selection_answer">
-                            <span>thuật ngữ</span>
+                        <div class="exam__selection__answer" {{ $answersForSelection[$i] = rand(0, 3)}}>
+                            
+                            @for ($j = 0; $j < 4; $j++)
+                                <input type="radio" name="selection_answer_{{ $i }}">
+                                @if ($answersForSelection[$i] == $j)
+                                    <span>{{ $cardsForSelection[$i]->back }}</span>
+                                    <span class="result--true"><i class="fa fa-check"></i></span>
+                                @else
+                                    <span>{{ $cards[array_rand(Arr::except($cards, array_search($cardsForSelection[$i], $cards)))]->back }}</span>
+                                    <span class="result--false"><i class="fa fa-times"></i></span>
+                                @endif
+                                <br>
+                            @endfor
                         </div>
                     @endfor
                 
@@ -126,9 +127,9 @@
                         <div class="result">
                             <p class="result--warning">Chưa có đáp án</p>
 
-                            <p class="result--true">V Đúng</p>
+                            <p class="result--true"><span><i class="fa fa-check"></i></span> Đúng</p>
 
-                            <p class="result--false">X Sai</p>
+                            <p class="result--false"><span><i class="fa fa-times"></i></span> Sai</p>
 
                         </div>
 
@@ -153,7 +154,38 @@
 @section('script')
     <script>
         const btnAnswer = document.querySelector('.btn--show-answer');
+        btnAnswer.addEventListener('click', checkAnswerSelection);
         btnAnswer.addEventListener('click', checkAnswerChooFal);
+
+        // Selection Check
+        const selectionResultTrue = document.querySelectorAll('.exam__selection__answer .result--true');
+
+        const answersForSelection = {!! json_encode($answersForSelection) !!};
+        const cardsForSelection = {!! json_encode($cardsForSelection) !!};
+
+
+        function checkAnswerSelection() {
+            for (let i = 0; i < 5; i++) {
+                let btnRadioSelection = document.getElementsByName('selection_answer_' + i);
+                
+                for (let j = 0; j < 4; j++) {
+
+                    btnRadioSelection[j].disabled = true;
+
+                    if (btnRadioSelection[j].checked) {
+
+                        btnRadioSelection[j].nextElementSibling.nextElementSibling.style.display = 'unset';
+
+                        if (answersForSelection[i] !== j) {
+                            selectionResultTrue[i].style.display = 'unset';
+                        }
+                    }
+                    else {
+                        selectionResultTrue[i].style.display = 'unset';
+                    }
+                }
+            }
+        }   
 
         // Choose False Check
         const resultWaringChoofal  = document.querySelectorAll('.exam__choofal__detail .result .result--warning');
@@ -175,15 +207,12 @@
         function checkAnswerChooFal() {
             for (let i = 0; i < 5; i++) {
                 let btnRadioChoofal = document.getElementsByName('choofal_answer_' + i);
-
-                console.log(answersForChoofal[i]);
                 
                 for (let btn of btnRadioChoofal) {
+
+                    btn.disabled = true;
                     
                     if (btn.checked) {
-                        console.log(btn.value);
-
-                        console.log(answersForChoofal[i] === btn.value);
 
                         if(answersForChoofal[i] == btn.value) {
                             choofalResultTrue[i].style.display = 'block';

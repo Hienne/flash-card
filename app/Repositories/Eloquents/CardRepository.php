@@ -29,7 +29,7 @@ class CardRepository extends EloquentRepository implements CardInterface {
         $expiryCards = array();
 
         foreach($cards as $card) {
-            if(Carbon::create($card->expiry_date)->isToday()) {
+            if(Carbon::create($card->expiry_date)->isToday() || Carbon::create($card->expiry_date)->isPast()) {
                 array_push($expiryCards, $card);
             }
         }
