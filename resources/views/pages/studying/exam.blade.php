@@ -50,19 +50,28 @@
                         <div class="exam__matching__answer">
                             @for ($i = 0; $i < 5; $i++)
                                 <div class="answer__detail">
+                                    <span class="result--true"><i class="fa fa-check"></i></span>
+                                    <span class="result--false"><i class="fa fa-times"></i></span>
                                     <span>{{ $i +1 }}.
                                     <input type="text">
                                     <span>{{ $cardsForMatching[$i]->front }}</span>
+                                    <p>Đáp án: {{ $cardsForMatching[$i]->back }}</p>
                                 </div>
                             @endfor
                         </div>
 
                         <div class="exam__matching__question">
-                            <p><span style="font-weight: bold">A.</span> {{ $cardsForMatching[0]->back }}</p>
-                            <p><span style="font-weight: bold">B.</span> {{ $cardsForMatching[1]->back }}</p>
-                            <p><span style="font-weight: bold">C.</span> {{ $cardsForMatching[2]->back }}</p>
-                            <p><span style="font-weight: bold">D.</span> {{ $cardsForMatching[3]->back }}</p>
-                            <p><span style="font-weight: bold">E.</span> {{ $cardsForMatching[4]->back }}</p>
+                            <p>
+                                <span style="font-weight: bold">{{  chr(65)}}.</span> 
+                                {{ $cardsForMatching[($answersForMatching[0] = $cardsForMatching->search($cardsForMatching->random()))]->back }}
+                            </p>
+                            <span {{$copyCardsForMatching = $cardsForMatching->slice(0)}}></span>
+                            @for ($i = 1; $i < 5; $i++)
+                                <p>
+                                    <span style="font-weight: bold">{{  chr(65 + $i )}}.</span>
+                                    {{ $cardsForMatching[($answersForMatching[$i] = $cardsForMatching->search(Arr::except($copyCardsForMatching, $answersForMatching)->random()))]->back }}
+                                </p>
+                            @endfor
                         </div>
 
                     </div>
@@ -156,6 +165,10 @@
         const btnAnswer = document.querySelector('.btn--show-answer');
         btnAnswer.addEventListener('click', checkAnswerSelection);
         btnAnswer.addEventListener('click', checkAnswerChooFal);
+
+        // Matching check
+        const answerForMatching = {!! json_encode($answersForMatching) !!};
+        const cardsForMatching = {!! json_encode($cardsForMatching) !!};
 
         // Selection Check
         const selectionResultTrue = document.querySelectorAll('.exam__selection__answer .result--true');

@@ -16,11 +16,13 @@ class CardRepository extends EloquentRepository implements CardInterface {
 
     public function getCardByUser($userId)
     {
+        //return a array
         return $this->_model->all()->where('user_id', $userId);
     }
 
     public function getCardBySubject($subjectId)
     {
+        //return a array
         return $this->_model->all()->where('subject_id', $subjectId);
     }
 
@@ -44,6 +46,7 @@ class CardRepository extends EloquentRepository implements CardInterface {
             return $this->_model->where('subject_id', $subjectId)->inRandomOrder()->get();
         }
 
+        //return a collection
         return $this->_model->where('subject_id', $subjectId)->inRandomOrder()->take(5)->get();
     }
 

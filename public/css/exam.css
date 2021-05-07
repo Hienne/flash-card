@@ -60,6 +60,21 @@
     justify-content: space-between;
 }
 
+.exam__matching__answer .result--true {
+    color: rgb(132, 212, 173);
+    display: none;
+}
+
+.exam__matching__answer .result--false {
+    color: rgb(255, 114, 91);
+    display: none;
+}
+
+.answer__detail p {
+    color: rgb(255, 114, 91);
+    display: none;
+}
+
 .exam__matching__detail {
     padding: 1rem 0;
 }
