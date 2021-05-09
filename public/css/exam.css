@@ -1,3 +1,14 @@
+.exam-score {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: none;
+}
+
+.exam-score span {
+    color: rgb(66, 87, 178);
+    font-weight: bold;
+}
+
 
 .exam__container {
     background-color: rgb(246, 247, 251);
@@ -54,6 +65,29 @@
     font-size: .65rem;
 }
 
+.exam__translate__question .result--true {
+    color: rgb(132, 212, 173);
+    margin-left: 1rem;
+    display: none;
+}
+
+.exam__translate__question .result--false {
+    color: rgb(255, 114, 91);
+    margin-left: 1rem;
+    display: none;
+}
+
+.exam__translate__question .show-answer {
+    color: rgb(177, 183, 201);
+    margin-left: 1rem;
+    font-size: .75rem;
+}
+
+.exam__translate__question .alert-for-translate {
+    color: rgb(255, 114, 91);
+    margin-left: 1rem;
+    font-size: .75rem;
+}
 /* Matching section */
 .exam__matching__detail {
     display: flex;
@@ -73,6 +107,7 @@
 .answer__detail p {
     color: rgb(255, 114, 91);
     display: none;
+    font-size: .75rem;
 }
 
 .exam__matching__detail {

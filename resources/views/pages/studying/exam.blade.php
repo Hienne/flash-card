@@ -6,32 +6,22 @@
     <div class="exam__container">
         <div class="container exam__content">
 
+            <h3 class="exam-score">Điểm: <span></span> </h3>
             {{-- Translate --}}
             <div class="exam__translate">
                 <h4>5 Câu hỏi tự luận</h4>
     
                 <div class="exam__translate__detail">
 
-                    {{-- @foreach ($cards as $card)
-                        @if ($cards->search($card) < 5)
-                        <div class="form-group exam__translate__question">
-                            <p><span style="font-weight: bold">{{ $cards->search($card) + 1 }}.</span> {{ $card->front }}</p>
-                                <input type="text" class="form-control" 
-                                    name="exam_translate">
-                            <label for="exam_translate">nhập đáp án của bạn</label>    
-                        </div>
-                        @else
-                            @break
-                        @endif
-                        
-                    @endforeach --}}
-
                     @foreach ($cardsForTranslate as $card)
                         <div class="form-group exam__translate__question">
                             <p><span style="font-weight: bold">{{ $cardsForTranslate->search($card) + 1 }}.</span> {{ $card->front }}</p>
-                                <input type="text" class="form-control" 
-                                    name="exam_translate">
-                            <label for="exam_translate">nhập đáp án của bạn</label>    
+                            <span class="result--true"><i class="fa fa-check"></i></span>
+                            <span class="result--false"><i class="fa fa-times"></i></span>
+                            <input type="text" class="form-control" name="exam_translate">
+                            <p class="alert-for-translate"></p>
+                            <label for="exam_translate">nhập đáp án của bạn</label>   
+                            <p class="show-answer"></p> 
                         </div>
                         
                     @endforeach
@@ -40,7 +30,6 @@
             </div>
 
             {{-- Matching --}}
-            {{-- @if (count($cards) > 5) --}}
             @if (count($cardsForTranslate) >= 5)
                 <div class="exam__matching">
                     <h4>5 Câu hỏi ghép thẻ</h4>
@@ -53,16 +42,17 @@
                                     <span class="result--true"><i class="fa fa-check"></i></span>
                                     <span class="result--false"><i class="fa fa-times"></i></span>
                                     <span>{{ $i +1 }}.
-                                    <input type="text">
+                                    <input type="text" min="1" max="1">
                                     <span>{{ $cardsForMatching[$i]->front }}</span>
-                                    <p>Đáp án: {{ $cardsForMatching[$i]->back }}</p>
+                                    <p class="alert-for-matching">Đáp án không phù hợp</p>
+                                    <p class="show-answer"></p>
                                 </div>
                             @endfor
                         </div>
 
                         <div class="exam__matching__question">
                             <p>
-                                <span style="font-weight: bold">{{  chr(65)}}.</span> 
+                                <span style="font-weight: bold">{{ chr(65) }}.</span> 
                                 {{ $cardsForMatching[($answersForMatching[0] = $cardsForMatching->search($cardsForMatching->random()))]->back }}
                             </p>
                             <span {{$copyCardsForMatching = $cardsForMatching->slice(0)}}></span>
@@ -154,7 +144,6 @@
             </div>
             @endif
             
-
             <button class="btn btn--show-answer">Đáp án</button>
         </div>
     </div>
@@ -165,10 +154,105 @@
         const btnAnswer = document.querySelector('.btn--show-answer');
         btnAnswer.addEventListener('click', checkAnswerSelection);
         btnAnswer.addEventListener('click', checkAnswerChooFal);
+        btnAnswer.addEventListener('click', checkAnswerMatching);
+        btnAnswer.addEventListener('click', checkAnswerTranslate);
+        btnAnswer.addEventListener('click', showScore);
+
+        // Show score
+        var showScoreLabel = document.querySelector(".exam-score");
+        var showDetailScore = document.querySelector(".exam-score span");
+
+        var score = 0;
+        function showScore() {
+            showScoreLabel.style.display = 'unset'
+            // showScore.innerHTML = `${ score/25 * 100 }%`
+            showDetailScore.innerHTML = `${ Math.round(score/25 * 100) }%`;
+        }
+
+        // Translate check
+        const cardsForTranslate = {!! json_encode($cardsForTranslate) !!};
+
+        var translateResultTrue = document.querySelectorAll('.exam__translate__detail .result--true');
+        var translateResultFalse = document.querySelectorAll('.exam__translate__detail .result--false');
+        var answerForTranslate = document.querySelectorAll('.exam__translate__detail input');
+        var showAnswerForTranslate = document.querySelectorAll('.exam__translate__detail .show-answer');
+        var labelForTranslate = document.querySelectorAll('.exam__translate__detail label');
+        var alertForTranslate = document.querySelectorAll('.exam__translate__detail .alert-for-translate')
+
+        function checkAnswerTranslate() {
+            for (let i = 0; i < answerForMatching.length; i++) {
+                if (answerForTranslate[i].value === cardsForTranslate[i].back) {
+                    translateResultTrue[i].style.display = "unset";
+                    score++;
+                }
+                else {
+                    translateResultFalse[i].style.display = "unset";
+                    labelForTranslate[i].innerHTML = "Câu trả lời";
+                    showAnswerForTranslate[i].innerHTML = `${ cardsForTranslate[i].back }`;
+
+                    if (answerForTranslate[i].value.length === 0) {
+                        alertForTranslate[i].innerHTML = "Chưa có câu trả lời";
+                    }
+                }
+                
+                answerForTranslate[i].disabled = true;
+            }
+        }
+
 
         // Matching check
         const answerForMatching = {!! json_encode($answersForMatching) !!};
         const cardsForMatching = {!! json_encode($cardsForMatching) !!};
+
+        var userAnswerForMatching = document.querySelectorAll('.exam__matching__answer input');
+        var alertForMatching = document.querySelectorAll('.alert-for-matching');
+        const matchingResultTrue = document.querySelectorAll('.exam__matching__answer .result--true');
+        const matchingResultFalse = document.querySelectorAll('.exam__matching__answer .result--false');
+        const showAnswerMatching = document.querySelectorAll('.exam__matching__answer .show-answer');
+        var arrIndexOfAnswer = [];
+
+        //Upper case answer
+        for (let i = 0; i < userAnswerForMatching.length; i++) {
+            userAnswerForMatching[i].addEventListener('keyup', function(a) {
+                userAnswerForMatching[i].value = userAnswerForMatching[i].value.toUpperCase();
+                
+                if (userAnswerForMatching[i].value.length > 1) {
+                    btnAnswer.disabled = true;
+                    alertForMatching[i].style.display = "block";
+                }
+                else {
+                    btnAnswer.disabled = false;
+                    alertForMatching[i].style.display = "none";
+                }
+            })
+        }
+
+        // convert user's answer to ascii for check
+        function convertIndexOfAnswer(arrIndex, arrUserAnswer) {
+            for (let i = 0; i < arrUserAnswer.length; i++) {
+                arrIndex[i] = (arrUserAnswer[i].value.charCodeAt(0)) - 65;
+            }
+        }
+        
+
+        function checkAnswerMatching() {
+            convertIndexOfAnswer(arrIndexOfAnswer, userAnswerForMatching);
+            console.log(arrIndexOfAnswer);
+
+            for (let i = 0; i < 5; i++) {
+                if (arrIndexOfAnswer[i] === answerForMatching[i]) {
+                    matchingResultTrue[i].style.display = "unset";
+                    score++;
+                }
+                else {
+                    matchingResultFalse[i].style.display = "unset";
+                    showAnswerMatching[i].style.display = "block";
+                    showAnswerMatching[i].innerHTML = `Đáp án: ${cardsForMatching[i].back}`;
+                }
+
+                userAnswerForMatching[i].disabled = true;
+            }
+        }
 
         // Selection Check
         const selectionResultTrue = document.querySelectorAll('.exam__selection__answer .result--true');
@@ -191,6 +275,7 @@
 
                         if (answersForSelection[i] !== j) {
                             selectionResultTrue[i].style.display = 'unset';
+                            score++;
                         }
                     }
                     else {
@@ -215,30 +300,34 @@
             }
 
             return 'false';
-        });        
+        });
 
         function checkAnswerChooFal() {
             for (let i = 0; i < 5; i++) {
                 let btnRadioChoofal = document.getElementsByName('choofal_answer_' + i);
+                let check = 0;
                 
                 for (let btn of btnRadioChoofal) {
 
                     btn.disabled = true;
                     
-                    if (btn.checked) {
+                    if (btn.checked === true) {
+                        check = 1;
 
-                        if(answersForChoofal[i] == btn.value) {
+                        if(answersForChoofal[i] === btn.value) {
                             choofalResultTrue[i].style.display = 'block';
+                            score++;
                         }
                         else {
                             choofalResultFalse[i].style.display = 'block';
                             showAnswerChoofal[i].style.display = 'block';
                         }
                     }
-                    else {
-                        resultWaringChoofal[i].style.display = 'block';
-                        showAnswerChoofal[i].style.display = 'block';
-                    }
+                }
+
+                if (check === 0) {
+                    resultWaringChoofal[i].style.display = 'block';
+                    showAnswerChoofal[i].style.display = 'block';
                 }
             }
         }   
