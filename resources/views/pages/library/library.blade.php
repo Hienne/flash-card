@@ -34,7 +34,7 @@
 
                 <div  class="library__item">
                     @foreach ($subjects as $subject)
-                        <a href="#" class="library__item__detail">
+                        <a href="{{ route('subject', ['id'=>$subject->id]) }}" class="library__item__detail">
                             <div class="item__detail__title">
                                 <p>{{ $subject->cards()->count() }} thuật ngữ</p>
                                 <span class="user_logo logo_size">{{ strtoupper(Auth::user()->name[0]) }}</span>

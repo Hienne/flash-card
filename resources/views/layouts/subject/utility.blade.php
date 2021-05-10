@@ -6,7 +6,7 @@
         </div>
 
         <ul class="subject_utitlity__item">
-            <li>
+            {{-- <li>
                 <a href="#" data-toggle="tooltip" data-placement="bottom" title="Thêm">
                     <i class="fa fa-plus"></i>
                 </a>
@@ -16,12 +16,17 @@
                 <a href="#" data-toggle="tooltip" data-placement="bottom" title="Sửa">
                     <i class="fa fa-plus"></i>
                 </a>
-            </li>
+            </li> --}}
 
             <li>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Xóa">
-                    <i class="fa fa-trash"></i>
-                </a>
+                <form action="{{ route('subject.delete') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="subjectId" value="{{ $subject->id }}">
+
+                    <button type="submit" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Xóa">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </form>
             </li>
         </ul>
     </div>

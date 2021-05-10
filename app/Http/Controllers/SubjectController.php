@@ -80,7 +80,7 @@ class SubjectController extends Controller
             $card['back'] = $request->card_backs[$i];
             $card['num_of_study'] = 0;
             $card['level_of_card'] = 1;
-            $card['expiry_date'] = Carbon::now()->addDays();
+            $card['expiry_date'] = Carbon::now();
 
             $this->cardRepository->create($card);
         }
@@ -88,5 +88,29 @@ class SubjectController extends Controller
         return redirect()->route('subject', ['id' => $newSubject->id]); 
     }
 
+    public function delete(Request $request) {
+        $this->cardRepository->deleteBySubject($request->subjectId);
+        $this->subjectRepository->delete($request->subjectId);
+
+        return redirect()->route("home");
+    }
+
+    public function deleteCardOfSubject(Request $request)
+    {
+        $subjectId = $this->cardRepository->getSubjectIdByCard($request->cardDeleteId);
+
+        $this->cardRepository->delete($request->cardDeleteId);
+        
+        $cards = $this->cardRepository->getCardBySubject($subjectId);
+
+        if ($cards->count() == 0) {
+            $this->subjectRepository->delete($subjectId);
+            return redirect()->route("home");
+        }
+        else {
+            return redirect()->back();
+        }
+
+    }
     
 }

@@ -43,11 +43,8 @@ class HomeController extends Controller
                 $numOfExpiryCard += count($this->cardRepository->getExpiryCardBySubject($subject->id));
             }
 
-            // array_push($expiryCardsByFolder, $numOfExpiryCard);
             $expiryCardsByFolder[$folder->id] = $numOfExpiryCard;
         }
-
-        // dd($expiryCardsByFolder);
 
         return view('pages.home', compact('expiryCardsByFolder'));
     }

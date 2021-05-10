@@ -14,5 +14,7 @@ interface SubjectInterface
 
     public function create($subject);
 
+    public function delete($id);
+
     public function update($subjectId);
 }

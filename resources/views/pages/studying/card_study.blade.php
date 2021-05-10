@@ -124,11 +124,8 @@
 
                         </div>
 
-                
                 @endforeach
                 
-                
-
                 <div class="card-wrapper btn-submit-result">
                     <input type="hidden" name="subjectId" value="{{ $subject->id }}">
                     <button class="btn" type="submit">Kết thúc</button>
@@ -147,11 +144,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
     <script>
-
-        var back = document.querySelector('.back');
-        back.addEventListener('click', function() {
-            alert(hehe);
-        })
         
         const btnAnswers = document.querySelectorAll(".btn--answer");
         var cardWrapper;

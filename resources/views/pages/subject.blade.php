@@ -36,7 +36,7 @@
         var synth = window.speechSynthesis;
         var showCardListItems = document.querySelectorAll('.show-card__list__item');
         for (let item of showCardListItems) {
-            let btnSpeak = item.lastElementChild;
+            let btnSpeak = item.lastElementChild.firstElementChild;
             let txtBack = item.firstElementChild.nextElementSibling;
 
             btnSpeak.addEventListener('click', () => {

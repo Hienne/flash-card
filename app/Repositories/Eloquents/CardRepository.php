@@ -26,6 +26,10 @@ class CardRepository extends EloquentRepository implements CardInterface {
         return $this->_model->all()->where('subject_id', $subjectId);
     }
 
+    public function getSubjectIdByCard($cardId) {
+        return $this->_model->find($cardId)->subject_id;
+    }
+
     public function getExpiryCardBySubject($subjectId) {
         $cards = $this->_model->where('subject_id', $subjectId)->get();
         $expiryCards = array();
@@ -55,6 +59,16 @@ class CardRepository extends EloquentRepository implements CardInterface {
         return $this->_model->create($card);
     }
 
+    public function delete($cardId) 
+    {
+        return $this->_model->where('id', $cardId)->delete();
+    }
+
+    public function deleteBySubject($subjectId) 
+    {
+        return $this->_model->where('subject_id', $subjectId)->delete();
+    }
+
     public function update($cardId, $level_of_card)
     {
         $card = Card::find($cardId);
@@ -69,8 +83,6 @@ class CardRepository extends EloquentRepository implements CardInterface {
             $card->num_of_study += 1;
             $card->expiry_date = Carbon::create($card->expiry_date)->addDays($card->num_of_study * $level_of_card);
         }
-
-        
 
         $card->save();    
     }

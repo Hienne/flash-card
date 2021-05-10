@@ -38,6 +38,11 @@ class SubjectRepository extends EloquentRepository implements SubjectInterface {
         return $this->_model->create($subject);
     }
 
+    public function delete($id)
+    {
+        return $this->_model->where('id', $id)->delete();
+    }
+
     public function update($subjectId)
     {
 

@@ -51,25 +51,6 @@ class StudyingController extends Controller
         $cardsForMatching = $this->cardRepository->getRandomCard($id);
         $cardsForSelection = $this->cardRepository->getRandomCard($id);
         $cardsForChoofal = $this->cardRepository->getRandomCard($id);
-
-        // $answersForMatching[0] = $cardsForMatching->search($cardsForMatching->random());
-        // $answersForMatching[1] = $cardsForMatching->search($cardsForMatching->random());
-
-        // $answersForMatching[0] = 1;
-        // $answersForMatching[1] = 2;
-        // $answersForMatching[2] = 3;
-        // $answersForMatching[3] = 4;
-
-        // dd($answersForMatching);
-        // $collection = collect([0=>1, 1=>"Hardik", 2=>"Admin"]);
-
-        // $filtered = Arr::except($cardsForMatching, $answersForMatching);
-
-        // dd($filtered);
-        // dd($cardsForTranslate);
-        // dd($cardsForMatching->except());
-        // dd($cardsForMatching->except([0, 1]));
-
         
         return view('pages.studying.exam', compact('cards','cardsForTranslate', 'cardsForMatching', 'cardsForSelection', 'cardsForChoofal')); 
     }

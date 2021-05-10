@@ -25,7 +25,7 @@ use App\Http\Controllers\StudyingController;
 |
 */
 
-Route::get('/dashboard', [RegisterController::class, 'dashboard'])->name('dashboard');
+// Route::get('/dashboard', [RegisterController::class, 'dashboard'])->name('dashboard');
 
 /*************Auth************/
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
@@ -45,7 +45,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/subject/{id}', [SubjectController::class, 'index'])->name('subject');
 Route::get('/subject', [SubjectController::class, 'createIndex'])->name('subject.createIndex');
 Route::post('/subject', [SubjectController::class, 'create'])->name('subject.create');
+Route::post('/subject/delete', [SubjectController::class, 'delete'])->name('subject.delete');
 
+Route::post('/subject/card/delete', [SubjectController::class, 'deleteCardOfSubject'])->name('subject.card.delete');
 
 
 /*************Folder************/
@@ -64,6 +66,5 @@ Route::get('/exam/{id}', [StudyingController::class, 'exam'])->name('studying.ex
 
 /*************Test************/
 Route::get('/', function () {
-    // return view('pages.studying.exam');
     return view('pages.guest');
 });
