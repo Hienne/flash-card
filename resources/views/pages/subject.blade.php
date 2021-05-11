@@ -36,15 +36,25 @@
         var synth = window.speechSynthesis;
         var showCardListItems = document.querySelectorAll('.show-card__list__item');
         for (let item of showCardListItems) {
-            let btnSpeak = item.lastElementChild.firstElementChild;
-            let txtBack = item.firstElementChild.nextElementSibling;
+            let btnSpeak = item.firstElementChild.lastElementChild.firstElementChild;
+            let txtBack = item.firstElementChild.firstElementChild.firstElementChild.lastElementChild;
+            let btnUpdateCard = btnSpeak.nextElementSibling;
+            let cardDetail = item.firstElementChild.firstElementChild.firstElementChild;
+            let formUpdateCardWrapper = cardDetail.nextElementSibling;
+            let formUpdateCard = cardDetail.nextElementSibling.firstElementChild;
 
             btnSpeak.addEventListener('click', () => {
                 var toSpeak = new SpeechSynthesisUtterance(txtBack.innerHTML);
                 var voice = synth.getVoices()[4];
                 toSpeak.voice = voice;
                 synth.speak(toSpeak);
-            })
+            });
+
+            btnUpdateCard.addEventListener('click', function() {
+                this.classList.toggle('focus-color');
+                cardDetail.classList.toggle('un-display');
+                formUpdateCard.classList.toggle('un-display');
+            });
         }
     </script>
 @endsection

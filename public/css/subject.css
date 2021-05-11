@@ -158,18 +158,40 @@
     border-radius: 5px;
 }
 
-.show-card__item--detail div:nth-child(1) {
-    display: flex;
-    flex-basis: 50%;
-    justify-content: space-between;
+.un-display {
+    display: none;
 }
 
-.show-card__item--detail div:nth-child(2) {
-    display: none;
+.focus-color {
+    color: rgb(255, 205, 31);
 }
 
 .show-card__list__item p {
     margin: 0;
+}
+
+.form--update-card input {
+    border-radius: 5px;
+    border-color: rgb(60, 207, 207);
+    box-shadow: none;
+    outline: none;
+}
+
+.form--update-card input:focus {
+    border-color: rgb(255, 205, 31);
+    box-shadow: none;
+    outline: none;
+}
+
+.form--update-card button {
+    text-align: center;
+    border: none;
+    background-color: white;
+}
+
+.form--update-card button:hover {
+    background-color: rgb(255, 205, 31);
+    border-radius: 5px;
 }
 
 .btn_function button {
@@ -181,6 +203,7 @@
     display: flex;
 }
 
-.btnSpeak:hover {
+.btn_function button:hover {
     color: rgb(255, 205, 31);
 }
+

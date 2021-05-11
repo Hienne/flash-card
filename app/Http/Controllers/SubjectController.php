@@ -107,10 +107,21 @@ class SubjectController extends Controller
             $this->subjectRepository->delete($subjectId);
             return redirect()->route("home");
         }
+
         else {
             return redirect()->back();
         }
+    }
 
+    public function updateCardOfSubject($id, Request $request) {
+        $cardEdited = new Card();
+        $cardEdited->id = $id;
+        $cardEdited->back = $request->back;
+        $cardEdited->front = $request->front;
+
+        $this->cardRepository->editCard($cardEdited);
+
+        return redirect()->back();
     }
     
 }

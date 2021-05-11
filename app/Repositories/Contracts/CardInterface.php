@@ -21,4 +21,6 @@ interface CardInterface
     public function deleteBySubject($subjectId);
 
     public function update($cardId, $request);
+    
+    public function editCard($cardEdited);
 }

@@ -86,4 +86,15 @@ class CardRepository extends EloquentRepository implements CardInterface {
 
         $card->save();    
     }
+
+    public function editCard($cardEdited) {
+        $card = Card::find($cardEdited->id);
+        $card->back = $cardEdited->back;
+        $card->front = $cardEdited->front;
+        $card->num_of_study = 0;
+        $card->level_of_card = 1;
+        $card->expiry_date = Carbon::now()->addDays();
+
+        $card->save();
+    }
 }

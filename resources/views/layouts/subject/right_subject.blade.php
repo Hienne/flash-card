@@ -13,6 +13,6 @@
     </li>
 
     <li class="nav-item show-card__right--bg">
-        <a href="{{ route('studying.exam', ['id'=>$subject->id]) }}"><i class="fa fa-file-alt"></i> Kiểm tra</a>
+        <a href="{{ route('studying.exam', ['id'=>$subject->id]) }}"><i class="fa fa-file"></i> Kiểm tra</a>
     </li>
 </ul>

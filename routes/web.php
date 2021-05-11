@@ -47,6 +47,7 @@ Route::get('/subject', [SubjectController::class, 'createIndex'])->name('subject
 Route::post('/subject', [SubjectController::class, 'create'])->name('subject.create');
 Route::post('/subject/delete', [SubjectController::class, 'delete'])->name('subject.delete');
 
+Route::put('/subject/card/update/{id}', [SubjectController::class, 'updateCardOfSubject'])->name('subject.card.update');
 Route::post('/subject/card/delete', [SubjectController::class, 'deleteCardOfSubject'])->name('subject.card.delete');
 
 
