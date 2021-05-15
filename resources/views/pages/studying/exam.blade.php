@@ -199,7 +199,6 @@
             }
         }
 
-
         // Matching check
         const answerForMatching = {!! json_encode($answersForMatching) !!};
         const cardsForMatching = {!! json_encode($cardsForMatching) !!};

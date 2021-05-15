@@ -51,7 +51,11 @@ class StudyingController extends Controller
         $cardsForMatching = $this->cardRepository->getRandomCard($id);
         $cardsForSelection = $this->cardRepository->getRandomCard($id);
         $cardsForChoofal = $this->cardRepository->getRandomCard($id);
+        $answersForMatching = [];
+        $answersForSelection = [];
+        $cardsRandom = [];
+
         
-        return view('pages.studying.exam', compact('cards','cardsForTranslate', 'cardsForMatching', 'cardsForSelection', 'cardsForChoofal')); 
+        return view('pages.studying.exam', compact('cards', 'cardsRandom', 'cardsForTranslate', 'cardsForMatching', 'answersForSelection', 'answersForMatching', 'cardsForSelection', 'cardsForChoofal')); 
     }
 }

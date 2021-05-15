@@ -56,7 +56,7 @@
                     <a href="#" class="facebook">
                       <span class="icon-facebook mr-3"><i class="fa fa-facebook-f fa-2x"></i></span> 
                     </a>
-                    <a href="#" class="google">
+                    <a href="{{ route('login.google') }}" class="google">
                       <span class="icon-google mr-3"><i class="fa fa-google fa-2x"></i></span> 
                     </a>
                   </div>
