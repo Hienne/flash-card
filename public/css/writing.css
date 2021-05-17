@@ -1,0 +1,187 @@
+.writing-container {
+    background-color: rgb(246, 247, 251);
+}
+
+.right__writing {
+    background-color: rgb(255, 255, 255);
+    min-height: 90vh;
+    padding: 0;
+    box-shadow: 1px 0px 5px  rgb(188, 194, 214);
+}
+
+.right__writing__back {
+    padding: 1rem .8rem;
+}
+
+.right__writing__back a {
+    font-size: .85rem;
+    color: black;
+}
+
+.right__writing__back a:hover i {
+    color: rgb(255, 205, 31);
+}
+
+.right__writing__back i {
+    color: rgb(60, 207, 207);
+    margin-right: .5rem;
+}
+
+.right__writing hr {
+    margin: 0;
+}
+
+.right__writing__title {
+    padding: 2rem .8rem;
+    text-align: center;
+}
+
+.right__writing__title h5 {
+    font-weight: bold;
+}
+
+.writing__range__item {
+    padding: 0 .5rem;
+}
+
+.progress {
+    height: .7rem;
+    border-radius: 0;
+}
+
+.rest__range .progress-bar {
+    background-color: rgb(66, 87, 178);
+}
+
+.true__range .progress-bar {
+    background-color: rgb(35, 178, 109);
+}
+
+.wrong__range .progress-bar {
+    background-color: rgb(255, 114, 91);
+}
+
+.writing__range--status {
+    width: 100%;
+    margin: 0;
+}
+
+.writing__range--status p {
+    color: black;
+    font-size: .75rem;
+}
+
+.study__writing {
+    background-color: white;
+    min-height: 50vh;
+    margin-top: 1rem;
+    padding: 2rem
+}
+
+.study__writing__question {
+    padding-bottom: 1rem;
+}
+
+.study__writing__question p {
+    color: black;
+}
+
+.btn--unknow {
+    font-size: .75rem;
+    font-weight: bold;
+    color: rgb(60, 207, 207);
+    border: none;
+}
+
+.btn--unknow:hover {
+    color: rgb(255, 205, 31);
+}
+
+.btn--unknow:focus {
+    box-shadow: none;
+}
+
+.study__writing__answer {
+    padding-top: 2rem;
+}
+
+.answer__container input {
+    margin-left: 1rem;
+    padding: 0;
+    border: none;
+    border-bottom: 2px solid rgb(48, 53, 69);
+    border-radius: 0;
+}
+
+.answer__container input:hover {
+    border-color: rgb(255, 205, 31);
+}
+
+.answer__container input:focus {
+    box-shadow: none;
+    border-color: rgb(255, 205, 31);
+}
+
+.answer__container label {
+    padding: 0;
+    text-transform: uppercase;
+    color: rgb(178, 185, 199);
+    margin-left: 1rem;
+    font-weight: bold;
+    font-size: .65rem;
+}
+
+.btn--writing-answer {
+    background-color: rgb(60, 207, 207);
+    height: 35px;
+    color: white;
+    font-size: .75rem;
+    font-weight: bold;
+}
+
+.btn--writing-answer:hover {
+    background-color: rgb(40, 167, 167);
+    color: white;
+}
+
+.btn--writing-answer:focus {
+    box-shadow: none;
+}
+
+/* Show answer */
+.show__answer div p:nth-child(2) {
+    color: black;
+}
+
+.writing__answer {
+    margin: 0;
+}
+
+.btn--speak {
+    height: 30px;
+    background-color: white;
+    border: none;
+}
+
+.show__answer--lable {
+    color: rgb(147, 155, 180);
+    font-size: .75rem;
+}
+
+.btn--continue {
+    background-color: rgb(60, 207, 207);
+    height: 35px;
+    color: white;
+    font-size: .75rem;
+    font-weight: bold;
+    margin-left: 50%;
+}
+
+.btn--continue:hover {
+    background-color: rgb(40, 167, 167);
+    color: white;
+}
+
+.btn--continue:focus {
+    box-shadow: none;
+}

@@ -16,6 +16,7 @@
     <link href="{{ asset('css/library.css') }}" rel="stylesheet">
     <link href="{{ asset('css/subject_creater.css') }}" rel="stylesheet">
     <link href="{{ asset('css/exam.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/writing.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     
