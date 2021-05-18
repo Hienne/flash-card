@@ -16,7 +16,7 @@
                     <hr>
         
                     <div class="right__writing__title">
-                        <h5>Viết</h5>
+                        <h5>Chính tả</h5>
                     </div>
         
                     <div class="right__writing__range">
@@ -61,7 +61,8 @@
                     @endif
                             <div class="study__writing__question row justify-content-between ml-1">
                                 <div class="question__container">
-                                    <p>{{ $card->front }}</p>
+                                    <button type="button" class="btn--speak btn-listen-question"><i class="fa fa-volume-up"></i></button>
+                                    <p>Click button to listen</p>
                                 </div>
                             </div>
                     
@@ -70,7 +71,7 @@
                             <div class="study__writing__answer">
                                 <div class="answer__container row justify-content-between">
                                     <div class="form-group form-writing col-9">
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" type="text" placeholder="Nhập những gì bạn nghe thấy">
                                         <input type="hidden" value="{{ $card->back }}">
                                         <label class="form-label">Nhập đáp án</label>
                                     </div>
@@ -92,7 +93,7 @@
                                         <p class="show__answer--lable">Đúng</p>
                                         <p>{{ $card->back }}</p>
                                     </div>
-                            
+
                                     <button type="button" class="btn--speak"><i class="fa fa-volume-up"></i></button>
                                 </div>
                         
@@ -112,7 +113,7 @@
 @section('script')
     <script>
         var synth = window.speechSynthesis;
-
+        const btnListenQuestion = document.querySelectorAll('.btn-listen-question');
         const btnUnknow = document.querySelectorAll('.btn--unknow');
         const studyWriting = document.querySelectorAll('.study__writing');
         const formWriting = document.querySelectorAll('.form-writing');
@@ -127,10 +128,17 @@
         const trueProgressBar = document.querySelector('.true__range');
         const numOfTrue = trueProgressBar.nextElementSibling.lastElementChild;
 
-        // btnUnknow.addEventListener()
         var numOfTrueAnswer = 0;
         var numOfWrongAnswer = 0;
         const numOfCard = btnWritingAnswer.length;
+
+        for (let i = 0; i < numOfCard; i++) {
+            let trueAnswer = formWriting[i].firstElementChild.nextElementSibling;
+
+            btnListenQuestion[i].addEventListener('click', function() {
+                speak(trueAnswer.value);
+            })
+        }
         
 
         for (let i = 0; i < numOfCard; i++) {
@@ -148,7 +156,7 @@
                     trueProgressBar.firstElementChild.style.width = `${ numOfTrueAnswer / numOfCard * 100 }%`;
                     numOfTrue.innerHTML = numOfTrueAnswer;
 
-                    showAnswer(i);
+                    showNextQuestion(i);
                 }
 
                 else {
@@ -171,8 +179,8 @@
                     btnSpeak = studyWriting[i].lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.lastElementChild;
 
                     btnContinue.addEventListener('click', function() {
-                        showAnswer(i);
-                    });
+                        showNextQuestion(i);
+                    })
 
                     //Speak
                     btnSpeak.addEventListener('click', () => {
@@ -182,9 +190,14 @@
             })
         }
 
-        function showAnswer(i) {
+        function showNextQuestion(i) {
             studyWriting[i].classList.toggle('writing--active');
             studyWriting[i + 1].classList.toggle('writing--active');
+            
+            if(i + 1 < numOfCard) {
+                let trueAnswrNext = formWriting[i+1].firstElementChild.nextElementSibling;
+                speak(trueAnswrNext.value);
+            }
         }
 
         function speak(text) {

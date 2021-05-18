@@ -73,13 +73,18 @@
 
 .study__writing {
     background-color: white;
-    min-height: 50vh;
+    max-height: 50vh;
     margin-top: 1rem;
-    padding: 2rem
+    padding: 2rem;
+    display: none;
 }
 
 .study__writing__question {
     padding-bottom: 1rem;
+}
+
+.writing--active {
+    display: block;
 }
 
 .study__writing__question p {
@@ -149,6 +154,10 @@
 }
 
 /* Show answer */
+.show__answer {
+    display: none;
+}
+
 .show__answer div p:nth-child(2) {
     color: black;
 }
@@ -161,6 +170,10 @@
     height: 30px;
     background-color: white;
     border: none;
+}
+
+.btn--speak:hover {
+    color: rgb(255, 205, 31);
 }
 
 .show__answer--lable {

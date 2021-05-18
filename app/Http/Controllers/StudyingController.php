@@ -58,4 +58,20 @@ class StudyingController extends Controller
         
         return view('pages.studying.exam', compact('cards', 'cardsRandom', 'cardsForTranslate', 'cardsForMatching', 'answersForSelection', 'answersForMatching', 'cardsForSelection', 'cardsForChoofal')); 
     }
+
+    public function writing($id) {
+        $cards = $this->cardRepository->getCardBySubject($id);
+        $numOfCard = count($cards);
+        $subjectId = $id;
+
+        return view('pages.studying.writing', compact('cards', 'numOfCard', 'subjectId'));
+    }
+
+    public function listening($id) {
+        $cards = $this->cardRepository->getCardBySubject($id);
+        $numOfCard = count($cards);
+        $subjectId = $id;
+
+        return view('pages.studying.listening', compact('cards', 'numOfCard', 'subjectId'));
+    }
 }

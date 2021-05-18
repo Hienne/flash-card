@@ -69,14 +69,16 @@ Route::get('/subject/studying/{id}', [StudyingController::class, 'studyingIndex'
 Route::post('/subject/studying', [StudyingController::class, 'updateStudyingCard'])->name('studying.updateStudyingCard');
 
 /*************exam************/
-Route::get('/exam/{id}', [StudyingController::class, 'exam'])->name('studying.exam');
+Route::get('/subject/exam/{id}', [StudyingController::class, 'exam'])->name('studying.exam');
 
 /*************writing************/
-Route::get('/', function () {
-    return view('pages.studying.writing');
-});
+Route::get('/subject/writing/{id}', [StudyingController::class, 'writing'])->name('studying.writing');
+
+/*************listening************/
+Route::get('/subject/listening/{id}', [StudyingController::class, 'listening'])->name('studying.listening');
+
 
 /*************Test************/
-// Route::get('/', function () {
-//     return view('pages.guest');
-// });
+Route::get('/', function () {
+    return view('pages.guest');
+});
