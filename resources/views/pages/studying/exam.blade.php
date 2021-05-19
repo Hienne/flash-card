@@ -6,10 +6,10 @@
     <div class="exam__container">
         <div class="container exam__content">
 
-            <h3 class="exam-score">Điểm: <span></span> </h3>
+            <h3 class="exam-score">{{ __('app.score') }}: <span></span> </h3>
             {{-- Translate --}}
             <div class="exam__translate">
-                <h4>5 Câu hỏi tự luận</h4>
+                <h4>5 {{ __('app.essay_question') }}</h4>
     
                 <div class="exam__translate__detail">
 
@@ -20,7 +20,7 @@
                             <span class="result--false"><i class="fa fa-times"></i></span>
                             <input type="text" class="form-control" name="exam_translate">
                             <p class="alert-for-translate"></p>
-                            <label for="exam_translate">nhập đáp án của bạn</label>   
+                            <label for="exam_translate">{{ __('app.enter_answer') }}</label>   
                             <p class="show-answer"></p> 
                         </div>
                         
@@ -32,7 +32,7 @@
             {{-- Matching --}}
             @if (count($cardsForTranslate) >= 5)
                 <div class="exam__matching">
-                    <h4>5 Câu hỏi ghép thẻ</h4>
+                    <h4>5 {{ __('app.matching_question') }}</h4>
     
                     <div class="exam__matching__detail">
 
@@ -44,7 +44,7 @@
                                     <span>{{ $i +1 }}.
                                     <input type="text" min="1" max="1">
                                     <span>{{ $cardsForMatching[$i]->front }}</span>
-                                    <p class="alert-for-matching">Đáp án không phù hợp</p>
+                                    <p class="alert-for-matching">{{ __('app.invalid_answer') }}</p>
                                     <p class="show-answer"></p>
                                 </div>
                             @endfor
@@ -73,7 +73,7 @@
             {{-- Selection --}}
             @if (count($cardsForTranslate) >= 5)
             <div class="exam__selection">
-                <h4>5 Câu hỏi lựa chọn</h4>
+                <h4>5 {{ __('app.selection_question') }}</h4>
     
                 <div class="exam__selection__detail">
 
@@ -107,7 +107,7 @@
             {{-- Choose / False --}}
             @if (count($cardsForTranslate) >= 5)
             <div class="exam__choofal">
-                <h4>5 Câu hỏi Đúng/Sai</h4>
+                <h4>5 {{ __('app.choose_false_question') }}</h4>
     
                 <div class="exam__choofal__detail">
                     @for ($i = 0; $i < 5; $i++)
@@ -117,25 +117,25 @@
 
                         <div class="exam__choofal__answer">
                             <input type="radio" name="choofal_answer_{{$i}}" value="true">
-                            <span>Đúng</span>
+                            <span>{{ __('app.right') }}</span>
                             <br>
                             <input type="radio" name="choofal_answer_{{$i}}" value="false">
-                            <span>Sai</span>
+                            <span>{{ __('app.wrong') }}</span>
                         </div>
 
                         <div class="result">
-                            <p class="result--warning">Chưa có đáp án</p>
+                            <p class="result--warning">{{ __('app.no_answer') }}</p>
 
-                            <p class="result--true"><span><i class="fa fa-check"></i></span> Đúng</p>
+                            <p class="result--true"><span><i class="fa fa-check"></i></span> {{ __('app.right') }}</p>
 
-                            <p class="result--false"><span><i class="fa fa-times"></i></span> Sai</p>
+                            <p class="result--false"><span><i class="fa fa-times"></i></span> {{ __('app.wrong') }}</p>
 
                         </div>
 
                         <div class="answer">
-                            <h4>Câu trả lời</h4>
-                            <p>Sai</p>
-                            <p>Câu trả lời như sau: ->{{ $cardsForChoofal[$i]->back }}</p>
+                            <h4>{{ __('app.answer') }}</h4>
+                            <p>{{ __('app.wrong') }}</p>
+                            <p>{{ __('app.answer_like') }} ->{{ $cardsForChoofal[$i]->back }}</p>
                         </div>
 
                     @endfor
@@ -144,7 +144,7 @@
             </div>
             @endif
             
-            <button class="btn btn--show-answer">Đáp án</button>
+            <button class="btn btn--show-answer">{{ __('app.answer') }}</button>
         </div>
     </div>
 @endsection

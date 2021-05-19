@@ -1,23 +1,11 @@
 <div class="subject_utility container">
     <div class="row justify-content-between align-items-center">
         <div class="subject__detail col-2">
-            <p>Tạo bởi</p>
+            <p>{{ __('app.create_by') }}</p>
             <p>{{ $user->name }}</p>
         </div>
 
         <ul class="subject_utitlity__item">
-            {{-- <li>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Thêm">
-                    <i class="fa fa-plus"></i>
-                </a>
-            </li>
-
-            <li>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Sửa">
-                    <i class="fa fa-plus"></i>
-                </a>
-            </li> --}}
-
             <li>
                 <form action="{{ route('subject.delete') }}" method="post">
                     @csrf

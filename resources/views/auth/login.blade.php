@@ -15,8 +15,7 @@
               <div class="row justify-content-center">
                 <div class="col-md-12">
                   <div class="text-center mb-4">
-                  <h3>Đăng nhập</h3>
-                  {{-- <p class="mb-4">Trải nghiệm học tập với Flash-card, phương pháp ghi nhớ thông minh đã được nghiên cứu</p> --}}
+                  <h3>{{ __('app.login') }}</h3>
 
                   @if (session()->has('status'))
                     <div class="text-danger small">
@@ -38,7 +37,7 @@
                   </div>
   
                   <div class="form-group last field--not-empty mb-4">
-                    <label for="password">Mật khẩu</label>
+                    <label for="password">{{ __('app.password') }}</label>
                     <input type="password" class="form-control" id="password" name="password">
                   
                     @error('password')
@@ -48,9 +47,9 @@
                     @enderror
                   </div>
 
-                  <input type="submit" value="Đăng nhập" class="btn btn-block btn-primary">
+                  <input type="submit" value="{{ __('app.login') }}" class="btn btn-block btn-primary">
     
-                  <span class="d-block text-left my-4 text-muted">&mdash; hoặc đăng nhập với &mdash;</span>
+                  <span class="d-block text-left my-4 text-muted">&mdash; {{ __('app.login_by') }} &mdash;</span>
                   
                   <div class="social-login">
                     <a href="#" class="facebook">

@@ -24,13 +24,13 @@ class FolderSeeder extends Seeder
             ],
             [ 
                 'user_id' => 1,
-                'name' => 'folder 1',
-                'description' => 'English A1',
+                'name' => 'English A1',
+                'description' => 'vocabulary for A1 level',
             ],
             [ 
                 'user_id' => 1,
-                'name' => 'folder 3',
-                'description' => 'English B2',
+                'name' => 'English A2',
+                'description' => 'vocabulary for A2 level',
             ],
         ]);
     }

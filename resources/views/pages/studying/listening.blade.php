@@ -10,13 +10,13 @@
                 <section class="right__writing col-2">
                 
                     <div class="right__writing__back">
-                        <a href="{{ route('subject', ['id'=>$subjectId]) }}"><i class="fa fa-chevron-left"></i>Trở về</a>
+                        <a href="{{ route('subject', ['id'=>$subjectId]) }}"><i class="fa fa-chevron-left"></i>{{ __('app.back') }}</a>
                     </div>
 
                     <hr>
         
                     <div class="right__writing__title">
-                        <h5>Chính tả</h5>
+                        <h5>{{ __('app.spell') }}</h5>
                     </div>
         
                     <div class="right__writing__range">
@@ -25,7 +25,7 @@
                                 <div class="progress-bar" role="progressbar" style="width: 100%"></div>
                             </div>
                             <div class="writing__range--status row justify-content-between">
-                                <p>Còn lại</p>
+                                <p>{{ __('app.rest') }}</p>
                                 <p>{{ $numOfCard }}</p>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                                 <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="" aria-valuemin="0" aria-valuemax="{{ $numOfCard }}"></div>
                             </div>
                             <div class="writing__range--status row justify-content-between">
-                                <p>Sai</p>
+                                <p>{{ __('app.wrong') }}</p>
                                 <p>0</p>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                                 <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="{{ $numOfCard }}"></div>
                             </div>
                             <div class="writing__range--status row justify-content-between">
-                                <p>Đúng</p>
+                                <p>{{ __('app.right') }}</p>
                                 <p>0</p>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                             <div class="study__writing__question row justify-content-between ml-1">
                                 <div class="question__container">
                                     <button type="button" class="btn--speak btn-listen-question"><i class="fa fa-volume-up"></i></button>
-                                    <p>Click button to listen</p>
+                                    <p>{{ __('app.click_to_listen') }}</p>
                                 </div>
                             </div>
                     
@@ -71,18 +71,18 @@
                             <div class="study__writing__answer">
                                 <div class="answer__container row justify-content-between">
                                     <div class="form-group form-writing col-9">
-                                        <input class="form-control" type="text" placeholder="Nhập những gì bạn nghe thấy">
+                                        <input class="form-control" type="text" placeholder="{{ __('app.enter_your_listen') }}">
                                         <input type="hidden" value="{{ $card->back }}">
-                                        <label class="form-label">Nhập đáp án</label>
+                                        <label class="form-label">{{ __('app.enter_answer') }}</label>
                                     </div>
                             
-                                    <button class="btn btn--writing-answer col-2">Đáp án</button>
+                                    <button class="btn btn--writing-answer col-2">{{ __('app.answer') }}</button>
                                 </div>
                             </div>
 
                             <div class="show__answer">
                                 <div class="writing__question">
-                                    <p class="show__answer--lable">Câu hỏi</p>
+                                    <p class="show__answer--lable">{{ __('app.question') }}</p>
                                     <p>{{ $card->front }}</p>
                                 </div>
 
@@ -90,7 +90,7 @@
 
                                 <div class="writing__answer row justify-content-between align-items-center">
                                     <div>
-                                        <p class="show__answer--lable">Đúng</p>
+                                        <p class="show__answer--lable">{{ __('app.right') }}</p>
                                         <p>{{ $card->back }}</p>
                                     </div>
 
@@ -98,7 +98,7 @@
                                 </div>
                         
                                 <div class="mx-auto">
-                                    <button class="btn btn--continue">Tiếp tục</button>
+                                    <button class="btn btn--continue">{{ __('app.continue') }}</button>
                                 </div>
                             </div>
                         </section>

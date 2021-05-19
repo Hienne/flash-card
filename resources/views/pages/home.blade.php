@@ -10,10 +10,10 @@
             <div class="col-10 left-main">
                 <!-- Main Title -->
                 <div class="home__main__title row justify-content-between align-items-center">
-                    <p style="color: black">Gần đây</p>
-                    <a href="{{ route('library') }}">Xem tất cả</a>
+                    <p style="color: black">{{ __('app.recently') }}</p>
+                    <a href="{{ route('library') }}">{{ __('app.show_all') }}</a>
                 </div>
-          
+
                 <!-- Main Content -->
                 <div class="home__main__content row justify-content-between">
                     <div class="home__main__item col-12 col-sm-6">
@@ -23,7 +23,7 @@
                             <p>hienne99</p>
                         </a>
                     </div>
-          
+
                     <div class="home__main__item col-12 col-sm-6">
                         <a href="#">
                             <h4>Học phần 1</h4>
@@ -31,7 +31,7 @@
                             <p>hienne99</p>
                         </a>
                     </div>
-          
+
                     <div class="home__main__item col-12 col-sm-6">
                         <a href="#">
                             <h4>Học phần 1</h4>
@@ -39,7 +39,7 @@
                             <p>hienne99</p>
                         </a>
                     </div>
-          
+    
                     <div class="home__main__item col-12 col-sm-6">
                         <a href="#">
                             <h4>Học phần 1</h4>
@@ -48,7 +48,7 @@
                         </a>
                     </div>
                 </div>
-              </div>
+            </div>
         </div>
     </div>
     

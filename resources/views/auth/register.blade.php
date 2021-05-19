@@ -15,13 +15,12 @@
                 <div class="row justify-content-center">
                   <div class="col-md-12">
                     <div class="text-center mb-4">
-                    <h3>Lập tài khoản</h3>
-                    <p class="mb-4">Trải nghiệm học tập với Flash-card, phương pháp ghi nhớ thông minh đã được nghiên cứu</p>
+                    <h3>{{ __('app.create_account') }}</h3>
                   </div>
                   <form action="{{ route('register') }}" method="POST">
                     @csrf
                     <div class="form-group first field--not-empty">
-                      <label for="name">Tên người dùng</label>
+                      <label for="name">{{ __('app.user_name') }}</label>
                       <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
   
                       @error('name')
@@ -32,9 +31,8 @@
                     </div>
     
                     <div class="form-group field--not-empty">
-                      <label for="date_of_birth">Ngày sinh</label>
+                      <label for="date_of_birth">{{ __('app.date_of_birth') }}</label>
                       <input type="date" name="date_of_birth" id="date_of_birth" class="form-control">
-                      {{-- <input type="text" name="date_of_birth" id="date_of_birth" class="form-control auth" id="name" value="{{ auth()->user()->birth_of_date }}"> --}}
   
                       @error('date_of_birth')
                         <div class="text-danger small">
@@ -55,7 +53,7 @@
                     </div>
     
                     <div class="form-group field--not-empty">
-                      <label for="password">Mật khẩu</label>
+                      <label for="password">{{ __('app.password') }}</label>
                       <input type="password" class="form-control" id="password" name="password">
                     
                       @error('password')
@@ -66,7 +64,7 @@
                     </div>
     
                     <div class="form-group field--not-empty last mb-4">
-                      <label for="password_confirmation">Xác nhận mật khẩu</label>
+                      <label for="password_confirmation">{{ __('app.confirm_pass') }}</label>
                       <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
                       
                       @error('password_confirmation')
@@ -76,9 +74,9 @@
                       @enderror
                     </div>
       
-                    <input type="submit" value="Đăng ký" class="btn btn-block btn-primary">
+                    <input type="submit" value="{{ __('app.register') }}" class="btn btn-block btn-primary">
       
-                    <span class="d-block text-left my-4 text-muted">&mdash; hoặc đăng ký với &mdash;</span>
+                    <span class="d-block text-left my-4 text-muted">&mdash; {{ __('app.register_by') }} &mdash;</span>
                     
                     <div class="social-login">
                       <a href="#" class="facebook">

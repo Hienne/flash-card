@@ -20,31 +20,31 @@ class SubjectSeeder extends Seeder
             [ 
                 'user_id' => 1,
                 'folder_id' => 2,
-                'name' => 'subject 1',
+                'name' => 'Trường học',
                 'description' => 'English A1 day 1'
             ],
             [ 
                 'user_id' => 1,
                 'folder_id' => 2,
-                'name' => 'subject 2',
-                'description' => ''
+                'name' => 'Nghề nghiệp',
+                'description' => 'English A1 day 2'
             ],
             [ 
                 'user_id' => 1,
                 'folder_id' => 1,
-                'name' => 'subject 3',
-                'description' => 'no folder'
+                'name' => 'Thể thao',
+                'description' => ''
             ],
             [ 
                 'user_id' => 1,
                 'folder_id' => 3,
-                'name' => 'subject 4',
+                'name' => 'Thành phố',
                 'description' => 'English A2 day 1'
             ],
             [ 
                 'user_id' => 1,
                 'folder_id' => 1,
-                'name' => 'subject 5',
+                'name' => 'Cảm xúc',
                 'description' => ''
             ],
         ]);

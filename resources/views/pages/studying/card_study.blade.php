@@ -14,7 +14,7 @@
     <header class="container-fluid">        
         <!-- Button trigger modal -->
         <button type="button" class="btn btn--back" data-toggle="modal" data-target="#back_home">
-            Trang chủ
+            {{ __('app.home') }}
         </button>
 
         <!-- Modal -->
@@ -23,12 +23,12 @@
                 <div class="modal-content">
         
                     <div class="modal-body">
-                        Quá trình học sẽ không được lưu. Bạn có chắc chắn muốn quay về trang chủ?
+                        {{ __('app.back_home') }}
                     </div>
                     
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                        <a href="{{ route('home') }}"><button type="button" class="btn btn-primary">Trang chủ</button></a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('app.close') }}</button>
+                        <a href="{{ route('home') }}"><button type="button" class="btn btn-primary">{{ __('app.home') }}</button></a>
                     </div>
                 </div>
             </div>
@@ -44,12 +44,12 @@
                 <div class="modal-content">
         
                     <div class="modal-body">
-                        Quá trình học sẽ không được lưu. Bạn có chắc chắn muốn quay lại học phần?
+                        {{ __('app.back_subject') }}
                     </div>
                     
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                        <a href="{{ route('subject', ['id'=>$subject->id]) }}"><button type="button" class="btn btn-primary">Học phần</button></a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('app.close') }}</button>
+                        <a href="{{ route('subject', ['id'=>$subject->id]) }}"><button type="button" class="btn btn-primary">{{ __('app.subject') }}</button></a>
                     </div>
                 </div>
             </div>
@@ -82,42 +82,42 @@
                                 </div>
                             </div>
         
-                            <button class="btn btn--answer active" type="button">Đáp án</button>
+                            <button class="btn btn--answer active" type="button">{{ __('app.answer') }}</button>
     
                             <div class="card__study__date" id="level-card-{{ $card->id }}">
                                 <div class="choosen-level-card">
                                     <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="1">
                                     <label class="for-checkbox-level-card" for="level-1">
-                                        <span>Lại</span>
+                                        <span>{{ __('app.again') }}</span>
                                         <br>
-                                        1 ngày
+                                        1 {{ __('app.day') }}
                                     </label>
                                 </div>
                         
                                 <div class="choosen-level-card">
                                     <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="2">
                                     <label class="for-checkbox-level-card" for="level-2">
-                                        <span>Khó</span>
+                                        <span>{{ __('app.hard') }}</span>
                                         <br>
-                                        {{ ($card->num_of_study + 1) * 2 }} ngày
+                                        {{ ($card->num_of_study + 1) * 2 }} {{ __('app.days') }}
                                     </label>
                                 </div>
                         
                                 <div class="choosen-level-card">
                                     <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="4">
                                     <label class="for-checkbox-level-card" for="level-3">
-                                        <span>Được</span> 
+                                        <span>{{ __('app.ok') }}</span> 
                                         <br>
-                                        {{ ($card->num_of_study + 1) * 4 }} ngày
+                                        {{ ($card->num_of_study + 1) * 4 }} {{ __('app.days') }}
                                     </label>
                                 </div>
                         
                                 <div class="choosen-level-card">
                                     <input class="checkbox-level-card" type="radio" name="level-card-{{$card->id}}" value="7">
                                     <label class="for-checkbox-level-card" for="level-4">
-                                        <span>Dễ</span> 
+                                        <span>{{ __('app.easy') }}</span> 
                                         <br> 
-                                        {{ ($card->num_of_study + 1) * 7 }} ngày
+                                        {{ ($card->num_of_study + 1) * 7 }} {{ __('app.days') }}
                                     </label>
                                 </div>             
                             </div>
@@ -128,7 +128,7 @@
                 
                 <div class="card-wrapper btn-submit-result">
                     <input type="hidden" name="subjectId" value="{{ $subject->id }}">
-                    <button class="btn" type="submit">Kết thúc</button>
+                    <button class="btn" type="submit">{{ __('app.end') }}</button>
                 </div>
 
             </form>

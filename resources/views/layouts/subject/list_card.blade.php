@@ -1,7 +1,7 @@
 <div class="show-card__list">
     <div class="container">
         <div class="show-card__list__title">
-            <p>Thuật ngữ trong học phần này ({{ $cards->count() }})</p>
+            <p>{{ __('app.term_in_subject') }} ({{ $cards->count() }})</p>
         </div>
 
         <div class="show-card__list__test">

@@ -5,35 +5,35 @@
     <!-- Left Nav -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('home') }}">Trang chủ</a>
+        <a class="nav-link" href="{{ route('home') }}">{{ __('app.home') }}</a>
       </li>
 
       @auth
         <!-- Dropdown  Folder-->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Thư mục
+          {{ __('app.folder') }}
         </a>
         <div class="dropdown-menu">
           @foreach ($folders = Auth::user()->folders()->get()->except(1) as $folder)
             <a class="dropdown-item dropdown__item--size" href="#">{{ $folder->name }}</a>
           @endforeach
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown__item--size" href="{{ route('library') }}">Tất cả thư mục</a>
+          <a class="dropdown-item dropdown__item--size" href="{{ route('library') }}">{{ __('app.all_folder') }}</a>
         </div>
       </li>
 
       <!-- Dropdown Subject-->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Học phần
+          {{ __('app.subject') }}
         </a>
         <div class="dropdown-menu">
           @foreach ($subjects = Auth::user()->subjects()->get() as $subject)
             <a class="dropdown-item dropdown__item--size" href="{{ route('subject', ['id'=>$subject->id]) }}">{{ $subject->name }}</a>
           @endforeach
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item dropdown__item--size" href="{{ route('library') }}">Tất cả học phần</a>
+          <a class="dropdown-item dropdown__item--size" href="{{ route('library') }}">{{ __('app.all_subject') }}</a>
         </div>
       </li>
       @endauth
@@ -41,18 +41,17 @@
       <!-- Dropdown -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle dropdown--create" href="#" id="navbardrop" data-toggle="dropdown">
-          Tạo
+          {{ __('app.create') }}
         </a>
         <div class="dropdown-menu">
           <!-- Button to Open the Modal -->
           <div class="dropdown-item dropdown__item--size">
             <button type="button" class="btn btn--dropdown" data-toggle="modal" data-target="#folderForm">
-              <i style="padding-right: 0.5rem" class="fa fa-folder"> </i>Thư mục
+              <i style="padding-right: 0.5rem" class="fa fa-folder"> </i>{{ __('app.folder') }}
             </button>
           </div>
-          
 
-          <a class="dropdown-item dropdown__item--size" href="{{ route('subject.createIndex') }}"><i style="padding-right: 0.5rem" class="fa fa-copy"></i> Học phần</a>
+          <a class="dropdown-item dropdown__item--size" href="{{ route('subject.createIndex') }}"><i style="padding-right: 0.5rem" class="fa fa-copy"></i> {{ __('app.subject') }}</a>
         </div>
       </li>
     </ul>
@@ -69,21 +68,32 @@
 
     <!-- Right Nav -->
     <ul class="navbar-nav">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          {{ __('app.language') }}
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item dropdown__item--size" href="{{ url('locale/en') }}">{{ __('app.en') }}</a>
+          <a class="dropdown-item dropdown__item--size" href="{{ url('locale/vn') }}">{{ __('app.vn') }}</a>
+        </div>
+      </li>
+
       @auth
         <li class="nav-item">
           <a class="nav-link" href="#">{{ Auth::user()->name }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('logout') }}">Đăng xuất</a>
+          <a class="nav-link" href="{{ route('logout') }}">{{ __('app.logout') }}</a>
         </li>
       @endauth
 
       @guest
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('login') }}">Đăng nhập</a>
+          <a class="nav-link" href="{{ route('login') }}">{{ __('app.login') }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('register') }}">Đăng ký</a>
+          <a class="nav-link" href="{{ route('register') }}">{{ __('app.register') }}</a>
         </li>
       @endguest
     </ul>

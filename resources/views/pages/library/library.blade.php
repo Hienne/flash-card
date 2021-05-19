@@ -12,9 +12,9 @@
 
         {{-- List Item --}}
         <div class="library__list__item">
-            <button class="tablinks active border_bottom" data-electronic="subject">Học phần</button>
+            <button class="tablinks active border_bottom" data-electronic="subject">{{ __('app.subject') }}</button>
             
-            <button class="tablinks border_bottom" data-electronic="folder">Thư mục</button>
+            <button class="tablinks border_bottom" data-electronic="folder">{{ __('app.folder') }}</button>
         </div>
     </div>
 
@@ -36,7 +36,7 @@
                     @foreach ($subjects as $subject)
                         <a href="{{ route('subject', ['id'=>$subject->id]) }}" class="library__item__detail">
                             <div class="item__detail__title">
-                                <p>{{ $subject->cards()->count() }} thuật ngữ</p>
+                                <p>{{ $subject->cards()->count() }} {{ __('app.term') }}</p>
                                 <span class="user_logo logo_size">{{ strtoupper(Auth::user()->name[0]) }}</span>
                                 <h3>{{ Auth::user()->name }}</h3>
                             </div>
@@ -63,7 +63,7 @@
                     @foreach ($folders as $folder)
                         <a href="#" class="library__item__detail">
                             <div class="item__detail__title">
-                                <p>{{ $folder->subjects->count() }} học phần</p>
+                                <p>{{ $folder->subjects->count() }} {{ __('app.subject') }}</p>
                             </div>
         
                             <div class="item__detail__name">

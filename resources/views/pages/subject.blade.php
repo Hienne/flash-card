@@ -5,7 +5,7 @@
 @section('content')
     <div class="subject-detail">
         <div class="show-card container">
-            <h3 class="show-card__title">{{ $subject->name }} ({{ count($expiryCards) }} thẻ tới hạn)</h3>
+            <h3 class="show-card__title">{{ $subject->name }} ({{ count($expiryCards) }} {{ __('app.due_card') }})</h3>
             <div class="row">
                 <!-- Show card right -->
                 @include('layouts.subject.right_subject')

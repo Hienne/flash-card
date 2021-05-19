@@ -5,70 +5,70 @@
     <div class="row">
       <!-- Subject -->
       <div class="col footer__section">
-        <h3>Chủ đề</h3>
+        <h3>{{ __('app.theme') }}</h3>
         <ul class="footer__section__list">
           <li>
-            <a href="#">Khoa học</a>
+            <a href="#">{{ __('app.science') }}</a>
           </li>
           <li>
-            <a href="#">Khoa học xã hội</a>
+            <a href="#">{{ __('app.social_science') }}</a>
           </li>
           <li>
-            <a href="#">Khác</a>
+            <a href="#">{{ __('app.other') }}</a>
           </li>
           <li>
-            <a href="#">Nghệ thuật và nhân văn</a>
+            <a href="#">{{ __('app.art_and_human') }}</a>
           </li>
           <li>
-            <a href="#">Ngôn ngữ</a>
+            <a href="#">{{ __('app.language') }}</a>
           </li>
           <li>
-            <a href="#">Toán học</a>
+            <a href="#">{{ __('app.math') }}</a>
           </li>
         </ul>
       </div>
   
       <!-- Feature -->
       <div class="col footer__section">
-        <h3>Tính năng</h3>
+        <h3>{{ __('app.feature') }}</h3>
         <ul class="footer__section__list">
           <li>
-            <a href="#">Chế độ học</a>
+            <a href="#">{{ __('app.study_mode') }}</a>
           </li>
           <li>
-            <a href="#">Sơ đồ</a>
+            <a href="#">{{ __('app.diagram') }}</a>
           </li>
           <li>
-            <a href="#">Thẻ ghi nhớ</a>
+            <a href="#">{{ __('app.memory_card') }}</a>
           </li>
           <li>
-            <a href="#">Ứng dụng</a>
+            <a href="#">{{ __('app.appli') }}</a>
           </li>
         </ul>
       </div>
   
       <!-- Support -->
       <div class="col footer__section">
-        <h3>Hỗ trợ</h3>
+        <h3>{{ __('app.support') }}</h3>
         <ul class="footer__section__list">
           <li>
-            <a href="#">Đăng ký</a>
+            <a href="#">{{ __('app.regis') }}</a>
           </li>
           <li>
-            <a href="#">Quy tắc</a>
+            <a href="#">{{ __('app.rule') }}</a>
           </li>
         </ul>
       </div>
   
       <!-- Introduction -->
       <div class="col footer__section">
-        <h3>Giới thiệu</h3>
+        <h3>{{ __('app.intro') }}</h3>
         <ul class="footer__section__list">
           <li>
-            <a href="#">Tác giả</a>
+            <a href="#">{{ __('app.author') }}</a>
           </li>
           <li>
-            <a href="#">Điều khoản và dịch vụ</a>
+            <a href="#">{{ __('app.term_and_service') }}</a>
           </li>
         </ul>
       </div>
