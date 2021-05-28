@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Repositories\Eloquents\SubjectRepository;
 use App\Repositories\Eloquents\CardRepository;
 use App\Repositories\Eloquents\FolderRepository;
+use App\Repositories\Eloquents\RecentlySubjectRepository;
 use App\Models\Subject;
+use App\Models\RecentlySubject;
 use App\Models\Card;
 use Carbon\Carbon;
 
@@ -18,16 +20,19 @@ class SubjectController extends Controller
     protected $folderRepository;
     protected $subjectRepository;
     protected $cardRepository;
+    protected $recentSubRepository;
 
     public function __construct(
             FolderRepository $folderRepository,
             SubjectRepository $subjectRepository,
-            CardRepository $cardRepository
+            CardRepository $cardRepository,
+            RecentlySubjectRepository $recentSubRepository
         ) 
     {
         $this->folderRepository = $folderRepository;
         $this->subjectRepository = $subjectRepository;
         $this->cardRepository = $cardRepository;
+        $this->recentSubRepository = $recentSubRepository;
     }
 
     public function index($id) {
@@ -36,6 +41,9 @@ class SubjectController extends Controller
         $subject = $this->subjectRepository->getSubjectById($id);
         $cards = $this->cardRepository->getCardBySubject($id);
         $expiryCards = $this->cardRepository->getExpiryCardBySubject($id);
+
+        $recentSub['subject_id'] = $id;
+        $this->recentSubRepository->create($recentSub);
 
         return view('pages.subject', compact('user', 'subject', 'cards', 'expiryCards'));
     }
@@ -91,6 +99,7 @@ class SubjectController extends Controller
     public function delete(Request $request) {
         $this->cardRepository->deleteBySubject($request->subjectId);
         $this->subjectRepository->delete($request->subjectId);
+        $test = $this->recentSubRepository->delete($request->subjectId);
 
         return redirect()->route("home");
     }
@@ -105,6 +114,7 @@ class SubjectController extends Controller
 
         if ($cards->count() == 0) {
             $this->subjectRepository->delete($subjectId);
+            $this->recentSubRepository->delete($subjectId);
             return redirect()->route("home");
         }
 

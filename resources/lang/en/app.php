@@ -101,5 +101,6 @@ return [
     'confirm_pass'          => 'Confirm password',
     'register_by'           => 'or register by',
 
+    'card'                  => 'cards',
 
 ];

@@ -1,11 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-expand">
     <!-- Brand -->
-    <a class="navbar-brand logo" href="{{ route('home') }}">Flash-Card</a>
+    @auth
+      <a class="navbar-brand logo" href="{{ route('home') }}">Flash-Card</a>
+    @endauth
+    @guest
+      <a class="navbar-brand logo" href="{{ route('login') }}">Flash-Card</a>
+    @endguest
+    
   
     <!-- Left Nav -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('home') }}">{{ __('app.home') }}</a>
+        @auth
+          <a class="nav-link" href="{{ route('home') }}">{{ __('app.home') }}</a>
+        @endauth
+        @guest
+          <a class="nav-link" href="{{ route('login') }}">{{ __('app.home') }}</a>
+        @endguest
       </li>
 
       @auth
@@ -40,11 +51,13 @@
   
       <!-- Dropdown -->
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle dropdown--create" href="#" id="navbardrop" data-toggle="dropdown">
-          {{ __('app.create') }}
-        </a>
+        
+          <a class="nav-link dropdown-toggle dropdown--create" href="#" id="navbardrop" data-toggle="dropdown">
+            {{ __('app.create') }}
+          </a>
         <div class="dropdown-menu">
           <!-- Button to Open the Modal -->
+          @auth
           <div class="dropdown-item dropdown__item--size">
             <button type="button" class="btn btn--dropdown" data-toggle="modal" data-target="#folderForm">
               <i style="padding-right: 0.5rem" class="fa fa-folder"> </i>{{ __('app.folder') }}
@@ -52,6 +65,13 @@
           </div>
 
           <a class="dropdown-item dropdown__item--size" href="{{ route('subject.createIndex') }}"><i style="padding-right: 0.5rem" class="fa fa-copy"></i> {{ __('app.subject') }}</a>
+          @endauth
+          
+          @guest
+          <a class="dropdown-item dropdown__item--size" href="{{ route('login') }}"><i style="padding-right: 0.5rem" class="fa fa-folder"></i> {{ __('app.folder') }}</a>
+          <a class="dropdown-item dropdown__item--size" href="{{ route('login') }}"><i style="padding-right: 0.5rem" class="fa fa-copy"></i> {{ __('app.subject') }}</a>
+          @endguest
+          
         </div>
       </li>
     </ul>

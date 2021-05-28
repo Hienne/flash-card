@@ -105,6 +105,6 @@ return [
     'register_by'           => 'hoặc đăng ký với',
 
 
-    
+    'card'                  => 'thẻ',
 
 ];

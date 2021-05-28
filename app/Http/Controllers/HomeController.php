@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Repositories\Eloquents\FolderRepository;
 use App\Repositories\Eloquents\SubjectRepository;
 use App\Repositories\Eloquents\CardRepository;
+use App\Repositories\Eloquents\RecentlySubjectRepository;
 
 
 class HomeController extends Controller
@@ -14,16 +15,19 @@ class HomeController extends Controller
     protected $folderRepository;
     protected $subjectRepository;
     protected $cardRepository;
+    protected $recentSubRepository;
 
     public function __construct(
             FolderRepository $folderRepository,
             SubjectRepository $subjectRepository,
-            CardRepository $cardRepository
+            CardRepository $cardRepository,
+            RecentlySubjectRepository $recentlySubjectRepository
         ) 
     {
         $this->folderRepository = $folderRepository;
         $this->subjectRepository = $subjectRepository;
         $this->cardRepository = $cardRepository;
+        $this->recentSubRepository = $recentlySubjectRepository;
     }
 
     public function index()
@@ -46,6 +50,13 @@ class HomeController extends Controller
             $expiryCardsByFolder[$folder->id] = $numOfExpiryCard;
         }
 
-        return view('pages.home', compact('expiryCardsByFolder'));
+        $recentSub = [];
+        foreach($this->recentSubRepository->getList() as $item) {
+            array_push($recentSub, $this->subjectRepository->getSubjectById($item->subject_id));
+        }
+
+        // dd($recentSub);
+
+        return view('pages.home', compact('expiryCardsByFolder', 'recentSub', 'user'));
     }
 }

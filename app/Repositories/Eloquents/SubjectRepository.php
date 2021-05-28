@@ -45,6 +45,10 @@ class SubjectRepository extends EloquentRepository implements SubjectInterface {
 
     public function update($subjectId)
     {
+        
+    }
 
+    public function getRecently() {
+        
     }
 }

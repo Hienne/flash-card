@@ -56,8 +56,8 @@
                     </div>
 
                     <div class="row form_creater">
-                        <div class="form-group col">
-                            <textarea class="form-control resize-ta" 
+                        <div class="form-group col-6">
+                            <textarea class="form-control editor" 
                                     id="card_backs" name="card_backs[]" rows="1">
                             </textarea>
     
@@ -68,8 +68,8 @@
                             @endif
                         </div>
     
-                        <div class="form-group col">
-                            <textarea class="form-control resize-ta"
+                        <div class="form-group col-6">
+                            <textarea class="form-control editor"
                                     id="card_fronts" name="card_fronts[]" rows="1">
                             </textarea>
     
@@ -91,8 +91,8 @@
                     </div>
 
                     <div class="row form_creater">
-                        <div class="form-group col">
-                            <textarea class="form-control resize-ta" 
+                        <div class="form-group col-6">
+                            <textarea class="form-control editor" 
                                     id="card_backs" name="card_backs[]" rows="1">
                             </textarea>
     
@@ -103,8 +103,8 @@
                             @endif
                         </div>
     
-                        <div class="form-group col">
-                            <textarea class="form-control resize-ta"
+                        <div class="form-group col-6">
+                            <textarea class="form-control editor"
                                     id="card_fronts" name="card_fronts[]" rows="1">
                             </textarea>
     
@@ -129,26 +129,40 @@
         </div>
     </div>
 </form>
+
 @endsection
 
 @section('script')
     <script>
+        var index = 0;
+        editor = document.querySelectorAll( '.editor' );
 
-        var test = document.querySelectorAll('.card_creater__item');
+        for (let i of editor) {
+            ClassicEditor
+            .create( i, {
+                extraPlugins: [ SimpleUploadAdapterPlugin ],
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
+            index++;
+        }
+
+        // var test = document.querySelectorAll('.card_creater__item');
 
         //text area auto grow
-        function calcHeight(value) {
-            let numberOfLineBreaks = (value.match(/\n/g) || []).length;
-            let newHeight = 30 + numberOfLineBreaks * 20 + 12 +2;
-            return newHeight;
-        }
+        // function calcHeight(value) {
+        //     let numberOfLineBreaks = (value.match(/\n/g) || []).length;
+        //     let newHeight = 30 + numberOfLineBreaks * 20 + 12 +2;
+        //     return newHeight;
+        // }
 
-        let textareas = document.querySelectorAll(".resize-ta");
-        for (let ta of textareas) {
-            ta.addEventListener("keyup", () => {
-                ta.style.height = calcHeight(ta.value) + "px";
-            });
-        }
+        // let textareas = document.querySelectorAll(".resize-ta");
+        // for (let ta of textareas) {
+        //     ta.addEventListener("keyup", () => {
+        //         ta.style.height = calcHeight(ta.value) + "px";
+        //     });
+        // }
 
         // check remove
         function checkNumOfForm() {
@@ -187,6 +201,22 @@
             for (let btn of btnDelete) {
                 btn.addEventListener('click', deleteForm);
             }
+
+            editor = document.querySelectorAll( '.editor' );
+
+            for (let i = 0; i < editor.length; i++) {
+                if ( i == index) {
+                    ClassicEditor
+                    .create( editor[i], {
+                        extraPlugins: [ SimpleUploadAdapterPlugin ],
+                    } )
+                    .catch( error => {
+                        console.error( error );
+                    } );
+
+                    index++;
+                }
+            }
         }
 
         function createForm() {
@@ -201,8 +231,8 @@
                     </div>
 
                     <div class="row form_creater">
-                        <div class="form-group col">
-                            <textarea class="form-control resize-ta" 
+                        <div class="form-group col-6">
+                            <textarea class="form-control editor" 
                                     id="card_backs" name="card_backs[]" rows="1">
                             </textarea>
     
@@ -213,8 +243,8 @@
                             @endif
                         </div>
     
-                        <div class="form-group col">
-                            <textarea class="form-control resize-ta"
+                        <div class="form-group col-6">
+                            <textarea class="form-control editor"
                                     id="card_fronts" name="card_fronts[]" rows="1">
                             </textarea>
     
@@ -225,7 +255,6 @@
                             @endif
                         </div>
                     </div>`
-
             return div;
         }
 
@@ -238,11 +267,79 @@
             this.parentNode.parentNode.remove();
             
             checkNumOfForm();
+
+            index-=2;
         }
 
         for (let btn of btnDelete) {
             btn.addEventListener('click', deleteForm);
         }
+
+        class MyUploadAdapter {
+        constructor( loader ) {
+            this.loader = loader;
+        }
+
+        upload() {
+            return this.loader.file
+                .then( file => new Promise( ( resolve, reject ) => {
+                    this._initRequest();
+                    this._initListeners( resolve, reject, file );
+                    this._sendRequest( file );
+                } ) );
+        }
+
+        abort() {
+            if ( this.xhr ) {
+                this.xhr.abort();
+            }
+        }
+
+        _initRequest() {
+            const xhr = this.xhr = new XMLHttpRequest();
+            xhr.open( 'POST', '{{ route('images.store') }}', true );
+            xhr.setRequestHeader('x-csrf-token', '{{ csrf_token() }}');
+            xhr.responseType = 'json';
+        }
+
+        _initListeners( resolve, reject, file ) {
+            const xhr = this.xhr;
+            const loader = this.loader;
+            const genericErrorText = `Couldn't upload file: ${ file.name }.`;
+            xhr.addEventListener( 'error', () => reject( genericErrorText ) );
+            xhr.addEventListener( 'abort', () => reject() );
+            xhr.addEventListener( 'load', () => {
+                const response = xhr.response;
+                if ( !response || response.error ) {
+                    return reject( response && response.error ? response.error.message : genericErrorText );
+                }
+
+                resolve( {
+                    default: response.url
+                } );
+            } );
+
+            if ( xhr.upload ) {
+                xhr.upload.addEventListener( 'progress', evt => {
+                    if ( evt.lengthComputable ) {
+                        loader.uploadTotal = evt.total;
+                        loader.uploaded = evt.loaded;
+                    }
+                } );
+            }
+        }
+        _sendRequest( file ) {
+            const data = new FormData();
+            data.append( 'upload', file );
+            this.xhr.send( data );
+        }
+    }
+
+    function SimpleUploadAdapterPlugin( editor ) {
+        editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
+            return new MyUploadAdapter( loader );
+        };
+    }
 
     </script>
 @endsection

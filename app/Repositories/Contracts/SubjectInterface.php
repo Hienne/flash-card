@@ -17,4 +17,6 @@ interface SubjectInterface
     public function delete($id);
 
     public function update($subjectId);
+
+    public function getRecently();
 }

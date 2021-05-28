@@ -10,8 +10,8 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\StudyingController;
-
-
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\TestController;
 
 
 
@@ -79,6 +79,12 @@ Route::get('/subject/listening/{id}', [StudyingController::class, 'listening'])-
 
 
 /*************Test************/
+Route::get('/test', [TestController::class, 'index']);
+Route::post('/images', [ImageController::class, 'store'])->name('images.store');
+Route::get('/storage/{folder}/{fileName}', [ImageController::class, 'image']);
+
+
+
 Route::get('/', function () {
     return view('pages.guest');
 });
@@ -88,3 +94,5 @@ Route::get('locale/{locale}', function ($locale){
     Session::put('locale', $locale);
     return redirect()->back();
 });
+
+

@@ -15,39 +15,22 @@
                 </div>
 
                 <!-- Main Content -->
-                <div class="home__main__content row justify-content-between">
-                    <div class="home__main__item col-12 col-sm-6">
-                        <a href="#">
-                            <h4>Học phần 1</h4>
-                            <p>40 thuật ngữ</p>
-                            <p>hienne99</p>
-                        </a>
+                @if (count($recentSub) == 0)
+                    <h3>Không có học phần nào được truy cập gần đây.</h3>
+                @else
+                    <div class="home__main__content row justify-content-between">
+                        @foreach ($recentSub as $subject)
+                            <div class="home__main__item col-12 col-sm-6">
+                                <a href="{{ route('subject', ['id'=>$subject->id]) }}">
+                                    <h4>{{ $subject->name }}</h4>
+                                    <p>{{ $subject->cards->count() }} {{ __('app.card') }}</p>
+                                    <p>{{ $subject->name }}</p>
+                                </a>
+                            </div>
+                        @endforeach
+                    
                     </div>
-
-                    <div class="home__main__item col-12 col-sm-6">
-                        <a href="#">
-                            <h4>Học phần 1</h4>
-                            <p>40 thuật ngữ</p>
-                            <p>hienne99</p>
-                        </a>
-                    </div>
-
-                    <div class="home__main__item col-12 col-sm-6">
-                        <a href="#">
-                            <h4>Học phần 1</h4>
-                            <p>40 thuật ngữ</p>
-                            <p>hienne99</p>
-                        </a>
-                    </div>
-    
-                    <div class="home__main__item col-12 col-sm-6">
-                        <a href="#">
-                            <h4>Học phần 1</h4>
-                            <p>40 thuật ngữ</p>
-                            <p>hienne99</p>
-                        </a>
-                    </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>

@@ -51,11 +51,15 @@
             });
 
             btnUpdateCard.addEventListener('click', function() {
-                this.classList.toggle('focus-color');
-                cardDetail.classList.toggle('un-display');
-                formUpdateCard.classList.toggle('un-display');
-            });
+                    this.classList.toggle('focus-color');
+                    cardDetail.classList.toggle('un-display');
+                    formUpdateCard.classList.toggle('un-display');
+                });
         }
+
+        test = document.querySelectorAll('.font');
+        test.innerHTML = '<p>hehe</p>';
+        
     </script>
 @endsection
 

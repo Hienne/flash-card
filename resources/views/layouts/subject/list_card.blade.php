@@ -10,8 +10,10 @@
                     <div class="row justify-content-between">
                         <div class="show-card__item--detail col-10">
                             <div class="row justify-content-center">
-                                <p class="font col-5">{{ $card->front }}</p>
-                                <p class="back col-5">{{ $card->back }}</p>
+                                {{-- <p class="font col-5">{{ $card->front }}</p>
+                                <p class="back col-5">{{ $card->back }}</p> --}}
+                                <div class="font col-5">{{ $card->front }}</div>
+                                <div class="back col-5">{{ $card->back }}</div>
                             </div>
                             
                             <div class="test">
