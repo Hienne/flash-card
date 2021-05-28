@@ -86,6 +86,8 @@ class SubjectController extends Controller
             $card['subject_id'] = $newSubject->id;
             $card['front'] = $request->card_fronts[$i];
             $card['back'] = $request->card_backs[$i];
+            $card['front_content'] = strip_tags($request->card_fronts[$i], 'p');
+            $card['back_content'] = strip_tags($request->card_backs[$i], 'p');
             $card['num_of_study'] = 0;
             $card['level_of_card'] = 1;
             $card['expiry_date'] = Carbon::now();
@@ -124,6 +126,17 @@ class SubjectController extends Controller
     }
 
     public function updateCardOfSubject($id, Request $request) {
+        $this->validate($request, 
+            [
+                'front' => 'required',
+                'back' => 'required'
+            ],
+            [
+                'front' => "Vui lòng nhập định nghĩa",
+                'back' => "Vui lòng nhập thuật ngữ",
+            ]
+        );
+
         $cardEdited = new Card();
         $cardEdited->id = $id;
         $cardEdited->back = $request->back;

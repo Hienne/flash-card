@@ -61,7 +61,8 @@
                     @endif
                             <div class="study__writing__question row justify-content-between ml-1">
                                 <div class="question__container">
-                                    <p>{{ $card->front }}</p>
+                                    {{-- <p>{{ $card->front }}</p> --}}
+                                    <?php echo  html_entity_decode($card->front); ?>
                                 </div>
                             </div>
                     
@@ -71,7 +72,9 @@
                                 <div class="answer__container row justify-content-between">
                                     <div class="form-group form-writing col-9">
                                         <input class="form-control" type="text">
-                                        <input type="hidden" value="{{ $card->back }}">
+                                        {{-- <input type="hidden" value="{{ $card->back }}"> --}}
+                                        <input type="hidden" value="{{ strip_tags($card->back, 'p') }}">
+                                        
                                         <label class="form-label">{{ __('app.enter_answer') }}</label>
                                     </div>
                             
@@ -82,7 +85,8 @@
                             <div class="show__answer">
                                 <div class="writing__question">
                                     <p class="show__answer--lable">{{ __('app.question') }}</p>
-                                    <p>{{ $card->front }}</p>
+                                    {{-- <p>{{ $card->front }}</p> --}}
+                                    <?php echo  html_entity_decode($card->front); ?>
                                 </div>
 
                                 <hr>
@@ -90,7 +94,8 @@
                                 <div class="writing__answer row justify-content-between align-items-center">
                                     <div>
                                         <p class="show__answer--lable">{{ __('app.right') }}</p>
-                                        <p>{{ $card->back }}</p>
+                                        {{-- <p>{{ $card->back }}</p> --}}
+                                        <?php echo  html_entity_decode($card->back); ?>
                                     </div>
                             
                                     <button type="button" class="btn--speak"><i class="fa fa-volume-up"></i></button>
@@ -188,10 +193,12 @@
         }
 
         function speak(text) {
+            console.log('hehe');
             var toSpeak = new SpeechSynthesisUtterance(text);
             var voice = synth.getVoices()[4];
             toSpeak.voice = voice;
             synth.speak(toSpeak);
+            console.log('huhu');
         }
     </script>
 @endsection

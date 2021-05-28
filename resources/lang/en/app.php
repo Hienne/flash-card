@@ -102,5 +102,7 @@ return [
     'register_by'           => 'or register by',
 
     'card'                  => 'cards',
+    'input_defi'            => 'Enter Definition',
+    'input_term'            => 'Enter Term',
 
 ];

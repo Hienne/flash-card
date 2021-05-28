@@ -106,5 +106,7 @@ return [
 
 
     'card'                  => 'thẻ',
+    'input_defi'            => 'Nhập định nghĩa',
+    'input_term'            => 'Nhập thuật ngữ',
 
 ];

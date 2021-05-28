@@ -71,10 +71,12 @@
                                 <div class="show-card__card carousel-item active">
                                     <div class="show-card__inner">
                                         <div class="card--front">
-                                            <p>{{ $card->front }}</p>
+                                            {{-- <p>{{ $card->front }}</p> --}}
+                                            <?php echo  html_entity_decode($card->front); ?>
                                         </div>
                                         <div class="card--back">
-                                            <p>{{ $card->back }}</p>
+                                            {{-- <p>{{ $card->back }}</p> --}}
+                                            <?php echo  html_entity_decode($card->back); ?>
                                         </div>
                                     </div>
 
@@ -195,7 +197,8 @@
             let txtBack = item.firstElementChild.lastElementChild.firstElementChild;
 
             btnSpeak.addEventListener('click', () => {
-                var toSpeak = new SpeechSynthesisUtterance(txtBack.innerHTML);
+                console.log(txtBack.innerText);
+                var toSpeak = new SpeechSynthesisUtterance(txtBack.innerText);
                 var voice = synth.getVoices()[4];
                 toSpeak.voice = voice;
                 synth.speak(toSpeak);

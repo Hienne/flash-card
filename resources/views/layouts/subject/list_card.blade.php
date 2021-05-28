@@ -7,23 +7,30 @@
         <div class="show-card__list__test">
             @foreach ($cards as $card)
                 <div class="show-card__list__item">
-                    <div class="row justify-content-between">
+                    <div class="row justify-content-between align-items-center">
                         <div class="show-card__item--detail col-10">
                             <div class="row justify-content-center">
-                                {{-- <p class="font col-5">{{ $card->front }}</p>
-                                <p class="back col-5">{{ $card->back }}</p> --}}
-                                <div class="font col-5">{{ $card->front }}</div>
-                                <div class="back col-5">{{ $card->back }}</div>
+                                <div class="font col-5 d-flex flex-column justify-content-center align-items-center">
+                                    <?php echo  html_entity_decode($card->front); ?>
+                                </div>
+                                <div class="back col-5 d-flex flex-column justify-content-center align-items-center">
+                                    <?php echo  html_entity_decode($card->back); ?>
+                                </div>
                             </div>
                             
                             <div class="test">
-                                <form action="{{ route('subject.card.update', ['id'=>$card->id]) }}" method="POST" class="row form--update-card un-display">
+                                <form action="{{ route('subject.card.update', ['id'=>$card->id]) }}" method="POST" class="form--update-card un-display">
                                     @method('PUT')
                                     @csrf
-                                    <input class="col-4 ml-4" type="text" name="front" value="{{ $card->front }}">
-                                    <input class="col-4 ml-3" type="text" name="back" value="{{ $card->back }}">
-                                    {{-- <input type="hidden" name="cardUpdateId" value="{{ $card->id }}"> --}}
-                                    <button class="col-1 ml-5">Sửa</button>
+                                    <textarea class="update_editor" type="text" name="front" placeholder="{{ __('app.input_defi') }}">{{ $card->front }}</textarea>
+                                    @if ($errors->has('front'))
+                                        <label for="front" class="text-danger">{{ $errors->first('front') }}</label>
+                                    @endif
+                                    <textarea class="mt-2 update_editor" type="text" name="back" placeholder="{{ __('app.input_term') }}">{{ $card->back }}</textarea>
+                                    @if ($errors->has('back'))
+                                        <label for="backp" class="text-danger">{{ $errors->first('back') }}</label>
+                                    @endif
+                                    <button class="mt-3">Sửa</button>
                                 </form>
                             </div>
                             

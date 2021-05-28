@@ -12,10 +12,10 @@
       <div class="show-card__card carousel-item active">
         <div class="show-card__inner">
           <div class="card--front">
-            <p>{{ $cards->first()->front }}</p>
+            <?php echo  html_entity_decode($cards->first()->front); ?>
           </div>
           <div class="card--back">
-            <p>{{ $cards->first()->back }}</p>
+            <?php echo  html_entity_decode($cards->first()->back); ?>
           </div>
         </div>
       </div>
@@ -24,10 +24,10 @@
         <div class="show-card__card carousel-item">
           <div class="show-card__inner">
             <div class="card--front">
-              <p>{{ $card->front }}</p>
+              <?php echo  html_entity_decode($card->front); ?>
             </div>
             <div class="card--back">
-              <p>{{ $card->back }}</p>
+              <?php echo  html_entity_decode($card->back); ?>
             </div>
           </div>
         </div>

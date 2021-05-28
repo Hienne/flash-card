@@ -16,6 +16,8 @@ class Card extends Model implements HasMedia
         'subject_id',
         'front',
         'back',
+        'front_content',
+        'back_content',
         'num_of_study',
         'level_of_card',
         'expiry_date'

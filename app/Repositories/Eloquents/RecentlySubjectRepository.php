@@ -23,6 +23,10 @@ class RecentlySubjectRepository extends EloquentRepository implements RecentlySu
     }
 
     public function create($recentSub) {
+        if (count($this->_model->all()) == 0) {
+            return $this->_model->create($recentSub);
+        }
+        
         $lastRecentSubject = $this->_model->all()->last();
 
         if ($recentSub['subject_id'] != $lastRecentSubject->subject_id) {

@@ -187,6 +187,13 @@
     text-align: center;
     border: none;
     background-color: white;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+.form--update-card img {
+    padding: 0;
 }
 
 .form--update-card button:hover {
@@ -206,4 +213,14 @@
 .btn_function button:hover {
     color: rgb(255, 205, 31);
 }
+
+.font img {
+    padding: 0;
+}
+
+.back img {
+    padding: 0;
+}
+
+
 
