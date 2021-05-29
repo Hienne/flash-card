@@ -9,7 +9,7 @@
             <h3 class="exam-score">{{ __('app.score') }}: <span></span> </h3>
             {{-- Translate --}}
             <div class="exam__translate">
-                <h4>5 {{ __('app.essay_question') }}</h4>
+                <h4>{{ count($cardsForTranslate) }} {{ __('app.essay_question') }}</h4>
     
                 <div class="exam__translate__detail">
 
@@ -151,24 +151,6 @@
 
 @section('script')
     <script>
-        const btnAnswer = document.querySelector('.btn--show-answer');
-        btnAnswer.addEventListener('click', checkAnswerSelection);
-        btnAnswer.addEventListener('click', checkAnswerChooFal);
-        btnAnswer.addEventListener('click', checkAnswerMatching);
-        btnAnswer.addEventListener('click', checkAnswerTranslate);
-        btnAnswer.addEventListener('click', showScore);
-
-        // Show score
-        var showScoreLabel = document.querySelector(".exam-score");
-        var showDetailScore = document.querySelector(".exam-score span");
-
-        var score = 0;
-        function showScore() {
-            showScoreLabel.style.display = 'unset'
-            // showScore.innerHTML = `${ score/25 * 100 }%`
-            showDetailScore.innerHTML = `${ Math.round(score/25 * 100) }%`;
-        }
-
         // Translate check
         const cardsForTranslate = {!! json_encode($cardsForTranslate) !!};
 
@@ -180,7 +162,7 @@
         var alertForTranslate = document.querySelectorAll('.exam__translate__detail .alert-for-translate')
 
         function checkAnswerTranslate() {
-            for (let i = 0; i < answerForMatching.length; i++) {
+            for (let i = 0; i < answerForTranslate.length; i++) {
                 if (answerForTranslate[i].value === cardsForTranslate[i].back) {
                     translateResultTrue[i].style.display = "unset";
                     score++;
@@ -236,7 +218,6 @@
 
         function checkAnswerMatching() {
             convertIndexOfAnswer(arrIndexOfAnswer, userAnswerForMatching);
-            console.log(arrIndexOfAnswer);
 
             for (let i = 0; i < 5; i++) {
                 if (arrIndexOfAnswer[i] === answerForMatching[i]) {
@@ -259,8 +240,8 @@
         const answersForSelection = {!! json_encode($answersForSelection) !!};
         const cardsForSelection = {!! json_encode($cardsForSelection) !!};
 
-
-        function checkAnswerSelection() {
+        if (cardsForTranslate.length > 4) {
+            function checkAnswerSelection() {
             for (let i = 0; i < 5; i++) {
                 let btnRadioSelection = document.getElementsByName('selection_answer_' + i);
                 
@@ -282,7 +263,9 @@
                     }
                 }
             }
-        }   
+            }   
+        }
+        
 
         // Choose False Check
         const resultWaringChoofal  = document.querySelectorAll('.exam__choofal__detail .result .result--warning');
@@ -330,6 +313,28 @@
                 }
             }
         }   
+
+        const btnAnswer = document.querySelector('.btn--show-answer');
+        btnAnswer.addEventListener('click', checkAnswerTranslate);
+        
+
+        if (cardsForTranslate.length > 4) {
+            btnAnswer.addEventListener('click', checkAnswerChooFal);
+            btnAnswer.addEventListener('click', checkAnswerMatching);
+            btnAnswer.addEventListener('click', checkAnswerSelection);
+        }
+
+        // Show score
+        var showScoreLabel = document.querySelector(".exam-score");
+        var showDetailScore = document.querySelector(".exam-score span");
+
+        var score = 0;
+        function showScore() {
+            showScoreLabel.style.display = 'unset'
+            showDetailScore.innerHTML = `${ Math.round(score/25 * 100) }%`;
+        }
+        
+        btnAnswer.addEventListener('click', showScore);
         
     </script>
 @endsection
