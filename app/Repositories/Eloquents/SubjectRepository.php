@@ -6,6 +6,7 @@ use App\Repositories\Contracts\SubjectInterface;
 use App\Repositories\Eloquents\SubjectRepository;
 
 class SubjectRepository extends EloquentRepository implements SubjectInterface {
+    const PAGINATE = 5;
     
     public function getModel()
     {
@@ -19,7 +20,8 @@ class SubjectRepository extends EloquentRepository implements SubjectInterface {
 
     public function getSubjectByUser($userId)
     {
-        return $this->_model->all()->where('user_id', $userId);
+        return $this->_model->where('user_id', $userId)->paginate(self::PAGINATE);
+        // return $this->_model->all()->where('user_id', $userId)->paginate(self::PAGINATE);
     }
 
     public function getSubjectByFolder($folderId)
@@ -29,8 +31,7 @@ class SubjectRepository extends EloquentRepository implements SubjectInterface {
 
     public function getSearchSubject($keyword)
     {
-        return $this->_model->where('name', 'LIKE', '%' .$keyword .'%')->get();
-                    // ->paginate(self::PAGINATE);
+        return $this->_model->where('name', 'LIKE', '%' .$keyword .'%')->paginate(self::PAGINATE);
     }
 
     public function create($subject)

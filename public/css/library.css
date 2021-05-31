@@ -85,6 +85,10 @@
     color: #aaa;
 }
 
+.library__item {
+    min-height: 200px;
+}
+
 .library__item__detail {
     display: block;
     padding: 1rem;

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             FolderSeeder::class,
             SubjectSeeder::class,
+            SharedSubjectSeeder::class,
             CardSeeder::class,
         ]);
     }

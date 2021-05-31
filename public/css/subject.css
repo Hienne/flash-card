@@ -223,4 +223,8 @@
 }
 
 
-
+/* Model */
+.test .close {
+    padding: 0;
+    margin: 0;
+}

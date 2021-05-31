@@ -104,5 +104,9 @@ return [
     'card'                  => 'cards',
     'input_defi'            => 'Enter Definition',
     'input_term'            => 'Enter Term',
+    'shared_subject'        => 'Do you want to share this subject?',
+    'yes'                   => 'Yes',
+    'no'                   => 'No',
+    'no_search'             => 'There are no subject for search.',
 
 ];

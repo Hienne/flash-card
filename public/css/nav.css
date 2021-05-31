@@ -1,5 +1,4 @@
 nav {
-    background-color: rgb(66, 87, 178);
     font-size: 0.7rem;
     font-weight: 600;
 }
@@ -11,6 +10,10 @@ nav ul li a {
 nav ul li a:hover {
     color: white;
     text-decoration: none;
+}
+
+.navbar {
+    background-color: rgb(66, 87, 178);
 }
 
 .logo {

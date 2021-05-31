@@ -46,6 +46,8 @@
                             </div>
                         </a>
                     @endforeach
+
+                    {{ $subjects->links() }}
                 </div>
             </div>
 
@@ -71,6 +73,8 @@
                             </div>
                         </a>
                     @endforeach
+
+                    {{ $folders->links() }}
                 </div>
             </div>
 

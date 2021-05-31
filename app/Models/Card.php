@@ -29,6 +29,11 @@ class Card extends Model implements HasMedia
         return $this->belongsTo(Subject::class);
     }
 
+    public function sharedSubject()
+    {
+        return $this->belongsTo(SharedSubject::class);
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')

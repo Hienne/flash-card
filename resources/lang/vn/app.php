@@ -108,5 +108,8 @@ return [
     'card'                  => 'thẻ',
     'input_defi'            => 'Nhập định nghĩa',
     'input_term'            => 'Nhập thuật ngữ',
-
+    'shared_subject'        => 'Bạn có muốn chia sẻ học phần này?',
+    'yes'                   => 'Có',
+    'no'                    => 'Không',
+    'no_search'             => 'Không tìm thấy học phần nào.',
 ];

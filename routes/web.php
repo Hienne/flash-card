@@ -11,6 +11,7 @@ use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\StudyingController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\SharedSubjectController;
 use App\Http\Controllers\TestController;
 
 
@@ -94,5 +95,10 @@ Route::get('locale/{locale}', function ($locale){
     Session::put('locale', $locale);
     return redirect()->back();
 });
+
+/*************Shared_subject************/
+Route::post('/shared_subject', [SharedSubjectController::class, 'create'])->name('sharedSub.create');
+Route::get('/shared_subject/search', [SharedSubjectController::class, 'subjectSearcher'])->name('shared_subject.search');
+
 
 

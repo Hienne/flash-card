@@ -93,7 +93,7 @@ class SubjectController extends Controller
             $this->cardRepository->create($card);
         }
 
-        return redirect()->route('subject', ['id' => $newSubject->id]); 
+        return redirect()->route('subject', ['id' => $newSubject->id])->with('popup', 'open'); 
     }
 
     public function delete(Request $request) {

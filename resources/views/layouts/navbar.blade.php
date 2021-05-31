@@ -28,6 +28,9 @@
         <div class="dropdown-menu">
           @foreach ($folders = Auth::user()->folders()->get()->except(1) as $folder)
             <a class="dropdown-item dropdown__item--size" href="#">{{ $folder->name }}</a>
+            @if ($loop->index > 4)
+                @break
+            @endif
           @endforeach
           <div class="dropdown-divider"></div>
           <a class="dropdown-item dropdown__item--size" href="{{ route('library') }}">{{ __('app.all_folder') }}</a>
@@ -42,6 +45,9 @@
         <div class="dropdown-menu">
           @foreach ($subjects = Auth::user()->subjects()->get() as $subject)
             <a class="dropdown-item dropdown__item--size" href="{{ route('subject', ['id'=>$subject->id]) }}">{{ $subject->name }}</a>
+            @if ($loop->index > 4)
+                @break
+            @endif
           @endforeach
           <div class="dropdown-divider"></div>
           <a class="dropdown-item dropdown__item--size" href="{{ route('library') }}">{{ __('app.all_subject') }}</a>
@@ -77,12 +83,13 @@
     </ul>
 
     <!-- Form search -->
-    <form class="form-inline my-2 my-lg-0">
+    <form action="{{ route('shared_subject.search') }}" class="form-inline my-2 my-lg-0">
+      @csrf
       <div class="input-group">
         <div  class="input-group-prepend">
-          <button class="btn btn--search" type="button"><i class="fa fa-search"></i></button>
+          <button class="btn btn--search" type="submit"><i class="fa fa-search"></i></button>
         </div>
-        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+        <input type="text" name="subject_keyword"  class="form-control" placeholder="Search" aria-label="" aria-describedby="basic-addon1">
       </div>
     </form>
 
@@ -157,4 +164,5 @@
         </div>
       </div>
     </div>
+
   </nav>

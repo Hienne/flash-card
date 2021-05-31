@@ -31,4 +31,8 @@ class Subject extends Model
     {
         return $this->hasMany(Card::class);
     }
+
+    public function shared_subject() {
+        return $this->hasOne(SharedSubject::class);
+    }
 }

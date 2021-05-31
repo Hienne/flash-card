@@ -20,10 +20,48 @@
 
         <!-- Show card list -->
         @include('layouts.subject.list_card')
+
+        <!-- Modal -->
+        <div class="modal" tabindex="-1" role="dialog" id="testModal">
+            <form action="{{ route('sharedSub.create') }}" method="post">
+                @csrf
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header test">
+                            <h5 class="modal-title">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{ __('app.share_subject') }}</p>
+                            <input type="hidden" name="subject_id" value="{{ $subject->id }}">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">{{ __('app.yes') }}</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('app.no') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+        
     </div>
 @endsection
 
 @section('script')
+
+    @if (session()->has('popup'))
+        <script>
+            $(document).ready(function(){
+                
+                $("#testModal").modal('show');
+
+            });
+        </script>
+    @endif
+
     <script>
         const cards = document.querySelectorAll(".show-card__inner");
 

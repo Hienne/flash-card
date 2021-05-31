@@ -6,6 +6,7 @@ use App\Repositories\Contracts\FolderInterface;
 use App\Repositories\Eloquents\FolderRepository;
 
 class FolderRepository extends EloquentRepository implements FolderInterface {
+    const PAGINATE = 5;
     
     public function getModel()
     {
@@ -14,7 +15,8 @@ class FolderRepository extends EloquentRepository implements FolderInterface {
 
     public function getFolderByUser($userId)
     {
-        return $this->_model->all()->where('user_id', $userId)->except(1);
+        // return $this->_model->all()->where('user_id', $userId)->except(1);
+        return $this->_model->where('user_id', $userId)->whereNotIn('id', [1])->paginate(self::PAGINATE);
     }
 
     public function getSearchFolder($keyword)
