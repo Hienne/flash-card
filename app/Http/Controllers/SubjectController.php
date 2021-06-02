@@ -39,10 +39,17 @@ class SubjectController extends Controller
         $user = Auth::user();
 
         $subject = $this->subjectRepository->getSubjectById($id);
+
+        if($subject->user_id != $user->id && $subject->shared_status == false) {
+            return redirect()->route('home')->with('alert', 'open'); 
+        }
+
         $cards = $this->cardRepository->getCardBySubject($id);
+        
         $expiryCards = $this->cardRepository->getExpiryCardBySubject($id);
 
         $recentSub['subject_id'] = $id;
+        $recentSub['user_id'] = $user->id;
         $this->recentSubRepository->create($recentSub);
 
         return view('pages.subject', compact('user', 'subject', 'cards', 'expiryCards'));
@@ -71,12 +78,14 @@ class SubjectController extends Controller
 
         if ($subjectFol == null) 
         {
-            $subjectFol = 1;
+            $subjectFol = $this->folderRepository->getDefaultFolder(Auth::user()->id)->id;
         }
-
+        
         $subject['user_id'] = Auth::user()->id;
+        $subject['maker'] = Auth::user()->name;
         $subject['folder_id'] = $subjectFol;
         $subject['name'] = $request->subject_title;
+        $subject['shared_status'] = 0;
         $subject['description'] = $request->subject_des;
 
         $newSubject = $this->subjectRepository->create($subject);
@@ -92,6 +101,8 @@ class SubjectController extends Controller
 
             $this->cardRepository->create($card);
         }
+
+        // dd($newSubject->shared_status);
 
         return redirect()->route('subject', ['id' => $newSubject->id])->with('popup', 'open'); 
     }
@@ -143,6 +154,33 @@ class SubjectController extends Controller
         $this->cardRepository->editCard($cardEdited);
 
         return redirect()->back();
+    }
+
+    public function add(Request $request) {
+        $subject = $this->subjectRepository->getSubjectById($request->subjectId);
+
+        $subjectToAdd['user_id'] = Auth::user()->id;
+        $subjectToAdd['maker'] = $subject->user->name;
+        $subjectToAdd['folder_id'] = 1;
+        $subjectToAdd['name'] = $subject->name;
+        $subjectToAdd['shared_status'] = $subject->shared_status;
+        $subjectToAdd['description'] = $subject->description;
+
+        $newSubject = $this->subjectRepository->create($subjectToAdd);
+
+        for($i = 0; $i < count($subject->cards); $i++)
+        {
+            $card['subject_id'] = $newSubject->id;
+            $card['front'] = $subject->cards[$i]->front;
+            $card['back'] = $subject->cards[$i]->front;
+            $card['num_of_study'] = 0;
+            $card['level_of_card'] = 1;
+            $card['expiry_date'] = Carbon::now();
+
+            $this->cardRepository->create($card);
+        }
+
+        return redirect()->route('subject', ['id' => $newSubject->id]); 
     }
     
 }

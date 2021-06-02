@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <select class="form-control" name="subject_folder" id="subject_folder">
                         <option disabled="disabled" selected="selected">{{ __('app.folder') }}</option>
-                        @foreach ($folders = Auth::user()->folders()->get()->except(1) as $folder)
+                        @foreach ($folders = Auth::user()->folders()->get() as $folder)
                             <option value="{{ $folder->id }}">{{ $folder->name }}</option>
                         @endforeach
                     </select>

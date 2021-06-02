@@ -17,8 +17,10 @@ class CreateSubjectsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('folder_id')->constrained('folders');
+            $table->string('maker');
             $table->string('name');
             $table->string('description')->nullable();
+            $table->boolean('shared_status')->default(false);
             $table->timestamps();
         });
     }

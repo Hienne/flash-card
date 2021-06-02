@@ -20,32 +20,42 @@ class SubjectSeeder extends Seeder
             [ 
                 'user_id' => 1,
                 'folder_id' => 2,
+                'maker' => 'hien99',
                 'name' => 'Trường học',
-                'description' => 'English A1 day 1'
+                'description' => 'English A1 day 1',
+                'shared_status' => true,
             ],
             [ 
                 'user_id' => 1,
                 'folder_id' => 2,
+                'maker' => 'hien99',
                 'name' => 'Nghề nghiệp',
-                'description' => 'English A1 day 2'
+                'description' => 'English A1 day 2',
+                'shared_status' => true,
             ],
             [ 
                 'user_id' => 1,
                 'folder_id' => 1,
+                'maker' => 'hien99',
                 'name' => 'Thể thao',
-                'description' => ''
+                'description' => '',
+                'shared_status' => true,
             ],
             [ 
                 'user_id' => 1,
                 'folder_id' => 3,
+                'maker' => 'hien99',
                 'name' => 'Thành phố',
-                'description' => 'English A2 day 1'
+                'description' => 'English A2 day 1',
+                'shared_status' => true,
             ],
             [ 
                 'user_id' => 1,
                 'folder_id' => 1,
+                'maker' => 'hien99',
                 'name' => 'Cảm xúc',
-                'description' => ''
+                'description' => '',
+                'shared_status' => true,
             ],
         ]);
     }

@@ -8,6 +8,8 @@ interface FolderInterface
 
     public function getSearchFolder($keyword);
 
+    public function getDefaultFolder($userId);
+
     public function create($folder);
 
     public function createDefaultFolder($user);

@@ -112,4 +112,8 @@ return [
     'yes'                   => 'Có',
     'no'                    => 'Không',
     'no_search'             => 'Không tìm thấy học phần nào.',
+    'alert'                 => 'Bạn không thể truy cập học phần này.',
+    'recent_subject'        => 'Không có học phần nào được truy cập gần đây.',
+    'add_subject_to_study'  => 'Thêm học phần để học',
+    
 ];

@@ -18,5 +18,7 @@ interface SubjectInterface
 
     public function update($subjectId);
 
+    public function updateStatus($subjectId);
+
     public function getRecently();
 }

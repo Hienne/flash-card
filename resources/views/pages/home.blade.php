@@ -16,7 +16,7 @@
 
                 <!-- Main Content -->
                 @if (count($recentSub) == 0)
-                    <h3>Không có học phần nào được truy cập gần đây.</h3>
+                    <h3>{{ __('app.recent_subject') }}</h3>
                 @else
                     <div class="home__main__content row justify-content-between">
                         @foreach ($recentSub as $subject)
@@ -34,5 +34,38 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal" tabindex="-1" role="dialog" id="alertModal">
+        <form action="{{ route('sharedSub.create') }}" method="post">
+            @csrf
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header test">
+                        <h5 class="modal-title">{{ __('app.alert') }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+    </div>
     
+@endsection
+
+@section('script')
+@if (session()->has('alert'))
+<script>
+    $(document).ready(function(){
+        
+        $("#alertModal").modal('show');
+
+    });
+</script>
+@endif
 @endsection

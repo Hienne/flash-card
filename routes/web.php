@@ -99,6 +99,7 @@ Route::get('locale/{locale}', function ($locale){
 /*************Shared_subject************/
 Route::post('/shared_subject', [SharedSubjectController::class, 'create'])->name('sharedSub.create');
 Route::get('/shared_subject/search', [SharedSubjectController::class, 'subjectSearcher'])->name('shared_subject.search');
+Route::post('/shared_subject/add', [SubjectController::class, 'add'])->name('shared_subject.add');
 
 
 

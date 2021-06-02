@@ -22,6 +22,16 @@ class RecentlySubjectRepository extends EloquentRepository implements RecentlySu
         return $allSubjects;
     }
 
+    public function getListByUser($userId) {
+        $allSubjects = $this->_model->all()->where('user_id', $userId);
+
+        if (count($allSubjects) > 4) {
+            return $allSubjects->take(-4)->reverse();
+        }
+
+        return $allSubjects;
+    }
+
     public function create($recentSub) {
         if (count($this->_model->all()) == 0) {
             return $this->_model->create($recentSub);

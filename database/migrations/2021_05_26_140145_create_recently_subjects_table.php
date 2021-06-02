@@ -15,6 +15,7 @@ class CreateRecentlySubjectsTable extends Migration
     {
         Schema::create('recently_subjects', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->bigInteger('subject_id');
             $table->timestamps();
         });

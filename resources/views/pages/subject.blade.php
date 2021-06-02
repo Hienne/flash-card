@@ -5,7 +5,12 @@
 @section('content')
     <div class="subject-detail">
         <div class="show-card container">
-            <h3 class="show-card__title">{{ $subject->name }} ({{ count($expiryCards) }} {{ __('app.due_card') }})</h3>
+            @if ($subject->user_id != auth()->user()->id)
+                <h3 class="show-card__title">{{ $subject->name }}</h3>
+            @else
+                <h3 class="show-card__title">{{ $subject->name }} ({{ count($expiryCards) }} {{ __('app.due_card') }})</h3>
+            @endif
+            
             <div class="row">
                 <!-- Show card right -->
                 @include('layouts.subject.right_subject')
@@ -34,7 +39,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>{{ __('app.share_subject') }}</p>
+                            <p>{{ __('app.shared_subject') }}</p>
                             <input type="hidden" name="subject_id" value="{{ $subject->id }}">
                         </div>
                         <div class="modal-footer">

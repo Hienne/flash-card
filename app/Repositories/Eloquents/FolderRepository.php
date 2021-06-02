@@ -25,6 +25,11 @@ class FolderRepository extends EloquentRepository implements FolderInterface {
                     // ->paginate(self::PAGINATE);
     }
 
+    public function getDefaultFolder($userId)
+    {
+        return $this->_model->all()->where('user_id', $userId)->where('name', '==', 'Default')->first();
+    }
+
     public function create($folder) 
     {   
         return $this->_model->create($folder);

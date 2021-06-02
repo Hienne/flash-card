@@ -39,11 +39,7 @@ class SharedSubjectController extends Controller
     public function create(Request $req) {
         $subject = $this->subjectRepository->getSubjectById($req->subject_id);
 
-        $sharedSub['subject_id'] = $req->subject_id;
-        $sharedSub['name'] = $subject->name;
-        
-
-        $this->sharedSubjectRepository->create($sharedSub);
+        $this->subjectRepository->updateStatus($subject->id);
 
         return redirect()->route('subject', ['id' => $req->subject_id]);
     }
@@ -52,9 +48,7 @@ class SharedSubjectController extends Controller
     {
         $keyword = $request->subject_keyword;
 
-        $sharedSubjects = $this->sharedSubjectRepository->getSearchSubject($keyword);
-
-        // dd($sharedSubjects[0]->subject->user->name);
+        $sharedSubjects = $this->subjectRepository->getSearchSharedSubject($keyword);
 
         return view('pages.subject.shared_subject', compact('sharedSubjects'));
     }

@@ -106,7 +106,9 @@ return [
     'input_term'            => 'Enter Term',
     'shared_subject'        => 'Do you want to share this subject?',
     'yes'                   => 'Yes',
-    'no'                   => 'No',
+    'no'                    => 'No',
     'no_search'             => 'There are no subject for search.',
-
+    'alert'                 => 'You can not access this subject',
+    'recent_subject'        => 'No courses have been accessed recently.',
+    'add_subject_to_study'  => 'Add subject to study',
 ];

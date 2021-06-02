@@ -4,6 +4,8 @@ namespace App\Repositories\Eloquents;
 
 use App\Repositories\Contracts\SubjectInterface;
 use App\Repositories\Eloquents\SubjectRepository;
+use App\Models\Subject;
+
 
 class SubjectRepository extends EloquentRepository implements SubjectInterface {
     const PAGINATE = 5;
@@ -21,7 +23,6 @@ class SubjectRepository extends EloquentRepository implements SubjectInterface {
     public function getSubjectByUser($userId)
     {
         return $this->_model->where('user_id', $userId)->paginate(self::PAGINATE);
-        // return $this->_model->all()->where('user_id', $userId)->paginate(self::PAGINATE);
     }
 
     public function getSubjectByFolder($folderId)
@@ -32,6 +33,13 @@ class SubjectRepository extends EloquentRepository implements SubjectInterface {
     public function getSearchSubject($keyword)
     {
         return $this->_model->where('name', 'LIKE', '%' .$keyword .'%')->paginate(self::PAGINATE);
+    }
+
+    public function getSearchSharedSubject($keyword)
+    {
+        $sharedSubjects = $this->_model->where('shared_status', true);
+        
+        return $sharedSubjects->where('name', 'LIKE', '%' .$keyword .'%')->paginate(self::PAGINATE);
     }
 
     public function create($subject)
@@ -47,6 +55,13 @@ class SubjectRepository extends EloquentRepository implements SubjectInterface {
     public function update($subjectId)
     {
         
+    }
+
+    public function updateStatus($subjectId)
+    {
+        $subject = Subject::find($subjectId);
+        $subject->shared_status = !$subject->shared_status;
+        $subject->save();
     }
 
     public function getRecently() {

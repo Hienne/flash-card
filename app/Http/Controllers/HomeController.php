@@ -51,11 +51,9 @@ class HomeController extends Controller
         }
 
         $recentSub = [];
-        foreach($this->recentSubRepository->getList() as $item) {
+        foreach($this->recentSubRepository->getListByUser($user->id) as $item) {
             array_push($recentSub, $this->subjectRepository->getSubjectById($item->subject_id));
         }
-
-        // dd($recentSub);
 
         return view('pages.home', compact('expiryCardsByFolder', 'recentSub', 'user'));
     }

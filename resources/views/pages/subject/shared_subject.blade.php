@@ -16,11 +16,11 @@
                     @endif
 
                     @foreach ($sharedSubjects as $subject)
-                        <a href="{{ route('subject', ['id'=>$subject->subject_id]) }}" class="library__item__detail">
+                        <a href="{{ route('subject', ['id'=>$subject->id]) }}" class="library__item__detail">
                             <div class="item__detail__title">
-                                <p>{{ $subject->subject->cards()->count() }} {{ __('app.term') }}</p>
-                                <span class="user_logo logo_size">{{ strtoupper($subject->subject->user->name[0]) }}</span>
-                                <h3>{{ $subject->subject->user->name }}</h3>
+                                <p>{{ $subject->cards()->count() }} {{ __('app.term') }}</p>
+                                <span class="user_logo logo_size">{{ strtoupper($subject->user->name[0]) }}</span>
+                                <h3>{{ $subject->user->name }}</h3>
                             </div>
     
                             <div class="item__detail__name">
@@ -32,9 +32,6 @@
                     {{ $sharedSubjects->links() }}
                 </div>
             </div>
-
-        
-
         </div>
     </div>
     

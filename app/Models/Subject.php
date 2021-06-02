@@ -11,8 +11,10 @@ class Subject extends Model
 
     protected $fillable = [
         'user_id',
+        'maker',
         'folder_id',
         'name',
+        'shared_status',
         'description'
     ];
 

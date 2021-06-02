@@ -27,14 +27,17 @@ class User extends Authenticatable
 
     public function folders()
     {
-        // return $this->hasMany('App\Models\Folder');
         return $this->hasMany(Folder::class);
     }
 
     public function subjects()
     {
-        return $this->hasMany('App\Models\Subject');
-        // return $this->hasMany(Subject::class);
+        return $this->hasMany(Subject::class);
+    }
+
+    public function recently_subjects()
+    {
+        return $this->hasMany(RecentlySubject::class);
     }
 
     /**

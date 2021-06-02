@@ -1,12 +1,18 @@
 <ul class="show-card__right navbar-nav col-2">
-    <li class="nav-item show-card__right--bg">
-        @if (count($expiryCards) > 0)
-            <a href="{{ route('studying', ['id'=>$subject->id]) }}"><i style="color: rgb(66, 87, 178)" class="fa fa-undo"></i> {{ __('app.study') }}</a>    
-        @else
-            <a href="#" disabled><i class="fa fa-undo"></i> {{ __('app.no_due_card') }}</a>
-        @endif
-        
-    </li>
+    @if ($subject->user_id != auth()->user()->id)
+        <li class="nav-item show-card__right--bg">
+            <a href="#" disabled><i class="fa fa-undo"></i> {{ __('app.add_subject_to_study') }}</a>
+        </li>
+    @else
+        <li class="nav-item show-card__right--bg">
+            @if (count($expiryCards) > 0)
+                <a href="{{ route('studying', ['id'=>$subject->id]) }}"><i style="color: rgb(66, 87, 178)" class="fa fa-undo"></i> {{ __('app.study') }}</a>    
+            @else
+                <a href="#" disabled><i class="fa fa-undo"></i> {{ __('app.no_due_card') }}</a>
+            @endif
+        </li>
+    @endif
+    
 
     <li class="nav-item show-card__right--bg">
         <a href="{{ route('studying.writing', ['id'=>$subject->id]) }}"><i style="color: rgb(66, 87, 178)" class="fa fa-pencil"></i> {{ __('app.write') }}</a>
