@@ -67,11 +67,6 @@ class SubjectController extends Controller
                 'card_fronts.*' => 'min:2',
                 'card_backs.*' => 'min:2'
             ],
-            [
-                'subject_title.required' => "Vui lòng nhập tiêu đề để tạo học phần",
-                'card_fronts.*.min' => "BẠN CẦN HAI THẺ ĐỂ TẠO MỘT HỌC PHẦN",
-                'card_backs.*.min' => "BẠN CẦN HAI THẺ ĐỂ TẠO MỘT HỌC PHẦN",
-            ]
         );
 
         $subjectFol = $request->subject_folder;
@@ -113,6 +108,95 @@ class SubjectController extends Controller
         $test = $this->recentSubRepository->delete($request->subjectId);
 
         return redirect()->route("home");
+    }
+
+    // public function update(Request $request) {
+
+    //     $test = $this->validate($request, 
+    //         [
+    //             'subject_title' => 'required',
+    //         ],
+    //     );
+
+    //     $subject = new Subject();
+    //     $subject->id = $request->subjectId;
+    //     $subject->name = $request->subject_title;
+    //     $subject->description = $request->subject_des;
+
+    //     $this->subjectRepository->update($subject);
+
+    //     return redirect()->back();
+    // }
+
+    public function updateIndex($id) {
+        $subject = $this->subjectRepository->getSubjectById($id);
+
+        return view('pages.subject.subject_update', compact('subject'));
+    }
+
+    public function update(Request $request, $id) {
+        $this->validate($request, 
+            [
+                'subject_title' => 'required',
+                'card_fronts.*' => 'min:2',
+                'card_backs.*' => 'min:2'
+            ],
+        );        
+
+        $subject = $this->subjectRepository->getSubjectById($id);
+        $cards = $subject->cards;
+
+        // dd($request);
+        // dd(in_array(116, $request->card_id));
+
+        for($i = 0; $i < count($request->card_fronts); $i++)
+        {
+            if (isset($request->card_id[$i])) {
+                $cardEdited = $cards->find($request->card_id[$i]);
+
+                if ($cardEdited->front != $request->card_fronts[$i] || $cardEdited->back != $request->card_backs[$i]) {
+                    $cardUpdate = new Card();
+                    $cardUpdate->id = $request->card_id[$i];
+                    $cardUpdate->back = $request->card_backs[$i];
+                    $cardUpdate->front = $request->card_fronts[$i];
+
+                    $this->cardRepository->editCard($cardUpdate);
+                }
+            }
+            else {
+                $card['subject_id'] = $id;
+                $card['front'] = $request->card_fronts[$i];
+                $card['back'] = $request->card_backs[$i];
+                $card['num_of_study'] = 0;
+                $card['level_of_card'] = 1;
+                $card['expiry_date'] = Carbon::now();
+    
+                $this->cardRepository->create($card);
+            }
+        }
+
+        foreach($cards as $card) {
+            if (!in_array($card->id,$request->card_id)) {
+                $this->cardRepository->delete($cards[$i]->id);
+            }
+        }
+
+        $subjectFol = $request->subject_folder;
+
+        if ($subjectFol == null) 
+        {
+            $subjectFol = $this->folderRepository->getDefaultFolder(Auth::user()->id)->id;
+        }
+        
+        $subjectUpdate = new Subject();
+        $subjectUpdate->id = $id;
+        $subjectUpdate->name = $request->subject_title;
+        $subjectUpdate->description = $request->subject_des;
+        $subjectUpdate->folder_id = $request->subject_folder;
+
+        $this->subjectRepository->update($subjectUpdate);
+
+        return redirect()->route('subject', ['id' => $id]); 
     }
 
     public function deleteCardOfSubject(Request $request)

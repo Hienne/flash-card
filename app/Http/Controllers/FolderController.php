@@ -27,4 +27,12 @@ class FolderController extends Controller
 
         return back();
     }
+
+    public function delete(Request $request) {
+
+        dd($request->folderId);
+        $this->folderRepository->detele($request->folderId);
+
+        return redirect()->back();
+    }
 }

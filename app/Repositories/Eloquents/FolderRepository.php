@@ -47,4 +47,8 @@ class FolderRepository extends EloquentRepository implements FolderInterface {
     {
 
     }
+
+    public function delete($folderId) {
+        return $this->_model->where('id', $folderId)->delete();
+    }
 }

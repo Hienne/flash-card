@@ -111,4 +111,9 @@ return [
     'alert'                 => 'You can not access this subject',
     'recent_subject'        => 'No courses have been accessed recently.',
     'add_subject_to_study'  => 'Add subject to study',
+    'update_subject'        => 'Update subject',
+    'delete_subject'        => 'Do you want to delete this subject?',
+    'delete_sub_title'      => 'Delete Subject',
+    'shared_sub_title'      => 'Share Subject',
+    'update'                => 'Update',
 ];

@@ -15,4 +15,6 @@ interface FolderInterface
     public function createDefaultFolder($user);
 
     public function update($folderId);
+
+    public function delete($folderId);
 }

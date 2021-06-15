@@ -135,28 +135,28 @@ return [
 
     'custom' => [
         'email' => [
-            'required' => 'Please enter your email',
-            'max' => 'Email cannot exceed :max characters '
+            'required' => 'Vui lòng nhập email',
+            'max' => 'Email không được quá :max ký tự'
         ],
         'password' => [
-            'required' => 'Please enter your password',
-            'confirmed' => 'Password is not the same'
+            'required' => 'Vui lòng nhập mật khẩu',
+            'confirmed' => 'Mật khẩu không giống.'
         ],
         'name' => [
-            'required' => 'Please enter user name',
-            'max' => 'User name cannot exceed :mã characters'
+            'required' => 'Vui lòng nhập tên người dùng.',
+            'max' => 'Tên người dùng không được quá :max ký tự'
         ],
         'date_of_birth' => [
-            'required' => 'Please enter your birthday'
+            'required' => 'Vui lòng nhập ngày tháng năm sinh.'
         ],
         'subject_title' => [
-            'required' => "Please enter the subject name"
+            'required' => "Vui lòng nhập tiêu đề để tạo học phần"
         ],
         'card_fronts.*' => [
-            'min' => "YOU NEED TWO CARDS TO CREATE ONE COURSE",
+            'min' => "BẠN CẦN HAI THẺ ĐỂ TẠO MỘT HỌC PHẦN",
         ],
         'card_backs.*' => [
-            'min' => "YOU NEED TWO CARDS TO CREATE ONE COURSE",
+            'min' => "BẠN CẦN HAI THẺ ĐỂ TẠO MỘT HỌC PHẦN",
         ]
     
     ],

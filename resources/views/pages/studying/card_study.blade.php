@@ -71,15 +71,13 @@
                                 <div class="show-card__card carousel-item active">
                                     <div class="show-card__inner">
                                         <div class="card--front">
-                                            {{-- <p>{{ $card->front }}</p> --}}
                                             <?php echo  html_entity_decode($card->front); ?>
                                         </div>
                                         <div class="card--back">
-                                            {{-- <p>{{ $card->back }}</p> --}}
                                             <?php echo  html_entity_decode($card->back); ?>
                                         </div>
                                     </div>
-
+ 
                                     <button class="btn--speak hidden" type="button"><i class="fa fa-volume-up"></i></button>
                                 </div>
                             </div>

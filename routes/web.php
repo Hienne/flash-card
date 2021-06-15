@@ -52,6 +52,8 @@ Route::get('/subject/{id}', [SubjectController::class, 'index'])->name('subject'
 Route::get('/subject', [SubjectController::class, 'createIndex'])->name('subject.createIndex');
 Route::post('/subject', [SubjectController::class, 'create'])->name('subject.create');
 Route::post('/subject/delete', [SubjectController::class, 'delete'])->name('subject.delete');
+Route::get('/subject/update/{id}', [SubjectController::class, 'updateIndex'])->name('subject.updateIndex');
+Route::post('/subject/update/{id}', [SubjectController::class, 'update'])->name('subject.update');
 
 Route::put('/subject/card/update/{id}', [SubjectController::class, 'updateCardOfSubject'])->name('subject.card.update');
 Route::post('/subject/card/delete', [SubjectController::class, 'deleteCardOfSubject'])->name('subject.card.delete');
@@ -59,6 +61,8 @@ Route::post('/subject/card/delete', [SubjectController::class, 'deleteCardOfSubj
 
 /*************Folder************/
 Route::post('/folder', [FolderController::class, 'create'])->name('folder.create');
+Route::post('/folder/delete', [FolderController::class, 'delete'])->name('folder.delete');
+
 
 /*************Library************/
 Route::get('/library', [LibraryController::class, 'index'])->name('library');

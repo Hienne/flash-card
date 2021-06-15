@@ -35,15 +35,45 @@
                 <div  class="library__item">
                     @foreach ($subjects as $subject)
                         <a href="{{ route('subject', ['id'=>$subject->id]) }}" class="library__item__detail">
-                            <div class="item__detail__title">
-                                <p>{{ $subject->cards()->count() }} {{ __('app.term') }}</p>
-                                <span class="user_logo logo_size">{{ strtoupper(Auth::user()->name[0]) }}</span>
-                                <h3>{{ Auth::user()->name }}</h3>
+                            <div>
+                                <div class="item__detail__title">
+                                    <p>{{ $subject->cards()->count() }} {{ __('app.term') }}</p>
+                                    <span class="user_logo logo_size">{{ strtoupper($subject->maker[0]) }}</span>
+                                    <h3>{{ $subject->maker }}</h3>
+                                </div>
+        
+                                <div class="item__detail__name">
+                                    <h2>{{ $subject->name }}</h2>
+                                </div>
                             </div>
-    
-                            <div class="item__detail__name">
-                                <h2>{{ $subject->name }}</h2>
-                            </div>
+                            
+
+                            {{-- <ul class="subject_utitlity__item">
+                                <li>
+                                    
+                                    <form action="{{ route('shared_subject.add') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="subjectId" value="{{ $subject->id }}">
+                    
+                                        <button type="submit" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Thêm">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </form>
+                                </li>
+                            <li> --}}
+                                {{-- <button type="button" class="btn btn--dropdown" data-toggle="modal" data-target="#deleteSubject">
+                                    <i style="padding-right: 0.5rem" class="fa fa-trash"></i>
+                                </button> --}}
+                                {{-- <form action="{{ route('subject.delete') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="subjectId" value="{{ $subject->id }}">
+                
+                                    <button type="submit" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Xóa">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul> --}}
                         </a>
                     @endforeach
 
@@ -63,15 +93,66 @@
 
                 <div  class="library__item">
                     @foreach ($folders as $folder)
-                        <a href="#" class="library__item__detail">
-                            <div class="item__detail__title">
-                                <p>{{ $folder->subjects->count() }} {{ __('app.subject') }}</p>
+                        {{-- <a href="#" class="library__item__detail"> --}}
+                        <div class="library__item__detail">
+                            <div>
+                                <div class="item__detail__title">
+                                    <p>{{ $folder->subjects->count() }} {{ __('app.subject') }}</p>
+                                </div>
+            
+                                <div class="item__detail__name">
+                                    <i style="padding-right: 0.5rem" class="fa fa-folder"> </i><h2>{{ $folder->name }}</h2>
+                                </div>
                             </div>
-        
-                            <div class="item__detail__name">
-                                <i style="padding-right: 0.5rem" class="fa fa-folder"> </i><h2>{{ $folder->name }}</h2>
-                            </div>
-                        </a>
+                            
+                            <ul class="subject_utitlity__item">
+                                <li>
+                                    <form action="{{ route('shared_subject.add') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="subjectId" value="{{ $subject->id }}">
+                    
+                                        <button type="submit" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Thêm">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </form>
+                                </li>
+                            <li>
+                                <button type="button" class="btn btn--dropdown btn--updateFolder" data-toggle="modal" data-target="#deleteFolder">
+                                    <i style="padding-right: 0.5rem" class="fa fa-trash"></i>
+                                </button>
+                                {{-- <div class="modal" tabindex="-1" role="dialog" id="deleteFolder">
+                                    <form action="{{ route('folder.delete') }}" method="post">
+                                        @csrf
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header test">
+                                                    <h5 class="modal-title">Bạn có chắc chắn muốn xóa thư mục này?</h5>
+                                                    <input type="hidden" name="folderId" value="{{ $folder->id }}">
+                                                    <button style="color: black;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button style="color: black;" type="submit" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    
+                                </div> --}}
+                                {{-- <form action="{{ route('subject.delete') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="subjectId" value="{{ $subject->id }}">
+                
+                                    <button type="submit" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Xóa">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form> --}}
+                            </li>
+                        </ul>
+                        {{-- </a> --}}
+                    </div>
+
                     @endforeach
 
                     {{ $folders->links() }}
@@ -79,6 +160,28 @@
             </div>
 
         </div>
+    </div>
+
+    <!-- Delete Subject Modal -->
+    <div class="modal" tabindex="-1" role="dialog" id="deleteFolder">
+        <form action="{{ route('folder.delete') }}" method="post">
+            @csrf
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header test">
+                        <h5 class="modal-title">Bạn có chắc chắn muốn xóa thư mục này?</h5>
+                        <input type="hidden" name="folderId" value="3">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="Submit" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
     </div>
     
 @endsection

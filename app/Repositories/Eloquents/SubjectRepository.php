@@ -39,7 +39,9 @@ class SubjectRepository extends EloquentRepository implements SubjectInterface {
     {
         $sharedSubjects = $this->_model->where('shared_status', true);
         
-        return $sharedSubjects->where('name', 'LIKE', '%' .$keyword .'%')->paginate(self::PAGINATE);
+        return $sharedSubjects->where('name', 'LIKE', '%' .$keyword .'%')
+                                ->orWhere('description', 'LIKE', '%' .$keyword .'%')
+                                ->paginate(self::PAGINATE);
     }
 
     public function create($subject)
@@ -52,9 +54,14 @@ class SubjectRepository extends EloquentRepository implements SubjectInterface {
         return $this->_model->where('id', $id)->delete();
     }
 
-    public function update($subjectId)
+    public function update($subjectUpdate)
     {
-        
+        $subject = Subject::find($subjectUpdate->id);
+        $subject->name = $subjectUpdate->name;
+        $subject->description = $subjectUpdate->description;
+        $subject->folder_id = $subjectUpdate->folder_id;
+
+        $subject->save();
     }
 
     public function updateStatus($subjectId)

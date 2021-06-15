@@ -115,5 +115,9 @@ return [
     'alert'                 => 'Bạn không thể truy cập học phần này.',
     'recent_subject'        => 'Không có học phần nào được truy cập gần đây.',
     'add_subject_to_study'  => 'Thêm học phần để học',
-    
+    'update_subject'        => 'Chỉnh sửa học phần',
+    'delete_subject'        => 'Bạn có muốn xóa học phần này?',
+    'delete_sub_title'      => 'Xóa học phần',
+    'shared_sub_title'      => 'Chia sẻ học phần',
+    'update'                => 'Cập nhật',
 ];

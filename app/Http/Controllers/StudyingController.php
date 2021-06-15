@@ -35,6 +35,7 @@ class StudyingController extends Controller
 
     public function updateStudyingCard(Request $request) {
         $listRadio = $request->all();
+        
 
         foreach( $listRadio as $key=>$item) {
             if ($key !== array_key_first($listRadio) && $key !== array_key_last($listRadio))

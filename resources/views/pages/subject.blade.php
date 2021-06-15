@@ -27,13 +27,13 @@
         @include('layouts.subject.list_card')
 
         <!-- Modal -->
-        <div class="modal" tabindex="-1" role="dialog" id="testModal">
+        <div class="modal" tabindex="-1" role="dialog" id="sharedSubject">
             <form action="{{ route('sharedSub.create') }}" method="post">
                 @csrf
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header test">
-                            <h5 class="modal-title">Modal title</h5>
+                            <h5 class="modal-title">{{ __('app.shared_sub_title') }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -61,7 +61,7 @@
         <script>
             $(document).ready(function(){
                 
-                $("#testModal").modal('show');
+                $("#sharedSubject").modal('show');
 
             });
         </script>
